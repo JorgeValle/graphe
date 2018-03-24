@@ -1,0 +1,22 @@
+extends layout
+
+block content
+
+  main.container-fluid.mt-4
+    div.row
+      div.col
+        h1 Blog
+
+    div.row.mt-3 
+      div.col-xs-12.col-sm-12.col-md-5
+
+      include newsletter-signup
+
+      div.col-xs-12.col-sm-12.col-md-7
+        nav.mt-2.mb-3
+        each content in apiResponse
+        div.d-flex.justify-content-between
+          a(href='/blog/' + content.url)
+          h3.mb-1 #{content.title}
+          //-small=content.publishedDate
+          p.mb-1 !{content.bodyOne.substr(0, 150) + '...'}
