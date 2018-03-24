@@ -9,9 +9,9 @@ const express = require('express'),
 require('./api/models/entry-point');
 
 // route setup for api, back and front
-const routesApi = require('./api/routes'),
-      routesBack = require('./back/routes'),
-      routesFront = require('./front/routes');
+const routesApi = require('./api/api.routes'),
+      routesBack = require('./back/back.routes'),
+      routesFront = require('./front/front.routes');
 
 let app = express();
 
