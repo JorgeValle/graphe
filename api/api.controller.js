@@ -1,0 +1,47 @@
+const mongoose = require('mongoose'),
+      fs = require('fs');
+
+const jsonService = require('../services/json.service');
+
+// setting the API password for local and production environments
+var apiPassword = 'whatpassword';
+if (process.env.NODE_ENV === 'production') {
+  apiPassword = process.env.API_PASSWORD;
+}
+
+const page = mongoose.model('Page');
+
+/**
+ * 
+ * @todo This is fetching the 'pages' collection, which should have been more appropriately named 'posts' originally. Change?
+ */
+module.exports.retrieveAllPosts = function(req, res) {
+
+  page.find({}).exec(function(err, posts) {
+    jsonService.sendResponse(res, 200, posts);
+  });
+
+}
+
+/**
+ * 
+ */
+module.exports.retrievePostById = function(req, res) {
+
+}
+
+/**
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ */
+module.exports.createPost = function(req, res) {
+
+}
+
+/**
+ * 
+ */
+module.exports.updatePostById = function(req, res) {
+
+}
