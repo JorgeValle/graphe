@@ -1,16 +1,16 @@
 const express = require('express'),
       path = require('path'),
       logger = require('morgan'),
-      cookieParse = require('cookie-parser'),
+      cookieParser = require('cookie-parser'),
       bodyParser = require('body-parser'),
       methodOverride = require('method-override');
 
 // hook for database connection
-require('./api/models/entry-point');
+require('./api/api.config');
 
 // route setup for api, back and front
 const routesApi = require('./api/api.routes'),
-      routesBack = require('./back/back.routes'),
+      routesAdmin = require('./admin/admin.routes'),
       routesFront = require('./front/front.routes');
 
 let app = express();
@@ -20,7 +20,7 @@ app.listen(3000, function() {
 });
 
 // view directory setup
-app.set('views', [`${__dirname}/back/views`, `${__dirname}/front/views`]);
+app.set('views', [`${__dirname}/admin/views`, `${__dirname}/front/views`]);
 app.set('view engine', 'pug');
 
 // logging middleware
@@ -30,7 +30,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'assets')));
+app.use(express.static(path.join(__dirname, 'front/assets')));
 
 // middleware allows for put and delete requests on forms
 app.use(methodOverride('_method'));
@@ -38,7 +38,7 @@ app.use(methodOverride('_method'));
 // route setup
 app.use('/api', routesApi);
 app.use('/', routesFront);
-app.use('/admin', routesBack);
+app.use('/admin', routesAdmin);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
