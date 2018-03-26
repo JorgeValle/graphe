@@ -4,19 +4,15 @@ block content
 
   main.container-fluid.mt-4
     div.row
-      div.col
+      div.col.mb-3
         h1 Blog
-
-    div.row.mt-3 
-      div.col-xs-12.col-sm-12.col-md-5
-
-      include newsletter-signup
-
-      div.col-xs-12.col-sm-12.col-md-7
-        nav.mt-2.mb-3
-        each content in apiResponse
-        div.d-flex.justify-content-between
-          a(href='/blog/' + content.url)
-          h3.mb-1 #{content.title}
-          //-small=content.publishedDate
-          p.mb-1 !{content.bodyOne.substr(0, 150) + '...'}
+    div.row
+      each content in apiResponse
+        div.col-12.col-sm-12.col-md-4
+          div.card.mb-3
+            a(href='/blog/' + content.url)
+              h2.card-header.h5 #{content.title}
+            div.card-body
+              small.text-muted #{content.publishedDate}
+              p.card-text !{content.bodyOne.substr(0, 150) + '...'}
+              a.badge.badge-warning(href="#") JavaScript

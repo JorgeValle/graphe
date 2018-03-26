@@ -1,0 +1,15 @@
+block content
+
+- var openingXmlTag = '<?xml version="1.0" encoding="UTF-8"?>';
+
+!{openingXmlTag}
+urlset(xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
+  url
+    loc='https://jorgevalle.com'
+  url
+    loc='https://jorgevalle.com/timeline'
+  url
+    loc='https://jorgevalle.com/blog'
+  each content in apiResponse
+    url
+      loc='https://jorgevalle.com/blog/' + content.url
