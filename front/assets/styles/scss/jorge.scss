@@ -1,0 +1,40 @@
+body {
+  font-size: 0.9rem;
+}
+header {
+  background-color: #000000;
+}
+header h1,
+header h2,
+header a {
+  color: #ffffff;
+}
+a {
+  color: #2185d0;
+}
+h1, h2, h3 {
+  font-family: 'Domine';
+}
+body {
+  font-family: 'Roboto';
+}
+.code header {
+  background-color: #17a2b8;
+  color: #fff;
+  border-radius: 5px 5px 0px 0px;
+  
+}
+.breadcrumb {
+  background-color: transparent;
+  margin-left: 0px;
+}
+pre[class*="language-"] {
+  margin-top: 0px;
+}
+.sidebar {
+
+}
+
+.icon {
+  color: white;
+}
