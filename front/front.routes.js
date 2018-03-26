@@ -1,20 +1,18 @@
 const express = require('express'),
       router = express.Router(),
-      ctrlMain = require('../controllers/main'),
-      ctrlPages = require('../controllers/pages'),
-      ctrlQueries = require('../controllers/queries');
+      frontCtrl = require('./front.controller');
 
 // homepage
-router.get('/', ctrlMain.homepage);
+router.get('/', frontCtrl.homepage);
 // timeline
-router.get('/timeline', ctrlMain.timeline);
+router.get('/about', frontCtrl.about);
 // blog post by url
-router.get('/blog/:pageUrl', ctrlPages.pageByUrl);
+ router.get('/blog/:pageUrl', frontCtrl.postsByUrl);
 // blog
-router.get('/blog', ctrlQueries.queryAll);
+router.get('/blog', frontCtrl.queryPosts);
 // thanks page
-router.get('/thanks', ctrlPages.thanks);
+router.get('/thanks', frontCtrl.thanks);
 // sitemap.xml
-router.get('/sitemap.xml', ctrlQueries.sitemap);
+router.get('/sitemap.xml', frontCtrl.sitemap);
 
 module.exports = router;
