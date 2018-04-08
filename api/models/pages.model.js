@@ -1,3 +1,5 @@
+'use strict';
+
 const mongoose = require('mongoose');
 
 let bodySchema = new mongoose.Schema({
