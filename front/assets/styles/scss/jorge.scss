@@ -1,9 +1,9 @@
 body {
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
-header {
-  background-color: #000000;
-}
+// header {
+//   background-color: #000000;
+// }
 header h1,
 header h2,
 header a {
@@ -37,4 +37,26 @@ pre[class*="language-"] {
 
 .icon {
   color: white;
+}
+
+.content {
+  // Small devices (landscape phones, 576px and up)
+  @media (min-width: 576px) {
+    margin-top: ($spacer * 5) !important;
+  };
+
+  // Medium devices (tablets, 768px and up)
+  @media (min-width: 768px) {
+    margin-top: ($spacer * 5) !important;
+   };
+
+  // Large devices (desktops, 992px and up)
+  @media (min-width: 992px) {
+    margin-top: ($spacer * 3) !important;
+  };
+
+  // Extra large devices (large desktops, 1200px and up)
+  @media (min-width: 1200px) {
+    margin-top: ($spacer * 3) !important;
+  };
 }
