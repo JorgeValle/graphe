@@ -1,3 +1,5 @@
+'use strict';
+
 const request = require('request');
 var apiOptions = {
 	server: "http://localhost:3000"

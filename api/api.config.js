@@ -1,3 +1,5 @@
+'use strict';
+
 const mongoose = require('mongoose'),
       dbURI = 'mongodb://admin:3bn8AMFgipYGibdlpVo7@ds141890-a0.mlab.com:41890,ds141890-a1.mlab.com:41890/jorgevalle?replicaSet=rs-ds141890';
 
