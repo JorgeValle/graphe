@@ -18,6 +18,7 @@
     "esdoc": "^1.0.1",
     "esdoc-standard-plugin": "^1.0.0",
     "express": "~4.13.4",
+    "express-force-https": "^1.0.0",
     "method-override": "^2.3.7",
     "mongoose": "^4.8.5",
     "morgan": "~1.7.0",
