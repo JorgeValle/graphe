@@ -3,7 +3,9 @@ const express = require('express'),
       logger = require('morgan'),
       cookieParser = require('cookie-parser'),
       bodyParser = require('body-parser'),
-      methodOverride = require('method-override');
+      methodOverride = require('method-override'),
+      secure = require('express-force-https');
+
 
 // hook for database connection
 require('./api/api.config');
@@ -22,6 +24,9 @@ app.listen(3000, function() {
 // view directory setup
 app.set('views', [`${__dirname}/admin/views`, `${__dirname}/front/views`]);
 app.set('view engine', 'pug');
+
+// force https
+app.use(secure);
 
 // logging middleware
 app.use(logger('dev'));
