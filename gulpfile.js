@@ -6,7 +6,7 @@ const gulp = require('gulp'),
       babel = require('gulp-babel');
 
 /**
- *
+ * Prepares the scripts
  */
 gulp.task('scripts', () => {
   return gulp.src([
@@ -35,9 +35,9 @@ gulp.task('prep', () => {
  *
  */
 gulp.task('sass', () => {
-  return gulp.src('./assets/stylesheets/styles.scss')
+  return gulp.src('./front/assets/styles/styles.scss')
   .pipe(sass().on('error', sass.logError))
-  .pipe(gulp.dest('./assets/stylesheets/'));
+  .pipe(gulp.dest('./front/assets/styles/'));
 });
 
 /**
@@ -51,9 +51,9 @@ gulp.task('sass:watch', function () {
  *
  */
 gulp.task('minify-css', () => {
-  return gulp.src('./assets/stylesheets/styles.css')
+  return gulp.src('./front/assets/styles/styles.css')
   .pipe(cleanCSS({
     compatibility: 'ie8'
   }))
-  .pipe(gulp.dest('./assets/stylesheets/dist'));
+  .pipe(gulp.dest('./front/assets/styles/dist'));
 });
