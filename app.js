@@ -17,7 +17,7 @@ const routesApi = require('./api/api.routes'),
 
 let app = express();
 
-app.listen(3000, function() {
+app.listen(process.env.PORT || 3000, function() {
   console.log('Express has started on port 3000');
 });
 
