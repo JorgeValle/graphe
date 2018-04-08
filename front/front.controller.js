@@ -40,6 +40,54 @@ let renderSitemap = function(req, res, responseBody) {
   });
 };
 
+/**
+ * 
+ * @param {*} dateString 
+ */
+const prettyDate = function(dateString) {
+
+  let date = new Date(dateString),
+      d = date.getDate(dateString),
+      monthNames = [
+        'January', 'February', 'March',
+        'April', 'May', 'June',
+        'July', 'August', 'September',
+        'October', 'November', 'December'
+      ],
+      m = monthNames[date.getMonth()],
+      y = date.getFullYear();
+  
+  return `${m} ${d} ${y}`;
+
+}
+
+
+/**
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} responseBody 
+ */
+var renderPageByTitle = function(req, res, responseBody) {
+
+  res.render('post', {
+
+    // we parse JSON response to get properties ready for consumption in pug templates
+    documentTitle: JSON.parse(responseBody).title + ' | JorgeValle.com' ,
+    canonicalUrl: 'https://jorgevalle.com' + req.url,
+    activeUrl: req.url,
+    title: JSON.parse(responseBody).title,
+    alternativeTitle: JSON.parse(responseBody).alternativeTitle,
+    date: prettyDate(JSON.parse(responseBody).publishedDate),
+    lastModifiedDate: prettyDate(JSON.parse(responseBody).lastModifiedDate),
+    bodyOne: JSON.parse(responseBody).bodyOne,
+    bodyTwo: JSON.parse(responseBody).bodyTwo,
+    bodyThree: JSON.parse(responseBody).bodyThree,
+    bodyFour: JSON.parse(responseBody).bodyFour,
+    bodyFive: JSON.parse(responseBody).bodyFive
+  });
+};
+
 // homepage
 module.exports.homepage = function(req, res) {
   res.render('homepage', { 
@@ -67,6 +115,15 @@ module.exports.thanks = function(req, res) {
   });
 };
 
+// timeline
+module.exports.timeline = function(req, res) {
+  res.render('timeline', { 
+    documentTitle: 'Timeline',
+    canonicalUrl: 'https://jorgevalle.com' + req.url,
+    activeUrl: req.url
+  });
+};
+
 request(requestOptions, function(err, response, body) {
   if(err) {
     console.log(err);
@@ -77,8 +134,11 @@ request(requestOptions, function(err, response, body) {
   }
 });
 
-
-/* GET page by title */
+/**
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ */
 module.exports.queryPosts = function(req, res) {
 
   var requestOptions, path;
@@ -92,9 +152,8 @@ module.exports.queryPosts = function(req, res) {
   };
 
   request(requestOptions, function(err, response, body) {
-
       if (err) {
-        console.log("Request error" + err);
+        console.log('Request error' + err);
       } else {
         renderQueryContent(req, res, body);
       }
@@ -102,13 +161,22 @@ module.exports.queryPosts = function(req, res) {
   
 };
 
-/* GET page by title */
-module.exports.postsByUrl = function(req, res) {
+/**
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ */
+module.exports.postBySlug = function(req, res) {
 
   var requestOptions, path;
-  path = '/api/get/posts?sortby=descending';
+
+  path = '/api/get/post/' + req.params.slug;
+
+  console.log(req.params.pageUrl);
 
   var fullUrl = serverService.returnBaseUrl() + path;
+
+  console.log(fullUrl);
 
   requestOptions = {
     url: fullUrl,
@@ -117,20 +185,32 @@ module.exports.postsByUrl = function(req, res) {
 
   request(requestOptions, function(err, response, body) {
 
-      if (err) {
-        console.log("Request error" + err);
-      } else {
-        renderQueryContent(req, res, body);
-      }
+    if (err) {
+      console.log('Request error' + err);
+    } else if ( response.statusCode == '404' ) {
+      res.status(404).render('404', { 
+        documentTitle: 'Not Found' ,
+        canonicalUrl: 'https://jorgevalle.com' + req.url,
+        activeUrl: req.url
+      });
+    } else {
+      renderPageByTitle(req, res, body);
+      console.log('res.statusCode:' + res.statusCode);
+    }
+
   });
   
 };
 
-/* GET page by title */
+/**
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ */
 module.exports.sitemap = function(req, res) {
 
   var requestOptions, path;
-  path = '/api/pages?sortby=descending';
+  path = '/api/get/posts';
 
   var fullUrl = serverService.returnBaseUrl() + path;
 
@@ -138,13 +218,14 @@ module.exports.sitemap = function(req, res) {
     url: fullUrl,
     method: 'GET'
   };
+
   request(requestOptions, function(err, response, body) {
 
-      if (err) {
-        console.log("Request error" + err);
-      } else {
-        renderSitemap(req, res, body);
-      }
+    if (err) {
+      console.log('Request error' + err);
+    } else {
+      renderSitemap(req, res, body);
+    }
 
   });
 };

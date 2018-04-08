@@ -26,7 +26,20 @@ module.exports.retrieveAllPosts = function(req, res) {
 /**
  * 
  */
-module.exports.retrievePostById = function(req, res) {
+module.exports.retrievePostBySlug = function(req, res) {
+
+  // go fetch wanted content via mongoose
+  page.findOne({
+    'url': req.params.slug
+  }, function(err, page) {
+
+    // return 200 only if page is found, otherwise return 404
+    if (page) {
+      jsonService.sendResponse(res, 200, page);
+    } else {
+      jsonService.sendResponse(res, 404);
+    }
+  });
 
 }
 

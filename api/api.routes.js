@@ -5,7 +5,7 @@ const express = require('express'),
 // get all posts
 router.get('/get/posts', apiCtrl.retrieveAllPosts);
 // get specific post
-router.get('/get/post/:id', apiCtrl.retrievePostById);
+router.get('/get/post/:slug', apiCtrl.retrievePostBySlug);
 // create post
 router.post('/create/post', apiCtrl.createPost);
 // update specific post
