@@ -2,17 +2,18 @@ extends layout
 
 block content
 
-  main.container-fluid.mt-4
+  main.container-fluid.mt-3
     div.row
       div.col.mb-3
         h1 Blog
     div.row
+      div.col-12
+        p.lead I blog about front end development, user interfaces and tech at large.
+    div.row.mt-4
       each content in apiResponse
         div.col-12.col-sm-12.col-md-4
           div.card.mb-3
             a(href='/blog/' + content.url)
-              h2.card-header.h5 #{content.title}
+              h2.card-header.h5(style="background-color: steelblue; color: white;") #{content.title}
             div.card-body
-              small.text-muted #{content.publishedDate}
               p.card-text !{content.bodyOne.substr(0, 150) + '...'}
-              a.badge.badge-warning(href="#") JavaScript
