@@ -14,6 +14,6 @@ block content
         div.col-12.col-sm-12.col-md-4
           div.card.mb-3
             a(href='/blog/' + content.url)
-              h2.card-header.h5(style="background-color: steelblue; color: white;") #{content.title}
+              h2.card-header.h5 #{content.title}
             div.card-body
               p.card-text !{content.bodyOne.substr(0, 150) + '...'}
