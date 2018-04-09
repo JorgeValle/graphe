@@ -1,7 +1,8 @@
 'use strict';
 
 const request = require('request'),
-      serverService = require('../services/server.service');
+      serverService = require('../services/server.service'),
+      dateService = require('../services/date.service');
 
 // object for request options
 let requestOptions = {
@@ -42,27 +43,6 @@ let renderSitemap = function(req, res, responseBody) {
   });
 };
 
-/**
- * 
- * @param {*} dateString 
- */
-const prettyDate = function(dateString) {
-
-  let date = new Date(dateString),
-      d = date.getDate(dateString),
-      monthNames = [
-        'January', 'February', 'March',
-        'April', 'May', 'June',
-        'July', 'August', 'September',
-        'October', 'November', 'December'
-      ],
-      m = monthNames[date.getMonth()],
-      y = date.getFullYear();
-  
-  return `${m} ${d} ${y}`;
-
-}
-
 
 /**
  * 
@@ -80,8 +60,8 @@ var renderPageByTitle = function(req, res, responseBody) {
     activeUrl: req.url,
     title: JSON.parse(responseBody).title,
     alternativeTitle: JSON.parse(responseBody).alternativeTitle,
-    date: prettyDate(JSON.parse(responseBody).publishedDate),
-    lastModifiedDate: prettyDate(JSON.parse(responseBody).lastModifiedDate),
+    date: dateService.prettify(JSON.parse(responseBody).publishedDate),
+    lastModifiedDate: dateService.prettify(JSON.parse(responseBody).lastModifiedDate),
     bodyOne: JSON.parse(responseBody).bodyOne,
     bodyTwo: JSON.parse(responseBody).bodyTwo,
     bodyThree: JSON.parse(responseBody).bodyThree,
