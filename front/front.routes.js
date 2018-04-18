@@ -18,5 +18,7 @@ router.get('/timeline', frontCtrl.timeline);
 router.get('/thanks', frontCtrl.thanks);
 // sitemap.xml
 router.get('/sitemap.xml', frontCtrl.sitemap);
+// robots.txt
+router.get('/robots.txt', frontCtrl.robots);
 
 module.exports = router;

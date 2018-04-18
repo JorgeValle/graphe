@@ -106,6 +106,11 @@ module.exports.timeline = function(req, res) {
   });
 };
 
+// robots
+module.exports.robots = function(req, res) {
+  res.sendfile('../robots.txt'); 
+};
+
 request(requestOptions, function(err, response, body) {
   if(err) {
     console.log(err);
