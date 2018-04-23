@@ -79,6 +79,7 @@ module.exports.homepage = function(req, res) {
   });
 };
 
+
 // timeline
 module.exports.about = function(req, res) {
   res.render('about', { 
