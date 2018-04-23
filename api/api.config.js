@@ -1,13 +1,10 @@
 'use strict';
 
 const mongoose = require('mongoose'),
-      dbURI = 'mongodb://admin:3bn8AMFgipYGibdlpVo7@ds141890-a0.mlab.com:41890,ds141890-a1.mlab.com:41890/jorgevalle?replicaSet=rs-ds141890';
+      databaseService = require('../services/database.service');
 
-// if (process.env.NODE_ENV === 'production') {
-//   dbURI = process.env.MONGOLAB_URI;
-// }
-
-mongoose.connect(dbURI);
+// connect to db
+mongoose.connect(databaseService.returnDbConnectionString());
 
 /**
  * 
