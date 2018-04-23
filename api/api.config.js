@@ -17,7 +17,7 @@ let gracefulShutdown = function(msg, callback) {
 };
 
 mongoose.connection.on('connected', function() {
-  console.log('Mongoose connected to ' + dbURI);
+  console.log('Mongoose connected to ' + databaseService.returnDbConnectionString());
 });
 
 mongoose.connection.on('error', function(err) {
