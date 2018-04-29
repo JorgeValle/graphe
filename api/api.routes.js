@@ -11,6 +11,6 @@ router.get('/get/post/:slug', apiCtrl.retrievePostBySlug);
 // create post
 router.post('/create/post', apiCtrl.createPost);
 // update specific post
-router.put('/update/post/:id', apiCtrl.updatePostById);
+router.put('/update/post', apiCtrl.updatePost);
 
 module.exports = router;

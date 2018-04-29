@@ -4,8 +4,8 @@ const express = require('express'),
       router = express.Router(),
       adminCtrl = require('./admin.controller');
 
-// back end main page
-router.get('/', adminCtrl.index);
+// query page
+router.get('/query', adminCtrl.query);
 // create page
 router.get('/create', adminCtrl.create);
 // update page

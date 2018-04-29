@@ -1,102 +1,97 @@
 'use strict';
 
-const request = require('request');
-var apiOptions = {
-	server: "http://localhost:3000"
-};
+const request = require('request'),
+      serverService = require('../services/server.service');
 
-var contentService = '../services/content_service.js';
-
-if (process.env.NODE_ENV === 'production') {
-	apiOptions.server = 'http://murmuring-earth-39282.herokuapp.com';
+// object for request options
+let requestOptions = {
+  method: 'GET',
+  json: {}
 }
 
 /**
- * get all from content type
+ * 
+ */
+const renderUpdateContent = function(req, res, responseBody) {
+  res.render('update', {
+    documentTitle: 'Update | Antares' ,
+    // we parse JSON response to get properties ready for consumption in pug templates
+    apiResponse: responseBody
+  });
+};
+
+
+/**
+ * 
+ */
+const renderQueryContent = function(req, res, responseBody) {
+
+  console.log(responseBody);
+
+  res.render('query', {
+    documentTitle: 'Query | Antares' ,
+    // we parse JSON response to get properties ready for consumption in pug templates
+    apiResponse: responseBody
+  });
+};
+
+/**
+ * Renders the create page
+ * @param {*} req 
+ * @param {*} res 
+ */
+module.exports.create = function(req, res) {
+  res.render('create', { 
+    documentTitle: 'Create | Antares'
+  });
+};
+
+/**
+ * Get all from content type
  * @param {string} res - the test value
  * @param {string} status - the status response
- *
+ * @returns
  */
 module.exports.query = function(req, res) {
 
-	var requestOptions, path;
-	path = '/api/pages?sortby=descending';
+  const path = '/api/get/posts';
 
-	var fullUrl = apiOptions.server + path;
+  // adding the url to hit
+  requestOptions.url = serverService.returnBaseUrl() + path;
 
-	requestOptions = {
-		url: fullUrl,
-		method: 'GET'
-	};
+  request(requestOptions, function(err, response, body) {
 
-	request(requestOptions, function(err, response, body) {
+    if (err) {
+      console.log(`Request error: ${err}`);
+    } else {
+      renderQueryContent(req, res, body);
+    }
 
-		if (err) {
-			console.log("Request error" + err);
-		} else {
-			renderQueryContent(req, res, body);
-		}
-
-	});
+  });
 
 };
 
-var renderQueryContent = function(req, res, responseBody) {
-	res.render('query', {
-		documentTitle: 'Query Content | Antares CMS' ,
-		// we parse JSON response to get properties ready for consumption in pug templates
-		apiResponse: JSON.parse(responseBody)
-	});
-};
-
-var renderUpdateContent = function(req, res, responseBody) {
-	res.render('update', {
-		documentTitle: 'Update Content | Antares CMS' ,
-		// we parse JSON response to get properties ready for consumption in pug templates
-		apiResponse: JSON.parse(responseBody)
-	});
-};
-
-/* GET welcome page */
-module.exports.index = function(req, res) {
-	res.render('index', { 
-		documentTitle: 'Welcome | Antares CMS'
-	});
-};
-
-module.exports.create = function(req, res) {
-	res.render('create', { 
-		documentTitle: 'Create Page | Antares CMS'
-	});
-};
-
-module.exports.createType = function(req, res) {
-	res.render('create-type', { 
-		documentTitle: 'Create Type | Antares CMS'
-	});
-};
-
+/**
+ * Updates
+ * @param {*} req 
+ * @param {*} res 
+ * @returns
+ */
 module.exports.update = function(req, res) {
 
-	const wantedSlug = req.query.page;
+  const wantedSlug = req.query.post,
+        path = `/api/get/post/${wantedSlug}`;
 
-	var requestOptions, path;
-	path = '/api/pages/' + wantedSlug;
+  // adding the url to hit
+  requestOptions.url = serverService.returnBaseUrl() + path;
 
-	var fullUrl = apiOptions.server + path;
+  request(requestOptions, function(err, response, body) {
 
-	requestOptions = {
-		url: fullUrl,
-		method: 'GET'
-	};
+    if (err) {
+      console.error(`Request error: ${err}`);
+    } else {
+      renderUpdateContent(req, res, body);
+    }
 
-	request(requestOptions, function(err, response, body) {
-
-		if (err) {
-			console.log("Request error" + err);
-		} else {
-			renderUpdateContent(req, res, body);
-		}
-
-	});
+  });
 };

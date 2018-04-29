@@ -46,4 +46,5 @@ process.once('SIGTERM', function() {
   });
 });
 
-require('./models/pages.model');
+// bringing in models
+require('./models/posts.model');
