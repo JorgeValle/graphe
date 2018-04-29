@@ -10,10 +10,20 @@ block content
       div.col-12
         p.lead I blog about front end development, user interfaces and tech at large.
     div.row.mt-4
-      each content in apiResponse
-        div.col-12.col-sm-12.col-md-4
-          div.card.mb-3
-            a(href='/blog/' + content.url)
-              h2.card-header.h5 #{content.title}
-            div.card-body
-              p.card-text !{content.bodyOne.substr(0, 150) + '...'}
+      each post in apiResponse
+        div.col-12.col-sm-12.col-md-12.col-lg-4
+          div.card.border-0.mb-3
+            div.card-body.row
+              div.col-12.col-sm-2.mt-0
+                //- i.mdi.mdi-24px.mdi-language-javascript
+                //- i.mdi.mdi-24px.mdi-language-html5
+                //- i.mdi.mdi-24px.mdi-language-css3
+                //- i.mdi.mdi-36px.mdi-language-c
+                //- i.mdi.mdi-36px.mdi-angular
+                //- i.mdi.mdi-36px.mdi-angularjs
+              div.col-12.col-sm-10
+                a(href=`/blog/${post.content.slug}`)
+                  h2.card-title #{post.content.title}
+                p.card-text !{post.content.bodies[0].substr(0, 150) + '...'}
+                p.card-text
+                  small.text-muted #{post.date.created}

@@ -3,12 +3,12 @@
 /**
  * Returns the right Mongo connection string, depending on environment
  */
-module.exports.returnDbConnectionString = function() {
+module.exports.returnApiPassword = function() {
   
   if (process.env.NODE_ENV === 'production') {
-    return process.env.MONGOLAB_URI;
+    return process.env.API_PASSWORD;
   } else {
-    return 'mongodb://127.0.0.1:27017/JorgeValle';
+    return 'whatpassword';
   }
 
-};
+}

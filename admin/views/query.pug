@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1 Query
+  hr
+
+  div.row
+    //- iterate over query api response
+    each post in apiResponse
+      div.col-4
+        div.card.mb-3
+          div.card-block
+            h2.h4
+              a(href=`/admin/update?post=${post.content.slug}`)= post.content.title
+            p.card-text !{post.content.bodies[0].substr(0, 100) + '...'}
+            a.btn.btn-primary(href=`/admin/update?post=${post.content.slug}`) Edit

@@ -1,0 +1,74 @@
+extends layout
+
+block content
+  h1 Create
+  hr
+
+  form(action='/api/create/post', method='post')
+    div.row
+      div.col-12.col-sm-6.form-group
+        label(for='title') Title
+        input#title.form-control(type='text', aria-describedby='titleHelp', name='title')
+        small#titleHelp.form-text.text-muted The blog post title.
+      div.col-12.col-sm-6.form-group
+        label(for='slug') Slug
+        input#slug.form-control(type='text', aria-describedby='slugHelp', name='slug')
+        small#slugHelp.form-text.text-muted The URL slug for your post.
+    div.row
+      div.col-12.form-group
+        label(for='body') Description
+        textarea#body.form-control(rows='2', aria-describedby='bodyHelp', name='description')
+        small#bodyHelp.form-text.text-muted The description, for meta.
+    div.row
+      div.col-12.form-group
+        label(for='body') Content One
+        textarea#body.form-control(rows='8', aria-describedby='bodyHelp', name='contentOne')
+        small#bodyHelp.form-text.text-muted The first content of your page. HTML markup only.
+      div.col-12.form-group
+        label(for='pageContentTwo') Content Two
+        textarea#pageContentTwo.form-control(rows='8', aria-describedby='pageContentTwoHelp', name='contentTwo')
+        small#pageContentTwoHelp.form-text.text-muted The second content of your page. HTML markup only.
+      div.col-12.form-group
+        label(for='pageContentThree') Content Three
+        textarea#pageContentThree.form-control(rows='8', aria-describedby='pageContentThreeHelp', name='contentThree')
+        small#pageContentThreeHelp.form-text.text-muted The third content of your page. HTML markup only.
+    div.row
+      div.col-12.col-sm-6.form-group
+        label(for='city') City
+        input#city.form-control(type='text', aria-describedby='cityHelp', name='city')
+        small#cityHelp.form-text.text-muted The city where you're blogging from.
+      div.col-12.col-sm-6.form-group
+        label(for='country') Country
+        input#country.form-control(type='text', aria-describedby='countryHelp', name='country')
+        small#countryHelp.form-text.text-muted The country where you're blogging from.
+    div.row
+      div.col-12.col-sm-4.form-group
+        label(for='tags') Tags
+        select#tags.form-control(multiple, name='tags')
+          option Javascript
+          option Angular
+          option HTML
+          option CSS
+          option Typescript
+          option Human-Computer Interaction
+          option AngularJS
+          option C#
+        small.form-text.text-muted The tags for your post.
+      div.col-12.col-sm-4.form-group
+        label(for='type') Type
+        select.form-control(name='type')
+          option Post
+          option Aside
+        small.form-text.text-muted The type of your post.
+      div.col-12.col-sm-4.form-group
+        label(for='country') Reading Estimate
+        input#country.form-control(type='number', aria-describedby='countryHelp', name='estimate')
+        small#countryHelp.form-text.text-muted The estimated reading time, in minutes.
+    div.row
+      div.col-12.col-sm-4.form-group
+        label(for='password') Password
+        input#password.form-control(type='text', aria-describedby='passwordHelp', name='password')
+        small#password.form-text.text-muted The API password.
+    div.row
+      div.col-12.col-sm-4
+        button.btn.btn-primary(type='submit') Publish

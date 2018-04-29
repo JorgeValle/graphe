@@ -1,8 +1,10 @@
 'use strict';
 
 const request = require('request'),
+      // services
       serverService = require('../services/server.service'),
-      dateService = require('../services/date.service');
+      dateService = require('../services/date.service'),
+      iconService = require('../services/icon.service');
 
 // object for request options
 let requestOptions = {
@@ -20,7 +22,7 @@ let requestOptions = {
 let renderQueryContent = function(req, res, responseBody) {
   res.render('blog', {
     documentTitle: 'Blog',
-    canonicalUrl: 'https://jorgevalle.com' + req.url,
+    canonicalUrl: `https://jorgevalle.com${req.url}`,
     activeUrl: req.url,
     // we parse JSON response to get properties ready for consumption in pug templates
     apiResponse: JSON.parse(responseBody)
@@ -30,7 +32,7 @@ let renderQueryContent = function(req, res, responseBody) {
 /**
  * 
  * @param {*} req 
- * @param {*} res 
+ * @param {*} res
  * @param {*} responseBody 
  */
 let renderSitemap = function(req, res, responseBody) {
@@ -50,23 +52,21 @@ let renderSitemap = function(req, res, responseBody) {
  * @param {*} res 
  * @param {*} responseBody 
  */
-var renderPageByTitle = function(req, res, responseBody) {
+var renderPost = function(req, res, responseBody) {
+
+  console.log('renderPost ran');
 
   res.render('post', {
 
     // we parse JSON response to get properties ready for consumption in pug templates
-    documentTitle: JSON.parse(responseBody).title + ' | JorgeValle.com' ,
+    documentTitle: responseBody.content.title + " | JorgeValle.com" ,
     canonicalUrl: 'https://jorgevalle.com' + req.url,
     activeUrl: req.url,
-    title: JSON.parse(responseBody).title,
-    alternativeTitle: JSON.parse(responseBody).alternativeTitle,
-    date: dateService.prettify(JSON.parse(responseBody).publishedDate),
-    lastModifiedDate: dateService.prettify(JSON.parse(responseBody).lastModifiedDate),
-    bodyOne: JSON.parse(responseBody).bodyOne,
-    bodyTwo: JSON.parse(responseBody).bodyTwo,
-    bodyThree: JSON.parse(responseBody).bodyThree,
-    bodyFour: JSON.parse(responseBody).bodyFour,
-    bodyFive: JSON.parse(responseBody).bodyFive
+    title: responseBody.content.title,
+    date: dateService.prettify(responseBody.date.created),
+    bodyOne: responseBody.content.bodies[0],
+    bodyTwo: responseBody.content.bodies[1],
+    bodyThree: responseBody.content.bodies[2],
   });
 };
 
@@ -130,7 +130,7 @@ request(requestOptions, function(err, response, body) {
 module.exports.queryPosts = function(req, res) {
 
   var requestOptions, path;
-  path = '/api/get/posts?sortby=descending';
+  path = '/api/get/posts';
 
   var fullUrl = serverService.returnBaseUrl() + path;
 
@@ -156,34 +156,34 @@ module.exports.queryPosts = function(req, res) {
  */
 module.exports.postBySlug = function(req, res) {
 
-  var requestOptions, path;
+  let requestOptions,
+      path = `/api/get/post/${req.params.slug}`;
 
-  path = '/api/get/post/' + req.params.slug;
-
-  console.log(req.params.pageUrl);
-
-  var fullUrl = serverService.returnBaseUrl() + path;
-
-  console.log(fullUrl);
+  const fullUrl = serverService.returnBaseUrl() + path;
 
   requestOptions = {
     url: fullUrl,
-    method: 'GET'
+    method: 'GET',
+    json: {}
   };
 
   request(requestOptions, function(err, response, body) {
 
     if (err) {
-      console.log('Request error' + err);
+
+      console.log(`Request error: ${err}`);
+
     } else if ( response.statusCode == '404' ) {
+
       res.status(404).render('404', { 
         documentTitle: 'Not Found' ,
         canonicalUrl: 'https://jorgevalle.com' + req.url,
         activeUrl: req.url
       });
+
     } else {
-      renderPageByTitle(req, res, body);
-      console.log('res.statusCode:' + res.statusCode);
+      renderPost(req, res, body);
+      console.log(`res.statusCode: ${res.statusCode}`);
     }
 
   });
