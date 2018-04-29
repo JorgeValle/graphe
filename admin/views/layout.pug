@@ -1,0 +1,21 @@
+doctype html
+html(lang='en')
+  head
+    title= documentTitle
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css')
+    link(rel="stylesheet", href="/node_modules/mdi/css/materialdesignicons.css")
+
+body.container.mb-5
+  div.row
+    div.col
+      ul.nav.justify-content-center.mt-4.mb-4
+        li.nav-item
+          a.nav-link.mdi.mdi-note-multiple-outline(href='/admin/query') &nbsp;Query
+        li.nav-item
+          a.nav-link.mdi.mdi-lead-pencil(href='/admin/create') &nbsp;Create
+
+  div.row
+    div.col
+      block content
