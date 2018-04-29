@@ -6,6 +6,6 @@ urlset(xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
     loc='https://jorgevalle.com/timeline'
   url
     loc='https://jorgevalle.com/blog'
-  each content in apiResponse
+  each post in apiResponse
     url
-      loc='https://jorgevalle.com/blog/' + content.url
+      loc='https://jorgevalle.com/blog/' + post.content.slug
