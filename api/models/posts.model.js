@@ -2,10 +2,6 @@
 
 const mongoose = require('mongoose');
 
-// const bodySchema = new mongoose.Schema({
-//   body: String
-// });
-
 /**
  * The page schema
  */
@@ -18,12 +14,10 @@ const postSchema = new mongoose.Schema({
   // date
   date: {
     created: {
-      type: Date,
-      default: Date.now
+      type: Date
     },
     modified: {
-      type: Date,
-      default: Date.now
+      type: Date
     }
   },
   // content

@@ -64,6 +64,10 @@ module.exports.createPost = function(req, res) {
   // create a new model document
   const thisPost = new post({
 
+    // date
+    date: {
+      created: Date.now()
+    },
     // meta
     meta: {
       description: req.body.description
