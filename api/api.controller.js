@@ -143,10 +143,6 @@ module.exports.updatePost = function(req, res) {
     meta: {
       description: req.body.description
     },
-    // date
-    date: {
-      modified: new Date()
-    },
     // content
     content: {
       title: req.body.title,
@@ -174,6 +170,9 @@ module.exports.updatePost = function(req, res) {
     }
   }
 
+  // updating date
+  updatedData['date.modified'] = new Date();
+
   // check for auth
   if (req.body.password === apiPassword) {
 
@@ -182,6 +181,7 @@ module.exports.updatePost = function(req, res) {
       new: true
     }, function(err, post) {
 
+      console.log(post);
       jsonService.sendResponse(res, 201, post);
 
     });
