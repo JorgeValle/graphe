@@ -101,8 +101,15 @@ module.exports.createPost = function(req, res) {
 
     // save the final document to the database
     thisPost.save(function(err, post) {
-      jsonService.sendResponse(res, 201, post);
+
+      if (err) {
+        console.log(err);
+        jsonService.sendResponse(res, 500, err);
+      } else {
+        jsonService.sendResponse(res, 201, post);
+      }
     });
+
 
   } else {
 
