@@ -66,7 +66,7 @@ module.exports.createPost = function(req, res) {
 
     // date
     date: {
-      created: Date.now()
+      created: new Date()
     },
     // meta
     meta: {
@@ -145,7 +145,7 @@ module.exports.updatePost = function(req, res) {
     },
     // date
     date: {
-      modified: Date.now(),
+      modified: new Date()
     },
     // content
     content: {
