@@ -13,5 +13,15 @@ block content
     div.row
       div.col-12
         h1=title
-        p.lead.text-muted #{date}
-        div !{bodyOne}
+        hr
+        div.mb-2.row
+        h2.h6
+          span.mdi.mdi-calendar-text.text-info
+          span.text-muted &nbsp;#{date}
+        h4.h6
+          span.mdi.mdi-folder-open.text-info
+          span.text-muted &nbsp;#{type}
+        h3.h6
+          span.mdi.mdi-map-marker-outline.text-danger
+          span.text-muted &nbsp;#{city}, #{country}
+        div.mt-4 !{bodyOne}

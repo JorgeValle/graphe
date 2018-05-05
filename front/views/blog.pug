@@ -2,6 +2,8 @@ extends layout
 
 block content
 
+  -const prettify = function(dateString) { let date = new Date(dateString), d = date.getDate(dateString), monthNames = ['January', 'February', 'March', 'April', 'May', 'June','July', 'August', 'September','October', 'November', 'December'],m = monthNames[date.getMonth()],y = date.getFullYear();return `${m} ${d}, ${y}`;}
+
   main.container-fluid.mt-3
     div.row
       div.col.mb-3
@@ -21,9 +23,15 @@ block content
                 //- i.mdi.mdi-36px.mdi-language-c
                 //- i.mdi.mdi-36px.mdi-angular
                 //- i.mdi.mdi-36px.mdi-angularjs
-              div.col-12.col-sm-10
-                a(href=`/blog/${post.content.slug}`)
+              div.col-12.col-sm-12
+                a(style='color: black', href=`/blog/${post.content.slug}`)
                   h2.card-title #{post.content.title}
+                hr
+                div.row
+                  div.col
+                    span.mdi.mdi-calendar-text.text-info
+                    span.text-muted &nbsp;#{prettify(post.date.created)}
+                  div.col
+                    span.mdi.mdi-folder-open.text-info
+                    span.text-muted &nbsp;#{post.taxon.type}
                 p.card-text !{post.content.bodies[0].substr(0, 150) + '...'}
-                p.card-text
-                  small.text-muted #{post.date.created}

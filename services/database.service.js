@@ -8,7 +8,7 @@ module.exports.returnDbConnectionString = function() {
   if (process.env.NODE_ENV === 'production') {
     return process.env.MONGOLAB_URI;
   } else {
-    return 'mongodb://127.0.0.1:27017/JorgeValle';
+    return 'mongodb://admin:3K5E2erBuQN8tj2y@ds141890-a0.mlab.com:41890,ds141890-a1.mlab.com:41890/jorgevalle?replicaSet=rs-ds141890';
   }
 
 };
