@@ -33,6 +33,9 @@ const postSchema = new mongoose.Schema({
       unique: true,
       required: true
     },
+    index: {
+      type: String
+    }
   },
   // location
   location: {

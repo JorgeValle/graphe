@@ -67,6 +67,7 @@ var renderPost = function(req, res, responseBody) {
     city: responseBody.location.city,
     country: responseBody.location.country,
     type: responseBody.taxon.type,
+    contentIndex: responseBody.content.index,
     bodyOne: responseBody.content.bodies[0],
     bodyTwo: responseBody.content.bodies[1],
     bodyThree: responseBody.content.bodies[2],

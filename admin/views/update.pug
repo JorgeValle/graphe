@@ -22,6 +22,11 @@ block content
         small#bodyHelp.form-text.text-muted The description, for meta.
     div.row
       div.col-12.form-group
+        label(for='index') Index
+        textarea#body.form-control(rows='2', aria-describedby='indexHelp', name='index')
+        small#indexHelp.form-text.text-muted The index.
+    div.row
+      div.col-12.form-group
         label(for='pageContentOne') Content One
         textarea#pageContentOne.form-control(rows='8', aria-describedby='pageContentOneHelp', name='contentOne')=apiResponse.content.bodies[0]
         small#pageContentOneHelp.form-text.text-muted The first content of your page. HTML markup only.

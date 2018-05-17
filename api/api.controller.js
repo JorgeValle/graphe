@@ -81,7 +81,8 @@ module.exports.createPost = function(req, res) {
           req.body.contentOne,
           req.body.contentTwo,
           req.body.contentThree
-        ]
+        ],
+      index: req.body.index
     },
     // location
     location: {
@@ -152,7 +153,8 @@ module.exports.updatePost = function(req, res) {
           req.body.contentOne,
           req.body.contentTwo,
           req.body.contentThree
-        ]
+        ],
+      index: req.body.index
     },
     // location
     location: {
