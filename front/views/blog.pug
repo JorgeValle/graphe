@@ -4,34 +4,28 @@ block content
 
   -var prettify = function(dateString) { var date = new Date(dateString), d = date.getDate(dateString), monthNames = ['January', 'February', 'March', 'April', 'May', 'June','July', 'August', 'September','October', 'November', 'December'],m = monthNames[date.getMonth()],y = date.getFullYear();return m + ' ' + d + ', ' + y;}
 
-  main.container-fluid.mt-3
-    div.row
-      div.col.mb-3
-        h1 Blog
-    div.row
-      div.col-12
-        p.lead I blog about front end development, user interfaces and tech at large.
-    div.row.mt-4
-      each post in apiResponse
-        div.col-12.col-sm-12.col-md-12.col-lg-4
-          div.card.border-0.mb-3
-            div.card-body.row
-              div.col-12.col-sm-2.mt-0
-                //- i.mdi.mdi-24px.mdi-language-javascript
-                //- i.mdi.mdi-24px.mdi-language-html5
-                //- i.mdi.mdi-24px.mdi-language-css3
-                //- i.mdi.mdi-36px.mdi-language-c
-                //- i.mdi.mdi-36px.mdi-angular
-                //- i.mdi.mdi-36px.mdi-angularjs
-              div.col-12.col-sm-12
-                a(style='color: black', href=`/blog/${post.content.slug}`)
-                  h2.card-title #{post.content.title}
-                hr
-                div.row
-                  div.col
-                    span.mdi.mdi-calendar-text.text-info
-                    span.text-muted &nbsp;#{prettify(post.date.created)}
-                  div.col
-                    span.mdi.mdi-folder-open.text-info
-                    span.text-muted &nbsp;#{post.taxon.type}
-                p.card-text !{post.content.bodies[0].substr(0, 150) + '...'}
+  //- h2 Blog
+  //- p.lead I blog about front end development, user interfaces and tech at large.
+  each post in apiResponse
+    a(href=`/blog/${post.content.slug}`)
+      h2 #{post.content.title}
+    em &nbsp;#{prettify(post.date.created)}
+    p !{post.content.bodies[0].substr(0, 300) + '...'}
+
+  h2
+    a(hre="#") Why Bitcoin should fail
+  em
+    time(datetime="") October 16, 2018
+  p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sed vestibulum lorem, sit amet ultrices purus. Sed felis nulla, lacinia efficitur sollicitudin et, pulvinar a erat. Vivamus pellentesque erat ipsum, quis molestie enim malesuada ac. Morbi sed rutrum risus, non interdum ipsum. Nulla sollicitudin elit nec tempor finibus.
+
+  h2
+    a(hre="#") JavaScript's array method
+  em
+    time(datetime="") October 16, 2018
+  p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sed vestibulum lorem, sit amet ultrices purus. Sed felis nulla, lacinia efficitur sollicitudin et, pulvinar a erat. Vivamus pellentesque erat ipsum, quis molestie enim malesuada ac. Morbi sed rutrum risus, non interdum ipsum. Nulla sollicitudin elit nec tempor finibus.
+
+  h2
+    a(hre="#") That other post
+  em
+    time(datetime="") October 16, 2018
+  p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sed vestibulum lorem, sit amet ultrices purus. Sed felis nulla, lacinia efficitur sollicitudin et, pulvinar a erat. Vivamus pellentesque erat ipsum, quis molestie enim malesuada ac. Morbi sed rutrum risus, non interdum ipsum. Nulla sollicitudin elit nec tempor finibus.
