@@ -12,6 +12,9 @@ a {
   color: inherit;
   text-decoration: underline;
 }
+img {
+  border: 0;
+}
 blockquote {
   /* border-left: 8px solid #333333; */
   /* padding-left: 40px; */
@@ -29,15 +32,13 @@ blockquote span {
 h1,
 h2,
 h3,
-time,
-blockquote,
-em {
+blockquote {
   font-weight: normal;
   /* margin: 0;
   padding: 0; */
   font-family: Domine;
 }
-em {
+time {
   color: #888888;
 }
 header h2 {
@@ -64,7 +65,7 @@ header ul li:not(:first-child) {
 }
 body {
   display: grid;
-  grid-template-columns: 10% 5% calc(200px + 35%) calc(25% - 100px);
+  grid-template-columns: 7% 5% calc(200px + 35%) calc(25% - 100px);
   grid-template-rows: auto;
 }
 header {
@@ -107,10 +108,21 @@ li:not(first) {
   margin-top: 5px;
 }
 footer {
-  margin: 15px 0;
+  margin: 30px 0;
+  color: #888888;
 }
 hr {
   border: 0;
   height: 0;
   border-top: 1px solid #EDEDED;
+}
+.gist {
+  margin: 20px 0 15px;
+}
+main h3 {
+  margin-top: 45px;
+}
+main h3::before {
+  content: "# ";
+  color: #888888;
 }

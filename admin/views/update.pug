@@ -7,70 +7,42 @@ block content
   //- this gets converted to a put by method-override package
   form(action='/api/update/post?_method=put', method='post')
     div.row
-      div.col-12.col-sm-6.form-group
+      div.col-12.form-group
         label(for='pageTitle') Title
         input#pageTitle.form-control(type='text', aria-describedby='pageTitleHelp', name='title', value=`${apiResponse.content.title}`)
         small#pageTitleHelp.form-text.text-muted The title of your page.
-      div.col-12.col-sm-6.form-group
+      div.col-12.form-group
         label(for='pageSlug') Slug
         input#pageSlug.form-control(type='text', aria-describedby='pageSlugHelp', name='slug', value=`${apiResponse.content.slug}`)
         small#pageSlugHelp.form-text.text-muted The URL slug for your page. If left blank, we'll generate an automatic one.
-    div.row
       div.col-12.form-group
         label(for='body') Description
-        textarea#body.form-control(rows='2', aria-describedby='bodyHelp', name='description')
+        textarea#body.form-control(rows='2', aria-describedby='bodyHelp', name='description')=apiResponse.content.description
         small#bodyHelp.form-text.text-muted The description, for meta.
-    div.row
       div.col-12.form-group
         label(for='index') Index
-        textarea#body.form-control(rows='2', aria-describedby='indexHelp', name='index')
+        textarea#body.form-control(rows='4', aria-describedby='indexHelp', name='index')=apiResponse.content.index
         small#indexHelp.form-text.text-muted The index.
-    div.row
       div.col-12.form-group
-        label(for='pageContentOne') Content One
-        textarea#pageContentOne.form-control(rows='8', aria-describedby='pageContentOneHelp', name='contentOne')=apiResponse.content.bodies[0]
+        label(for='pageContentOne') Body
+        textarea#pageContentOne.form-control(rows='8', aria-describedby='pageContentOneHelp', name='body')=apiResponse.content.bodies[0]
         small#pageContentOneHelp.form-text.text-muted The first content of your page. HTML markup only.
       div.col-12.form-group
-        label(for='pageContentTwo') Content Two
-        textarea#pageContentTwo.form-control(rows='8', aria-describedby='pageContentTwoHelp', name='contentTwo')=apiResponse.content.bodies[1]
-        small#pageContentTwoHelp.form-text.text-muted The second content of your page. HTML markup only.
+        label(for='index') References
+        textarea#body.form-control(rows='2', aria-describedby='indexHelp', name='references')=apiResponse.content.references
+        small#indexHelp.form-text.text-muted The index.
       div.col-12.form-group
-        label(for='pageContentThree') Content Three
-        textarea#pageContentThree.form-control(rows='8', aria-describedby='pageContentThreeHelp', name='contentThree')=apiResponse.content.bodies[2]
-        small#pageContentThreeHelp.form-text.text-muted The third content of your page. HTML markup only.
-    div.row
-      div.col-12.col-sm-6.form-group
         label(for='pageContentFive') City
         input#password.form-control(type='text', aria-describedby='passwordHelp', name='city', value=`${apiResponse.location.city}`)
         small#pageContentFiveHelp.form-text.text-muted The city where you're blogging from.
-      div.col-12.col-sm-6.form-group
+      div.col-12.form-group
         label(for='pageContentFive') Country
         input#password.form-control(type='text', aria-describedby='passwordHelp', name='country', value=`${apiResponse.location.country}`)
         small#pageContentFiveHelp.form-text.text-muted The country where you're blogging from.
-    div.row
-      div.col-12.col-sm-4.form-group
-        label(for='') Tags
-        select.form-control(multiple, name='tags')
-          option Javascript
-          option Angular
-          option HTML
-          option CSS
-          option Typescript
-          option Human-Computer Interaction
-          option AngularJS
-          option C#
-        small.form-text.text-muted The tags for your post.
-      div.col-12.col-sm-4.form-group
-        label(for='') Type
-        select.form-control(name='type')
-          option Post
-          option Aside
-        small.form-text.text-muted The type of your post.
-      div.col-12.col-sm-4.form-group
+      div.col-12.form-group
         label(for='country') Reading Estimate
         input#country.form-control(type='number', aria-describedby='countryHelp', name='estimate', value=`${apiResponse.time.estimate}`)
         small#countryHelp.form-text.text-muted The estimated reading time, in minutes.
-    div.row
       div.col-12.col-sm-4.form-group
         label(for='password') Password
         input#password.form-control(type='text', aria-describedby='passwordHelp', name='password')

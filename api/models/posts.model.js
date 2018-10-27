@@ -7,10 +7,6 @@ const mongoose = require('mongoose');
  */
 const postSchema = new mongoose.Schema({
 
-  // meta
-  meta: {
-    description: String
-  },
   // date
   date: {
     created: {
@@ -33,24 +29,18 @@ const postSchema = new mongoose.Schema({
       unique: true,
       required: true
     },
-    index: {
-      type: String
-    }
+    index: String,
+    description: String,
+    references: String
+  },
+  // image
+  image: {
+    url: String
   },
   // location
   location: {
     city: String,
     country: String
-  },
-  // taxon
-  taxon: {
-    type: {
-      type: String,
-      required: true
-    },
-    tags: {
-      type: [String]
-    }
   },
   // time
   time: {
@@ -60,5 +50,5 @@ const postSchema = new mongoose.Schema({
   }
 });
 
-// compile schema to bson, telling mongo to use 'pages' collection
+// compile schema to bson, telling mongo to use 'posts' collection
 mongoose.model('Post', postSchema, 'posts');

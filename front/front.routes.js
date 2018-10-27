@@ -6,14 +6,12 @@ const express = require('express'),
 
 // homepage
 router.get('/', frontCtrl.homepage);
-// timeline
-router.get('/about', frontCtrl.about);
 // blog post by url
  router.get('/blog/:slug', frontCtrl.postBySlug);
 // blog
-router.get('/blog', frontCtrl.queryPosts);
+router.get('/blog', frontCtrl.queryPostsAndQuotes);
 // timeline
-router.get('/timeline', frontCtrl.timeline);
+router.get('/timeline', frontCtrl.queryEvents);
 // thanks page
 router.get('/thanks', frontCtrl.thanks);
 // sitemap.xml

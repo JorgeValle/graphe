@@ -48,3 +48,5 @@ process.once('SIGTERM', function() {
 
 // bringing in models
 require('./models/posts.model');
+require('./models/events.model');
+require('./models/quotes.model');

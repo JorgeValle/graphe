@@ -3,8 +3,7 @@
 const request = require('request'),
       // services
       serverService = require('../services/server.service'),
-      dateService = require('../services/date.service'),
-      iconService = require('../services/icon.service');
+      dateService = require('../services/date.service');
 
 // object for request options
 let requestOptions = {
@@ -19,13 +18,14 @@ let requestOptions = {
  * @param {*} res 
  * @param {*} responseBody 
  */
-let renderQueryContent = function(req, res, responseBody) {
+let renderQueryContent = function(req, res, posts, quotes) {
   res.render('blog', {
     documentTitle: 'Blog',
     canonicalUrl: `https://jorgevalle.com${req.url}`,
     activeUrl: req.url,
     // we parse JSON response to get properties ready for consumption in pug templates
-    apiResponse: JSON.parse(responseBody)
+    posts: JSON.parse(posts),
+    quotes: JSON.parse(quotes)
   });
 };
 
@@ -45,6 +45,25 @@ let renderSitemap = function(req, res, responseBody) {
   });
 };
 
+/**
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} responseBody 
+ */
+let renderTimeline = function(req, res, responseBody) {
+
+  console.log(`response body is ${responseBody}`);
+
+  res.render('timeline', {
+    documentTitle: 'Timeline',
+    canonicalUrl: `https://jorgevalle.com${req.url}`,
+    activeUrl: req.url,
+    // we parse JSON response to get properties ready for consumption in pug templates
+    events: JSON.parse(responseBody)
+  });
+};
+
 
 /**
  * 
@@ -54,12 +73,10 @@ let renderSitemap = function(req, res, responseBody) {
  */
 var renderPost = function(req, res, responseBody) {
 
-  console.log('renderPost ran');
-
   res.render('post', {
 
     // we parse JSON response to get properties ready for consumption in pug templates
-    documentTitle: responseBody.content.title + " | JorgeValle.com" ,
+    documentTitle: responseBody.content.title + " | Jorge Valle" ,
     canonicalUrl: 'https://jorgevalle.com' + req.url,
     activeUrl: req.url,
     title: responseBody.content.title,
@@ -67,10 +84,9 @@ var renderPost = function(req, res, responseBody) {
     city: responseBody.location.city,
     country: responseBody.location.country,
     type: responseBody.taxon.type,
-    contentIndex: responseBody.content.index,
-    bodyOne: responseBody.content.bodies[0],
-    bodyTwo: responseBody.content.bodies[1],
-    bodyThree: responseBody.content.bodies[2],
+    index: responseBody.content.index,
+    body: responseBody.content.bodies[0],
+    references: responseBody.content.references
   });
 };
 
@@ -83,29 +99,10 @@ module.exports.homepage = function(req, res) {
   });
 };
 
-
-// timeline
-module.exports.about = function(req, res) {
-  res.render('about', { 
-    documentTitle: 'About',
-    canonicalUrl: 'https://jorgevalle.com' + req.url,
-    activeUrl: req.url
-  });
-};
-
 // thanks
 module.exports.thanks = function(req, res) {
   res.render('thanks', { 
     documentTitle: 'Thank You',
-    canonicalUrl: 'https://jorgevalle.com' + req.url,
-    activeUrl: req.url
-  });
-};
-
-// timeline
-module.exports.timeline = function(req, res) {
-  res.render('timeline', { 
-    documentTitle: 'Timeline',
     canonicalUrl: 'https://jorgevalle.com' + req.url,
     activeUrl: req.url
   });
@@ -127,14 +124,56 @@ request(requestOptions, function(err, response, body) {
 });
 
 /**
- * 
+ * Queries all the posts
  * @param {*} req 
  * @param {*} res 
  */
-module.exports.queryPosts = function(req, res) {
+module.exports.queryPostsAndQuotes = function(req, res) {
+
+  var path = '/api/get/posts',
+      fullUrl = serverService.returnBaseUrl() + path,
+      requestOptions = {
+        url: fullUrl,
+        method: 'get'
+      };
+
+  // let's get the posts
+  request(requestOptions, function(err, response, posts) {
+
+    if (err) {
+      console.log('Request error' + err);
+    } else {
+
+      var path = '/api/get/quotes',
+      fullUrl = serverService.returnBaseUrl() + path,
+      requestOptions = {
+        url: fullUrl,
+        method: 'get'
+      };
+
+      // now let's get the quotes
+      request(requestOptions, function(err, response, quotes) {
+
+        if (err) {
+          renderQueryContent(req, res, posts);
+        } else {
+          renderQueryContent(req, res, posts, quotes);
+        }
+
+      });
+    }
+  });
+};
+
+/**
+ * Queries all the events
+ * @param {*} req 
+ * @param {*} res 
+ */
+module.exports.queryEvents = function(req, res) {
 
   var requestOptions, path;
-  path = '/api/get/posts';
+  path = '/api/get/events';
 
   var fullUrl = serverService.returnBaseUrl() + path;
 
@@ -147,11 +186,13 @@ module.exports.queryPosts = function(req, res) {
       if (err) {
         console.log('Request error' + err);
       } else {
-        renderQueryContent(req, res, body);
+        console.log('Timeline was rendered');
+        renderTimeline(req, res, body);
       }
   });
   
 };
+
 
 /**
  * 

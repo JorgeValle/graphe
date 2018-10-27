@@ -2,106 +2,19 @@ extends layout
 
 block content
 
-    h2 Timeline
-    p.lead A sampling of things I've done in my personal and professional life.
+  h2 Timeline
+  p.lead A selection of events from my professional and personal life.
+
+  -var prettify = function(dateString) { var date = new Date(dateString), d = date.getDate(dateString), monthNames = ['January', 'February', 'March', 'April', 'May', 'June','July', 'August', 'September','October', 'November', 'December'],m = monthNames[date.getMonth()],y = date.getFullYear();return m + ' ' + y;}
+
     table
       thead
         tr
           th Date
           th Event
       tbody
+      each event in events
         tr
-          td April, 2018
-          td Received an online certificate in Agile Software Development from the&nbsp;
-            a(href="https://twin-cities.umn.edu/") University of Minnesota
-        tr
-          td April, 2018
-          td Attended&nbsp;
-            a(href="https://forwardjs.com/") ForwardJS
-            span , in Ottawa
-        tr
-          td December, 2017
-          td Lived in Croatia for 10 weeks, developing an app
-        tr
-          td July, 2017
-          td Visited Croatia and Italy
-        tr
-          td June, 2017
-          td Attended&nbsp;
-            a(href="http://uxburlington.com/") UX Burlington
-            span , in Burlington
-        tr
-          td April, 2017
-          td Started work on Antares, the CMS this website is running on
-        tr
-          td February, 2017
-          td Attended Orchard Harvest, in New York City
-        tr
-          td January, 2017
-          td Received an online certificate in Digital Analytics for Marketing Professionals from the&nbsp;
-            a(href="http://illinois.edu/") University of Illinois at Urbana-Champaign
-        tr
-          td January, 2017
-          td Received an online certificate in Internet History, Technology and Security from the&nbsp;
-            a(href="https://www.umich.edu/") University of Michigan
-        tr
-          td January, 2017
-          td Launched the new&nbsp;
-            a(href="https://www.efficiencysmart.org/") Efficiency Smart
-            span &nbsp;website
-        tr
-          td November, 2016
-          td Competed at the Vermont Open grappling tournament
-        tr
-          td October, 2016
-          td Competed in&nbsp;
-            a(href="http://www.hackvt.org/") Hack VT
-        tr
-          td July, 2016
-          td Competed at IBJJF New York Summer Open, in New York City
-        tr
-          td June, 2016
-          td Attended&nbsp;
-            a(href="http://uxburlington.com/") UX Burlington
-            span , in Burlington
-        tr
-          td April, 2016
-          td Received my BJJ blue belt
-        tr
-          td March, 2016
-          td Competed at the Vermont Open grappling tournament
-        tr
-          td January, 2016
-          td Launched the new&nbsp;
-            a(href="https://www.efficiencyvermont.com/") Efficiency Vermont
-            span &nbsp;website
-        tr
-          td June, 2015
-          td Attended UX Burlington, in Burlington
-        tr
-          td May, 2015
-          td Launched the new&nbsp;
-            a(href="https://waytogovt.org/") Way To Go Vermont
-            span &nbsp;website
-        tr
-          td December, 2014
-          td Visited Belgium and Holland
-        tr
-          td December, 2014
-          td Received a Certificate in Javascript: AJAX and Json from O'Reilly School of Technology
-        tr
-          td October, 2014
-          td Attended The Future of Web Apps conference, in Boston
-        tr
-          td February, 2014
-          td Started work at&nbsp;
-            a(href="https://www.veic.org/") Vermont Energy Investment Corporation
-        tr
-          td June, 2012
-          td Launched Sipi, a business review site for El Salvador
-        tr
-          td January, 2012
-          td Incorporated Servicios Integrales Pro Imagen, a web development company in El Salvador
-        tr
-          td May, 2008
-          td Received Bachelor of Media Arts degree from Emily Carr University
+          td
+            time(datetime="!{event.content.date}") #{prettify(event.content.date)}
+          td !{event.content.name}

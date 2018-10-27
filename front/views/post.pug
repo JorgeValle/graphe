@@ -4,8 +4,14 @@ block content
 
   h2=title
 
-  em Published on #{date}
+  em
+    time #{date}
 
-  div !{contentsTable}
+  -if (index)
+    h3 Index
+    div !{index}
+
   div !{body}
-  div !{reference}
+
+  -if (references)
+    div !{references}

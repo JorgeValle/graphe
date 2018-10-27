@@ -2,10 +2,19 @@ extends layout
 
 block content
   h1 Query
+  hr
 
-  //- iterate over query api response
-  each post in apiResponse
-    h2
-      a(href=`/admin/update?post=${post.content.slug}`)= post.content.title
-    p !{post.content.bodies[0].substr(0, 100) + '...'}
-    a(href=`/admin/update?post=${post.content.slug}`) Edit
+  nav
+    div.nav.nav-tabs#nav-tab
+      a.nav-item.nav-link.active#posts-tab(href="#posts", data-toggle="tab") Posts
+      a.nav-item.nav-link#events-tab(href="#events", data-toggle="tab") Events
+      a.nav-item.nav-link#quotes-tab(href="#quotes", data-toggle="tab") Quotes
+
+  div.tab-content#nav-tabContent
+    div.tab-pane.fade.show.active#posts
+    //- iterate over query api response
+    each post in apiResponse
+      h2
+        a(href=`/admin/update?post=${post.content.slug}`)= post.content.title
+      p !{post.content.description}
+      a(href=`/admin/update?post=${post.content.slug}`) Edit

@@ -8,7 +8,8 @@ module.exports.returnDbConnectionString = function() {
   if (process.env.NODE_ENV === 'production') {
     return process.env.MONGOLAB_URI;
   } else {
-    return 'mongodb://127.0.0.1:27017/JorgeValle';
+    return process.env.MONGOLAB_URI
+    // return 'mongodb://127.0.0.1:27017/JorgeValle';
   }
 
 };
