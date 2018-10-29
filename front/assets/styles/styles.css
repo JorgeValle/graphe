@@ -18,7 +18,10 @@ img {
 blockquote {
   /* border-left: 8px solid #333333; */
   /* padding-left: 40px; */
+  margin: 45px 0;
+  padding-left: 30px;
   font-size: 1.3em;
+  border-left: 3px solid gray;
 }
 blockquote::before {
   content: "\201C";
@@ -116,6 +119,11 @@ hr {
   height: 0;
   border-top: 1px solid #EDEDED;
 }
+.quote-hr {
+  border: 0;
+  height: 0;
+  border-top: 1px dotted #EDEDED;
+}
 .gist {
   margin: 20px 0 15px;
 }
@@ -125,4 +133,7 @@ main h3 {
 main h3::before {
   content: "# ";
   color: #888888;
+}
+em {
+  font-style: normal;
 }

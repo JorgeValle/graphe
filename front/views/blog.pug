@@ -3,16 +3,25 @@ extends layout
 block content
 
   -var prettify = function(dateString) { var date = new Date(dateString), d = date.getDate(dateString), monthNames = ['January', 'February', 'March', 'April', 'May', 'June','July', 'August', 'September','October', 'November', 'December'],m = monthNames[date.getMonth()],y = date.getFullYear();return m + ' ' + d + ', ' + y;}
+  -var quoteNumber = quotes.length
+  -var postNumber = posts.length
 
-  each quote in quotes
-
-    blockquote #{quote.content.quote}
-      span #{quote.content.author}
-
-  each post in posts
+  each post, index in posts
 
     a(href=`/blog/${post.content.slug}`)
       h2 #{post.content.title}
     em
       time #{prettify(post.date.created)}
     p !{post.content.description}
+    //- p #{index}
+
+    //- if (index && index % 3 == 0)
+
+    //-   each quote, quoteIndex in quotes
+
+    //-     if (quoteIndex <= quoteNumber -1 && index % 3 == quoteIndex)
+
+    //-       //- hr.quote-hr
+    //-       blockquote #{quote.content.quote}
+    //-         span #{quote.content.author}
+    //-         span #{quoteIndex}
