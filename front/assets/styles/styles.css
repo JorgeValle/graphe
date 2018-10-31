@@ -138,5 +138,7 @@ em {
   font-style: normal;
 }
 .mjx-chtml {
+  font-family: Domine !important;
   margin: 20px 0 15px !important;
+  /* text-align: left !important; */
 }
