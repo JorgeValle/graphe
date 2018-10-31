@@ -83,7 +83,6 @@ var renderPost = function(req, res, responseBody) {
     date: dateService.prettify(responseBody.date.created),
     city: responseBody.location.city,
     country: responseBody.location.country,
-    type: responseBody.taxon.type,
     index: responseBody.content.index,
     body: responseBody.content.bodies[0],
     references: responseBody.content.references

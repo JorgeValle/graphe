@@ -3,20 +3,15 @@
 const request = require('request'),
       serverService = require('../services/server.service');
 
-// object for request options
-let requestOptions = {
-  method: 'GET',
-  json: {}
-}
-
 /**
  * 
  */
-const renderUpdateContent = function(req, res, responseBody) {
+const renderUpdateContent = function(req, res, thisPost) {
+
   res.render('update', {
-    documentTitle: 'Update | Antares' ,
+    documentTitle: 'Update | Antares',
     // we parse JSON response to get properties ready for consumption in pug templates
-    apiResponse: responseBody
+    post: JSON.parse(thisPost)
   });
 };
 
@@ -24,14 +19,14 @@ const renderUpdateContent = function(req, res, responseBody) {
 /**
  * 
  */
-const renderQueryContent = function(req, res, responseBody) {
-
-  console.log(responseBody);
+const renderQueryContent = function(req, res, posts, quotes, events) {
 
   res.render('query', {
-    documentTitle: 'Query | Antares' ,
+    documentTitle: 'Query | Antares',
     // we parse JSON response to get properties ready for consumption in pug templates
-    apiResponse: responseBody
+    posts: JSON.parse(posts),
+    quotes: JSON.parse(quotes),
+    events: JSON.parse(events)
   });
 };
 
@@ -52,21 +47,55 @@ module.exports.create = function(req, res) {
  * @param {string} status - the status response
  * @returns
  */
-module.exports.query = function(req, res) {
+module.exports.queryAll = function(req, res) {
 
-  const path = '/api/get/posts';
+  var path = '/api/get/posts',
+      fullUrl = serverService.returnBaseUrl() + path,
+      requestOptions = {
+        url: fullUrl,
+        method: 'get'
+      };
 
-  // adding the url to hit
-  requestOptions.url = serverService.returnBaseUrl() + path;
-
-  request(requestOptions, function(err, response, body) {
+  // let's get the posts
+  request(requestOptions, function(err, response, posts) {
 
     if (err) {
-      console.log(`Request error: ${err}`);
+      console.log('Request error' + err);
     } else {
-      renderQueryContent(req, res, body);
-    }
 
+      var path = '/api/get/quotes',
+          fullUrl = serverService.returnBaseUrl() + path,
+          requestOptions = {
+            url: fullUrl,
+            method: 'get'
+          };
+
+      // now let's get the quotes
+      request(requestOptions, function(err, response, quotes) {
+
+        if (err) {
+          renderQueryContent(req, res, posts);
+        } else {
+
+          var path = '/api/get/events',
+              fullUrl = serverService.returnBaseUrl() + path,
+              requestOptions = {
+                url: fullUrl,
+                method: 'get'
+              };
+
+          request(requestOptions, function(err, response, events) {
+
+            if (err) {
+              renderQueryContent(req, res, posts, quotes)
+            } else {
+              renderQueryContent(req, res, posts, quotes, events);
+            }
+
+          });
+        }
+      });
+    }
   });
 
 };
@@ -77,19 +106,22 @@ module.exports.query = function(req, res) {
  * @param {*} res 
  * @returns
  */
-module.exports.update = function(req, res) {
+module.exports.queryOne = function(req, res) {
 
-  const wantedSlug = req.query.post,
-        path = `/api/get/post/${wantedSlug}`;
-
-  // adding the url to hit
-  requestOptions.url = serverService.returnBaseUrl() + path;
+  var wantedSlug = req.query.post,
+      path = `/api/get/post/${wantedSlug}`,
+      fullUrl = serverService.returnBaseUrl() + path,
+      requestOptions = {
+        url: fullUrl,
+        method: 'get'
+      };
 
   request(requestOptions, function(err, response, body) {
 
     if (err) {
       console.error(`Request error: ${err}`);
     } else {
+      console.log('renderUpdateContent ran');
       renderUpdateContent(req, res, body);
     }
 

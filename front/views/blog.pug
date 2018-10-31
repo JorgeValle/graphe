@@ -5,6 +5,7 @@ block content
   -var prettify = function(dateString) { var date = new Date(dateString), d = date.getDate(dateString), monthNames = ['January', 'February', 'March', 'April', 'May', 'June','July', 'August', 'September','October', 'November', 'December'],m = monthNames[date.getMonth()],y = date.getFullYear();return m + ' ' + d + ', ' + y;}
   -var quoteNumber = quotes.length
   -var postNumber = posts.length
+  -var j = 0
 
   each post, index in posts
 
@@ -13,15 +14,13 @@ block content
     em
       time #{prettify(post.date.created)}
     p !{post.content.description}
-    //- p #{index}
+    p #{index}
 
     //- if (index && index % 3 == 0)
 
-    //-   each quote, quoteIndex in quotes
+    //-   while (j < quoteNumber)
 
-    //-     if (quoteIndex <= quoteNumber -1 && index % 3 == quoteIndex)
+    //-     blockquote #{quotes[j].content.quote}
+    //-       span #{quotes[j].content.author}
 
-    //-       //- hr.quote-hr
-    //-       blockquote #{quote.content.quote}
-    //-         span #{quote.content.author}
-    //-         span #{quoteIndex}
+        //- -j++

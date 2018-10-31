@@ -5,10 +5,10 @@ const express = require('express'),
       adminCtrl = require('./admin.controller');
 
 // query page
-router.get('/query', adminCtrl.query);
+router.get('/query', adminCtrl.queryAll);
 // create page
 router.get('/create', adminCtrl.create);
 // update page
-router.get('/update', adminCtrl.update);
+router.get('/update', adminCtrl.queryOne);
 
 module.exports = router;

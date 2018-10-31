@@ -137,3 +137,6 @@ main h3::before {
 em {
   font-style: normal;
 }
+.mjx-chtml {
+  margin: 20px 0 15px !important;
+}
