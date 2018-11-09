@@ -3,7 +3,8 @@
 const request = require('request'),
       // services
       serverService = require('../services/server.service'),
-      dateService = require('../services/date.service');
+      dateService = require('../services/date.service'),
+      imageService = require('../services/image.service');
 
 // object for request options
 let requestOptions = {
@@ -11,6 +12,10 @@ let requestOptions = {
   method: 'GET',
   json: {}
 }
+
+let currentImage = imageService.returnHeaderImage();
+
+console.log('currentImage: ' + currentImage);
 
 /**
  * 
@@ -21,8 +26,10 @@ let requestOptions = {
 let renderQueryContent = function(req, res, posts, quotes) {
   res.render('blog', {
     documentTitle: 'Blog',
+    metaDescription: 'I write about many aspects of software, but with a particular focus on JavaScript, web development and machine learning.',
     canonicalUrl: `https://jorgevalle.com${req.url}`,
     activeUrl: req.url,
+    headerImage: currentImage,
     // we parse JSON response to get properties ready for consumption in pug templates
     posts: JSON.parse(posts),
     quotes: JSON.parse(quotes)
@@ -38,6 +45,7 @@ let renderQueryContent = function(req, res, posts, quotes) {
 let renderSitemap = function(req, res, responseBody) {
   res.render('sitemap', {
     documentTitle: 'Sitemap',
+    metaDescription: 'The sitemap',
     canonicalUrl: 'https://jorgevalle.com' + req.url,
     activeUrl: req.url,
     // we parse JSON response to get properties ready for consumption in pug templates
@@ -57,7 +65,9 @@ let renderTimeline = function(req, res, responseBody) {
 
   res.render('timeline', {
     documentTitle: 'Timeline',
+    metaDescription: 'A timeline view of my professional and personal life.',
     canonicalUrl: `https://jorgevalle.com${req.url}`,
+    headerImage: currentImage,
     activeUrl: req.url,
     // we parse JSON response to get properties ready for consumption in pug templates
     events: JSON.parse(responseBody)
@@ -77,8 +87,10 @@ var renderPost = function(req, res, responseBody) {
 
     // we parse JSON response to get properties ready for consumption in pug templates
     documentTitle: responseBody.content.title + " | Jorge Valle" ,
+    metaDescription: responseBody.content.description.replace('<p>', '').replace('</p>', '') || '',
     canonicalUrl: 'https://jorgevalle.com' + req.url,
     activeUrl: req.url,
+    headerImage: currentImage,
     title: responseBody.content.title,
     date: dateService.prettify(responseBody.date.created),
     city: responseBody.location.city,
@@ -91,10 +103,13 @@ var renderPost = function(req, res, responseBody) {
 
 // homepage
 module.exports.homepage = function(req, res) {
+
   res.render('homepage', { 
     documentTitle: 'Home',
+    metaDescription: 'My homepage on the world wide web.',
     canonicalUrl: 'https://jorgevalle.com' + req.url,
-    activeUrl: req.url
+    activeUrl: req.url,
+    headerImage: currentImage
   });
 };
 
@@ -102,8 +117,10 @@ module.exports.homepage = function(req, res) {
 module.exports.thanks = function(req, res) {
   res.render('thanks', { 
     documentTitle: 'Thank You',
+    metaDescription: 'Thanks for signing up.',
     canonicalUrl: 'https://jorgevalle.com' + req.url,
-    activeUrl: req.url
+    activeUrl: req.url,
+    headerImage: currentImage,
   });
 };
 
