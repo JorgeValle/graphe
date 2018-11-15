@@ -86,7 +86,7 @@ var renderPost = function(req, res, responseBody) {
   res.render('post', {
 
     // we parse JSON response to get properties ready for consumption in pug templates
-    documentTitle: responseBody.content.title + " | Jorge Valle" ,
+    documentTitle: responseBody.content.title,
     metaDescription: responseBody.content.description.replace('<p>', '').replace('</p>', '') || '',
     canonicalUrl: 'https://jorgevalle.com' + req.url,
     activeUrl: req.url,
