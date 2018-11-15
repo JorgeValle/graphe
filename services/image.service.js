@@ -12,60 +12,220 @@ module.exports.returnHeaderImage = function() {
   console.log('currentWeek: ' + currentWeek);
 
   let imageDictionary = {
-    1: 'amsterdam',
-    2: 'yale-library',
-    3: 'yale-hallway',
-    4: 'yale-courtyard',
-    5: 'new-york-stock-exchange',
-    6: 'amsterdam-train',
-    7: 'graz-mountain',
-    8: 'bridgeport-beach',
-    9: 'krk-marina',
-    10: 'krk-beach',
-    11: 'yale-footpath',
-    12: 'amsterdam',
-    13: 'yale-library',
-    14: 'yale-hallway',
-    15: 'yale-courtyard',
-    16: 'new-york-stock-exchange',
-    17: 'amsterdam-train',
-    18: 'graz-mountain',
-    19: 'bridgeport-beach',
-    20: 'krk-marina',
-    21: 'krk-beach',
-    22: 'yale-footpath',
-    23: 'amsterdam',
-    24: 'yale-library',
-    25: 'yale-hallway',
-    26: 'yale-courtyard',
-    27: 'new-york-stock-exchange',
-    28: 'amsterdam-train',
-    29: 'graz-mountain',
-    30: 'bridgeport-beach',
-    31: 'krk-marina',
-    32: 'krk-beach',
-    33: 'yale-footpath',
-    34: 'amsterdam',
-    35: 'yale-library',
-    36: 'yale-hallway',
-    37: 'yale-courtyard',
-    38: 'new-york-stock-exchange',
-    39: 'amsterdam-train',
-    40: 'graz-mountain',
-    41: 'bridgeport-beach',
-    42: 'krk-marina',
-    43: 'krk-beach',
-    44: 'yale-footpath',
-    45: 'amsterdam',
-    46: 'yale-library',
-    47: 'yale-hallway',
-    48: 'yale-courtyard',
-    49: 'new-york-stock-exchange',
-    50: 'amsterdam-train',
-    51: 'graz-mountain',
-    52: 'bridgeport-beach'
+    1: {
+      name: 'amsterdam',
+      description: 'The view of Amsterdam Centraal train station from stationsplein'
+    },
+    2: {
+      name: 'yale-library',
+      description: 'The interior of Beinecke Library in Yale University'
+    },
+    3: {
+      name: 'yale-hallway',
+      description: 'A hallway in Sterling Memorial Library in Yale University'
+    },
+    4: {
+     name: 'yale-courtyard',
+     description: 'One of the many beautiful courtyards at Yale University' 
+    },
+    5: {
+      name: 'new-york-stock-exchange',
+      description: 'The NYSE, as seen from Wall St.'
+    },
+    6: {
+      name: 'amsterdam-train',
+      description: 'A train arrives in Schiphol train station'
+    },
+    7: {
+      name: 'graz-mountain',
+      description: 'View of highway and mountains near Graz'
+    },
+    8: {
+      name: 'bridgeport-beach',
+      description: "A view from St.Mary's by the Sea, in Bridgeport"
+    },
+    9: {
+      name: 'krk-marina',
+      description: 'Looking towards Krk old town, from the marina' 
+    },
+    10: {
+      name: 'krk-beach',
+      description: 'Looking out towards the Adriatic, from a beach in Krk'
+    },
+    11: {
+      name: 'yale-footpath',
+      description: 'A footpath near Malone Engineering Center, in Yale'
+    },
+    12: {
+      name: 'amsterdam',
+      description: 'The view of Amsterdam Centraal train station from stationsplein'
+    },
+    13: {
+      name: 'yale-library',
+      description: 'The interior of Beinecke Library in Yale University'
+    },
+    14: {
+      name: 'yale-hallway',
+      description: 'A hallway in Sterling Memorial Library in Yale University'
+    },
+    15: {
+     name: 'yale-courtyard',
+     description: 'One of the many beautiful courtyards at Yale University' 
+    },
+    16: {
+      name: 'new-york-stock-exchange',
+      description: 'The NYSE, as seen from Wall St.'
+    },
+    17: {
+      name: 'amsterdam-train',
+      description: 'A train arrives in Schiphol train station'
+    },
+    18: {
+      name: 'graz-mountain',
+      description: 'View of highway and mountains near Graz'
+    },
+    19: {
+      name: 'bridgeport-beach',
+      description: "A view from St.Mary's by the Sea, in Bridgeport"
+    },
+    20: {
+      name: 'krk-marina',
+      description: 'Looking towards Krk old town, from the marina' 
+    },
+    21: {
+      name: 'krk-beach',
+      description: 'Looking out towards the Adriatic, from a beach in Krk'
+    },
+    22: {
+      name: 'yale-footpath',
+      description: 'A footpath near Malone Engineering Center, in Yale'
+    },
+    23: {
+      name: 'amsterdam',
+      description: 'The view of Amsterdam Centraal train station from stationsplein'
+    },
+    24: {
+      name: 'yale-library',
+      description: 'The interior of Beinecke Library in Yale University'
+    },
+    25: {
+      name: 'yale-hallway',
+      description: 'A hallway in Sterling Memorial Library in Yale University'
+    },
+    26: {
+     name: 'yale-courtyard',
+     description: 'One of the many beautiful courtyards at Yale University' 
+    },
+    27: {
+      name: 'new-york-stock-exchange',
+      description: 'The NYSE, as seen from Wall St.'
+    },
+    28: {
+      name: 'amsterdam-train',
+      description: 'A train arrives in Schiphol train station'
+    },
+    29: {
+      name: 'graz-mountain',
+      description: 'View of highway and mountains near Graz'
+    },
+    30: {
+      name: 'bridgeport-beach',
+      description: "A view from St.Mary's by the Sea, in Bridgeport"
+    },
+    31: {
+      name: 'krk-marina',
+      description: 'Looking towards Krk old town, from the marina' 
+    },
+    32: {
+      name: 'krk-beach',
+      description: 'Looking out towards the Adriatic, from a beach in Krk'
+    },
+    33: {
+      name: 'yale-footpath',
+      description: 'A footpath near Malone Engineering Center, in Yale'
+    },
+    34: {
+      name: 'amsterdam',
+      description: 'The view of Amsterdam Centraal train station from stationsplein'
+    },
+    35: {
+      name: 'yale-library',
+      description: 'The interior of Beinecke Library in Yale University'
+    },
+    36: {
+      name: 'yale-hallway',
+      description: 'A hallway in Sterling Memorial Library in Yale University'
+    },
+    37: {
+     name: 'yale-courtyard',
+     description: 'One of the many beautiful courtyards at Yale University' 
+    },
+    38: {
+      name: 'new-york-stock-exchange',
+      description: 'The NYSE, as seen from Wall St.'
+    },
+    39: {
+      name: 'amsterdam-train',
+      description: 'A train arrives in Schiphol train station'
+    },
+    40: {
+      name: 'graz-mountain',
+      description: 'View of highway and mountains near Graz'
+    },
+    41: {
+      name: 'bridgeport-beach',
+      description: "A view from St.Mary's by the Sea, in Bridgeport"
+    },
+    42: {
+      name: 'krk-marina',
+      description: 'Looking towards Krk old town, from the marina' 
+    },
+    43: {
+      name: 'krk-beach',
+      description: 'Looking out towards the Adriatic, from a beach in Krk'
+    },
+    44: {
+      name: 'yale-footpath',
+      description: 'A footpath near Malone Engineering Center, in Yale'
+    },
+    45: {
+      name: 'amsterdam',
+      description: 'The view of Amsterdam Centraal train station from stationsplein'
+    },
+    46: {
+      name: 'yale-library',
+      description: 'The interior of Beinecke Library in Yale University'
+    },
+    47: {
+      name: 'yale-hallway',
+      description: 'A hallway in Sterling Memorial Library in Yale University'
+    },
+    48: {
+     name: 'yale-courtyard',
+     description: 'One of the many beautiful courtyards at Yale University' 
+    },
+    49: {
+      name: 'new-york-stock-exchange',
+      description: 'The NYSE, as seen from Wall St.'
+    },
+    50: {
+      name: 'amsterdam-train',
+      description: 'A train arrives in Schiphol train station'
+    },
+    51: {
+      name: 'graz-mountain',
+      description: 'View of highway and mountains near Graz'
+    },
+    52: {
+      name: 'bridgeport-beach',
+      description: "A view from St.Mary's by the Sea, in Bridgeport"
+    },
+    53: {
+      name: 'krk-marina',
+      description: 'Looking towards Krk old town, from the marina' 
+    }
   };
 
-  return imageDictionary[currentWeek] || 'graz-mountain';
+  return imageDictionary[currentWeek] || imageDictionary[1];
 
 };

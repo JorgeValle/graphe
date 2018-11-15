@@ -36,7 +36,7 @@ html(lang="en")
           a(href="/blog") Blog
 
     div.image
-      img(src=`/front/assets/images/dist/${headerImage}.jpg`)
+      img(src=`/front/assets/images/dist/${headerImage.name}.jpg`, alt=`${headerImage.description}`)
 
     main.content
       block content
