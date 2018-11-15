@@ -6,7 +6,8 @@ const express = require('express'),
       cookieParser = require('cookie-parser'),
       bodyParser = require('body-parser'),
       methodOverride = require('method-override'),
-      secure = require('express-force-https');
+      secure = require('express-force-https'),
+      compression = require('compression');
 
 
 // hook for database connection
@@ -29,6 +30,9 @@ app.set('view engine', 'pug');
 
 // force https
 app.use(secure);
+
+// compress all responses
+app.use(compression());
 
 // logging middleware
 app.use(logger('dev'));
