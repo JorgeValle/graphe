@@ -9,7 +9,7 @@ block content
 
   each post, index in posts
 
-    a(href=`/blog/${post.content.slug}`)
+    a(href=`/blog/${post.content.slug}`, title=post.content.title)
       h2 #{post.content.title}
     em
       time #{prettify(post.date.created)}
