@@ -81,8 +81,8 @@ header {
 }
 .image img {
   max-width: 100%;
-  height: auto;
-  min-height: 100px;
+  /* height: auto;
+  min-height: 100px; */
   /* border-radius: 0px 10px 10px 0px; */
 }
 .content {
