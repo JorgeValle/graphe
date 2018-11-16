@@ -7,8 +7,7 @@ const express = require('express'),
       bodyParser = require('body-parser'),
       methodOverride = require('method-override'),
       secure = require('express-force-https'),
-      compression = require('compression'),
-      serverService = require('./services/server.service');
+      compression = require('compression');
 
 
 // hook for database connection
@@ -21,8 +20,6 @@ const routesApi = require('./api/api.routes'),
 
 let app = express();
 
-let baseUrl = serverService.returnBaseUrl();
-
 app.listen(process.env.PORT || 3000, function() {
   console.log('Express has started on port 3000');
 });
@@ -32,21 +29,6 @@ app.use(secure);
 
 // compress all responses
 app.use(compression());
-
-// force non-www, although ideally this shouldn't be done in app layer
-app.all(/.*/, function(req, res, next) {
-
-  let host = req.header('host');
-
-  console.log('host is:' + host);
-
-  if (host.match(/^www\..*/i) && baseUrl ==! 'http://localhost:3000') {
-    res.redirect(301, `https://${host}`)
-  } else {
-    next();
-  }
-
-});
 
 // view directory setup
 app.set('views', [`${__dirname}/admin/views`, `${__dirname}/front/views`]);
