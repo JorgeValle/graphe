@@ -7,7 +7,8 @@ const express = require('express'),
       bodyParser = require('body-parser'),
       methodOverride = require('method-override'),
       secure = require('express-force-https'),
-      compression = require('compression');
+      compression = require('compression'),
+      forceDomain = require('forcedomain');
 
 
 // hook for database connection
@@ -33,6 +34,11 @@ app.use(secure);
 
 // compress all responses
 app.use(compression());
+
+// force non-www
+app.use(forceDomain({
+  hostname: 'jorgevalle.com'
+}));
 
 // logging middleware
 app.use(logger('dev'));
