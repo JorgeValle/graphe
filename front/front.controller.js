@@ -65,7 +65,7 @@ let renderTimeline = function(req, res, responseBody) {
 
   res.render('timeline', {
     documentTitle: 'Timeline',
-    metaDescription: 'A timeline view of my professional and personal life.',
+    metaDescription: 'A timeline view of my professional life as a software developer, and my personal life as a partner, friend, family member and BJJ practicioner.',
     canonicalUrl: `https://jorgevalle.com${req.url}`,
     headerImage: currentImage,
     activeUrl: req.url,
@@ -106,7 +106,7 @@ module.exports.homepage = function(req, res) {
 
   res.render('homepage', { 
     documentTitle: 'Home',
-    metaDescription: 'My homepage on the world wide web.',
+    metaDescription: 'Application developer blogging with a focus on JavaScript, web development, and machine learning. I also talk about finance, tech at large, and whatever topic I feel passionate about.',
     canonicalUrl: 'https://jorgevalle.com' + req.url,
     activeUrl: req.url,
     headerImage: currentImage
@@ -117,7 +117,7 @@ module.exports.homepage = function(req, res) {
 module.exports.thanks = function(req, res) {
   res.render('thanks', { 
     documentTitle: 'Thank You',
-    metaDescription: 'Thanks for signing up.',
+    metaDescription: "Thanks for signing up. You'll be hearing from me soon with more JavaScript, web development, and machine learning content that I hope you find useful.",
     canonicalUrl: 'https://jorgevalle.com' + req.url,
     activeUrl: req.url,
     headerImage: currentImage,
