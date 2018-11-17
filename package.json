@@ -19,6 +19,7 @@
     "esdoc": "^1.0.1",
     "esdoc-standard-plugin": "^1.0.0",
     "express": "~4.13.4",
+    "express-force-domain": "0.0.6",
     "express-force-https": "^1.0.0",
     "forcedomain": "^1.0.0",
     "mdi": "^2.2.43",

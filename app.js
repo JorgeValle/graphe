@@ -20,6 +20,8 @@ const routesApi = require('./api/api.routes'),
 
 let app = express();
 
+app.use(require('express-force-domain')('https://jorgevalle.com') );
+
 app.listen(process.env.PORT || 3000, function() {
   console.log('Express has started on port 3000');
 });
@@ -45,8 +47,6 @@ app.use(express.static(path.join(__dirname, '/')));
 
 // middleware allows for put and delete requests on forms
 app.use(methodOverride('_method'));
-
-
 
 // route setup
 app.use('/api', routesApi);
