@@ -10,7 +10,7 @@ html(lang="en")
     meta(property="og:image", content="/front/assets/images/jorge.png")
     title=`${documentTitle} | Jorge Valle: blogging about JavaScript, web development, and machine learning`
     link(rel="canonical", href= canonicalUrl)
-    link(rel="stylesheet", href="//fonts.googleapis.com/css?family=Domine|Roboto")
+    link(rel="stylesheet", href="//fonts.googleapis.com/css?family=Domine:400,700|Roboto:300,400")
     link(rel="stylesheet", href="/front/assets/styles/styles.css")
     //- link(rel="stylesheet", href="/node_modules/mdi/css/materialdesignicons.css")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML", async)
@@ -45,4 +45,9 @@ html(lang="en")
     main.content
       block content
 
-      include footer
+    div.signature-side
+    div.signature
+      p(itemscope, itemprop="Person", itemtype="http://schema.org/Person") #[span(itemprop="name") Jorge Valle] is an #[span(itemprop="description") application developer with a focus on JavaScript, web development and machine learning].
+      small You can reach him on #[a(href="") Github], #[a(href="") Stack Overflow] or #[a(href="") LinkedIn].
+
+    include footer
