@@ -3,7 +3,7 @@ extends layout
 block content
 
   div(itemscope, itemtype="http://schema.org/Article")
-    h2(itemprop="name")=title
+    h2(itemprop="headline")=title
 
     em
       time(itemprop="datePublished") #{date}
@@ -16,3 +16,7 @@ block content
 
     -if (references)
       div !{references}
+
+    div
+
+    p I hope you enjoyed the post.

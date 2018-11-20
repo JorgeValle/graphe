@@ -7,27 +7,15 @@ html(lang="en")
     meta(property="og:title", content=documentTitle)
     meta(property="og:url", content=canonicalUrl)
     meta(property="og:description", content=metaDescription)
-    meta(property="og:image", content="/front/assets/images/jorge.png")
-    title=`${documentTitle} | Jorge Valle: blogging about JavaScript, web development, and machine learning`
+    meta(property="og:image", content="/front/assets/images/jorge-valle.jpg")
+    title=`${documentTitle} | Jorge Valle | JavaScript, web development, and machine learning`
     link(rel="canonical", href= canonicalUrl)
     link(rel="stylesheet", href="//fonts.googleapis.com/css?family=Domine:400,700|Roboto:300,400")
     link(rel="stylesheet", href="/front/assets/styles/styles.css")
-    //- link(rel="stylesheet", href="/node_modules/mdi/css/materialdesignicons.css")
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML", async)
-    script(type="text/x-mathjax-config").
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-          processEscapes: true
-        }
-      });
-    script.
-      (function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga"); ga("create", "UA-65509004-1", "auto"); ga("send", "pageview");
-
-    -// we grab the first five characters of the url value
-    -var activeUrlSubstring = activeUrl.substring(0,5)
 
   body.container
+
+    div#fb-root
 
     header.header
       h1 Jorge Valle
@@ -40,14 +28,22 @@ html(lang="en")
           a(href="/blog", title="Posts focusing on JavaScript, deep learning, and web development") Blog
 
     div.image
-      img(src=`/front/assets/images/dist/${headerImage.name}.jpg`, alt=`${headerImage.description}`)
+      img(src=`/front/assets/images/dist/${headerImage.name}.jpg`, alt=headerImage.description, title=headerImage.description)
 
     main.content
       block content
 
-    div.signature-side
-    div.signature
-      p(itemscope, itemprop="Person", itemtype="http://schema.org/Person") #[span(itemprop="name") Jorge Valle] is an #[span(itemprop="description") application developer with a focus on JavaScript, web development and machine learning].
-      small You can reach him on #[a(href="https://github.com/JorgeValle") Github] or #[a(href="https://stackoverflow.com/users/3371677/jorge-valle") Stack Overflow].
+    include signature
 
     include footer
+
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML", async)
+    script(type="text/x-mathjax-config").
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    script.
+      (function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga"); ga("create", "UA-65509004-1", "auto"); ga("send", "pageview");
