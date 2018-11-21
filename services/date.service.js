@@ -1,27 +1,34 @@
 'use strict';
 
 /**
- * 
+ * Returns a human-readable date string from a JavaScript date
+ * @since 3.0.0
+ * @param {date} dateString - The JS date to make pretty
+ * @returns {string} - The prettyfied date
  */
-module.exports.prettify = function(dateString) {
+module.exports.prettify = function(date) {
 
-  let date = new Date(dateString),
-      d = date.getDate(dateString),
+  const theDate = new Date(date);
+
+  let day = theDate.getDate(date),
       monthNames = [
         'January', 'February', 'March',
         'April', 'May', 'June',
         'July', 'August', 'September',
         'October', 'November', 'December'
       ],
-      m = monthNames[date.getMonth()],
-      y = date.getFullYear();
+      month = monthNames[date.getMonth()],
+      year = date.getFullYear();
   
-  return `${m} ${d}, ${y}`;
+  return `${month} ${day}, ${year}`;
 
 }
 
 /**
- *
+ * Returns the week number from
+ * @since 4.0.0
+ * @param {date} dateString - The date we want to return yearly week number for
+ * @returns {number} - The number of the week in the year, from 1 to 52, of the passed date
  */
 module.exports.getWeekNumber = function(d) {
 

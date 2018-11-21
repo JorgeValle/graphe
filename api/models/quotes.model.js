@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
  */
 const quoteSchema = new mongoose.Schema({
 
-  // date
+  // Date
   date: {
     created: {
       type: Date
@@ -16,7 +16,7 @@ const quoteSchema = new mongoose.Schema({
       type: Date
     }
   },
-  // content
+  // Content fields
   content: {
     quote: {
       type: String,
@@ -35,5 +35,5 @@ const quoteSchema = new mongoose.Schema({
   }
 });
 
-// compile schema to bson, telling mongo to use 'quotes' collection
+// Compile schema down to bson, telling mongo to use 'quotes' collection
 mongoose.model('Quote', quoteSchema, 'quotes');

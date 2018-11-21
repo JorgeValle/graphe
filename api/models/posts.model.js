@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
  */
 const postSchema = new mongoose.Schema({
 
-  // date
+  // Date
   date: {
     created: {
       type: Date
@@ -16,7 +16,7 @@ const postSchema = new mongoose.Schema({
       type: Date
     }
   },
-  // content
+  // Content fields
   content: {
     title: {
       type: String,
@@ -33,16 +33,16 @@ const postSchema = new mongoose.Schema({
     description: String,
     references: String
   },
-  // image
+  // Image
   image: {
     url: String
   },
-  // location
+  // Location
   location: {
     city: String,
     country: String
   },
-  // time
+  // Time
   time: {
     estimate: {
       type: Number
@@ -50,5 +50,5 @@ const postSchema = new mongoose.Schema({
   }
 });
 
-// compile schema to bson, telling mongo to use 'posts' collection
+// Compile schema to bson, telling mongo to use 'posts' collection
 mongoose.model('Post', postSchema, 'posts');

@@ -4,25 +4,25 @@ const express = require('express'),
       router = express.Router(),
       apiCtrl = require('./api.controller');
 
-// get all posts
+// Get all posts
 router.get('/get/posts', apiCtrl.retrieveAllPosts);
-// get all quotes
+// Get all quotes
 router.get('/get/quotes', apiCtrl.retrieveAllQuotes);
-// get all events
+// Get all events
 router.get('/get/events', apiCtrl.retrieveAllEvents);
-// get specific post
+// Get a specific post
 router.get('/get/post/:slug', apiCtrl.retrievePostBySlug);
-// create post
+// Create a new post
 router.post('/create/post', apiCtrl.createPost);
-// create quote
+// Create a new quote
 router.post('/create/quote', apiCtrl.createQuote);
-// create event
+// Create a new event
 router.post('/create/event', apiCtrl.createEvent);
-// update specific post
+// Update a specific post
 router.put('/update/post', apiCtrl.updatePost);
-// update specific quote
+// Update a specific quote
 router.put('/update/quote', apiCtrl.updateQuote);
-// update specific event
+// Update a specific event
 router.put('/update/event', apiCtrl.updateEvent);
 
 module.exports = router;
