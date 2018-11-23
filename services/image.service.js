@@ -3,7 +3,7 @@
 const dateService = require('../services/date.service');
 
 // Dictionary that maps week number to seasonally-appropriate phot
-const imageDictionary = {
+const imageMap = {
   1: {
     name: 'amsterdam',
     description: 'The view of Amsterdam Centraal train station from stationsplein'
@@ -223,10 +223,10 @@ const imageDictionary = {
  * @since 4.0.0
  * @returns {object} - A header image object, with filename and description for image
  */
-module.exports.returnHeaderImage = function() {
+module.exports.returnHeaderImage = function(date) {
 
-  const currentWeek = dateService.getWeekNumber(new Date());
+  const currentWeek = dateService.getWeekNumber(date);
 
-  return imageDictionary[currentWeek] || imageDictionary[1];
+  return imageMap[currentWeek] || imageMap[1];
 
 };

@@ -6,7 +6,7 @@ const request = require('request'),
       dateService = require('../services/date.service'),
       imageService = require('../services/image.service'),
       // vars
-      currentImage = imageService.returnHeaderImage(),
+      currentImage = imageService.returnHeaderImage(new Date()),
       baseUrl = 'https://jorgevalle.com';
 
 /**
