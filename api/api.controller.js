@@ -1,25 +1,22 @@
 'use strict';
 
 const mongoose = require('mongoose'),
-      fs = require('fs'),
       // models
       post = mongoose.model('Post'),
       event = mongoose.model('Event'),
       quote = mongoose.model('Quote'),
       // services
       jsonService = require('../services/json.service'),
-      passwordService = require('../services/password.service');
-
-
-// setting the API password for local and production environments
-let apiPassword = passwordService.returnApiPassword();
+      passwordService = require('../services/password.service'),
+      // constants
+      apiPassword = passwordService.returnApiPassword();
 
 /**
  * Retrieves all posts, sorted desc by date created
- * @param {*} req
- * @param {*} res
- * @returns {string}
- * @since 3.3
+ * @since 3.3.0
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {string} - The JSON formatted string of blog posts
  */
 module.exports.retrieveAllPosts = function(req, res) {
 
@@ -31,10 +28,10 @@ module.exports.retrieveAllPosts = function(req, res) {
 
 /**
  * Retrieves all quotes, sorted desc by date created
- * @param {*} req
- * @param {*} res
- * @returns {string}
- * @since 4.0
+ * @since 4.0.0
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {string} - The JSON formatted string of quotes
  */
 module.exports.retrieveAllQuotes = function(req, res) {
 
@@ -46,10 +43,10 @@ module.exports.retrieveAllQuotes = function(req, res) {
 
 /**
  * Retrieves all events, sorted desc by event date
- * @param {*} req
- * @param {*} res
- * @returns {string}
- * @since 4.0
+ * @since 4.0.0
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {string} - The JSON formatted string of events
  */
 module.exports.retrieveAllEvents = function(req, res) {
 
@@ -61,20 +58,20 @@ module.exports.retrieveAllEvents = function(req, res) {
 
 
 /**
- * Retrieves a post
- * @param {*} req
- * @param {*} res
- * @returns
- * @since 3.3
+ * Retrieves a single blog post, found by slug
+ * @since 3.3.0
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {string} - The JSON formatted content of the blog post, if found
  */
 module.exports.retrievePostBySlug = function(req, res) {
 
-  // go fetch wanted content via mongoose
+  // Fetch wanted content via Mongoose
   post.findOne({
     'content.slug': req.params.slug
   }, function(err, post) {
 
-    // return only if found
+    // Return 200 only if found
     if (post) {
       jsonService.sendResponse(res, 200, post);
     } else {
@@ -85,22 +82,22 @@ module.exports.retrievePostBySlug = function(req, res) {
 }
 
 /**
- * Creates a new post
- * @param {*} req
- * @param {*} res
- * @returns
- * @since 3.3
+ * Creates a new blog post
+ * @since 3.3.0
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {string} - The JSON for the newly created blog post, if authorized
  */
 module.exports.createPost = function(req, res) {
 
-  // create a new model document
-  const thisPost = new post({
+  // Create a new model document with parameters
+  const newPost = new post({
 
-    // date
+    // Date
     date: {
       created: new Date()
     },
-    // content
+    // Content fields
     content: {
       title: req.body.title,
       slug: req.body.slug,
@@ -112,58 +109,54 @@ module.exports.createPost = function(req, res) {
       description: req.body.description,
       references: req.body.references
     },
-    // location
+    // Location
     location: {
       city: req.body.city,
       country: req.body.country
     },
-    // time
+    // Read time
     time: {
       estimate: req.body.estimate
     }
   });
 
-
-  // check for auth
+  // Check for auth
   if (req.body.password === apiPassword) {
 
-    // save the final document to the database
-    thisPost.save(function(err, post) {
+    // Save the final document to the database
+    newPost.save(function(err, post) {
 
       if (err) {
-        console.log(err);
         jsonService.sendResponse(res, 500, err);
       } else {
         jsonService.sendResponse(res, 201, post);
       }
     });
 
-
+  // Not authorized
   } else {
-
     jsonService.sendResponse(res, 403, 'Nice try, buddy.');
-
   }
 
 }
 
 /**
  * Creates a new quote
- * @param {*} req
- * @param {*} res
- * @returns
- * @since 4.0
+ * @since 4.0.0
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {string} - The JSON for the newly created quote, if authorized
  */
 module.exports.createQuote = function(req, res) {
 
-  // create a new model document
-  const thisQuote = new quote({
+  // Create a new model document
+  const newQuote = new quote({
 
-    // date
+    // Date
     date: {
       created: new Date()
     },
-    // content
+    // Content fields
     content: {
       quote: req.body.quote,
       slug: req.body.slug,
@@ -171,12 +164,11 @@ module.exports.createQuote = function(req, res) {
     }
   });
 
-
-  // check for auth
+  // Check for auth
   if (req.body.password === apiPassword) {
 
-    // save the final document to the database
-    thisQuote.save(function(err, quote) {
+    // Save the final document to the database
+    newQuote.save(function(err, quote) {
 
       if (err) {
         console.log(err);
@@ -186,33 +178,30 @@ module.exports.createQuote = function(req, res) {
       }
     });
 
-
+  // Not authorized
   } else {
-
     jsonService.sendResponse(res, 403, 'Nice try, buddy.');
-
   }
 
 }
 
-
 /**
  * Creates a new event
- * @param {*} req
- * @param {*} res
- * @returns
- * @since 4.0
+ * @since 4.0.0
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {string} - The JSON for the newly created event, if authorized
  */
 module.exports.createEvent = function(req, res) {
 
-  // create a new model document
-  const thisEvent = new event({
+  // Create a new model document
+  const newEvent = new event({
 
-    // date
+    // Date
     date: {
       created: new Date()
     },
-    // content
+    // Content fields
     content: {
       name: req.body.name,
       date: req.body.date,
@@ -221,49 +210,43 @@ module.exports.createEvent = function(req, res) {
     }
   });
 
-  console.log(req.body.password);
-
-  // check for auth
+  // Check for auth
   if (req.body.password === apiPassword) {
 
-    // save the final document to the database
-    thisEvent.save(function(err, event) {
+    // Save the final document to the database
+    newEvent.save(function(err, event) {
 
       if (err) {
-        console.log(err);
         jsonService.sendResponse(res, 500, err);
       } else {
         jsonService.sendResponse(res, 201, event);
       }
     });
 
-
+  // Not authorized
   } else {
-
     jsonService.sendResponse(res, 403, 'Nice try, buddy.');
-
   }
-
 }
 
 
 /**
- * Updates the post
- * @param {*} req
- * @param {*} res
- * @returns
- * @since 3.3
+ * Updates the post we find, by slug
+ * @since 3.3.0
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {string} - The JSON for the freshly updated blog post
  */
 module.exports.updatePost = function(req, res) {
 
-  // get url to update from router middleware and set to var
+  // Get url to update from router middleware and set to var
   let query = {
     'content.slug': req.body.slug
   };
 
-  let updatedData = {
+  const updatedData = {
 
-    // content
+    // Content fields
     content: {
       title: req.body.title,
       slug: req.body.slug,
@@ -275,33 +258,31 @@ module.exports.updatePost = function(req, res) {
       description: req.body.description,
       references: req.body.references
     },
-    // location
+    // Location
     location: {
       city: req.body.city,
       country: req.body.country
     },
-    // time
+    // Read time
     time: {
       estimate: req.body.estimate
     }
   }
 
-  // updating date
+  // Updating the mod date
   updatedData['date.modified'] = new Date();
 
-  // check for auth
+  // Check for auth
   if (req.body.password === apiPassword) {
 
-    // {new:true} returns updated doc
+    // Reminder: {new:true} returns updated doc, instead of old doc
     post.findOneAndUpdate(query, updatedData, {
       new: true
     }, function(err, post) {
-
-      console.log(post);
       jsonService.sendResponse(res, 201, post);
-
     });
 
+  // Not authorized
   } else {
     jsonService.sendResponsee(res, 403, 'Nice try, buddy.');
   }
@@ -309,49 +290,49 @@ module.exports.updatePost = function(req, res) {
 
 /**
  * Updates the quote
- * @param {*} req
- * @param {*} res
- * @returns
- * @since 4.0
+ * @since 4.0.0
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {string} - The JSON for the freshly updated quote
  */
 module.exports.updateQuote = function(req, res) {
 
-  // get url to update from router middleware and set to var
+  // Get url to update from router middleware and set to var
   let query = {
     'content.slug': req.body.slug
   };
 
-  let updatedData = {
+  const updatedData = {
 
-    // content
+    // Content fields
     content: {
       quote: req.body.quote,
       slug: req.body.slug,
       author: req.body.author
     },
-    // location
+    // Location
     location: {
       city: req.body.city,
       country: req.body.country
     }
   }
 
-  // updating date
+  // Updating the mod date
   updatedData['date.modified'] = new Date();
 
-  // check for auth
+  // Check for auth
   if (req.body.password === apiPassword) {
 
-    // {new:true} returns updated doc
+    // Reminder: {new:true} returns updated doc, instead of old doc
     quote.findOneAndUpdate(query, updatedData, {
       new: true
     }, function(err, quote) {
 
-      console.log(quote);
       jsonService.sendResponse(res, 201, quote);
 
     });
 
+  // Not authorized
   } else {
     jsonService.sendResponsee(res, 403, 'Nice try, buddy.');
   }
@@ -359,21 +340,21 @@ module.exports.updateQuote = function(req, res) {
 
 /**
  * Updates the event
- * @param {*} req
- * @param {*} res
- * @returns
- * @since 4.0
+ * @since 4.0.0
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @returns {string} - The JSON for the freshly updated event
  */
 module.exports.updateEvent = function(req, res) {
 
-  // get url to update from router middleware and set to var
+  // Get url to update from router middleware and set to var
   let query = {
     'content.slug': req.body.slug
   };
 
-  let updatedData = {
+  const updatedData = {
 
-    // content
+    // Content field
     content: {
       name: req.body.name,
       slug: req.body.slug,
@@ -382,22 +363,22 @@ module.exports.updateEvent = function(req, res) {
     }
   }
 
-  // updating date
+  // Updating the mod date
   updatedData['date.modified'] = new Date();
 
-  // check for auth
+  // Check for auth
   if (req.body.password === apiPassword) {
 
-    // {new:true} returns updated doc
+    // Reminder: {new:true} returns updated doc
     event.findOneAndUpdate(query, updatedData, {
       new: true
     }, function(err, quote) {
 
-      console.log(event);
       jsonService.sendResponse(res, 201, event);
 
     });
 
+  // Not authorized
   } else {
     jsonService.sendResponsee(res, 403, 'Nice try, buddy.');
   }

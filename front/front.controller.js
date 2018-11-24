@@ -4,30 +4,24 @@ const request = require('request'),
       // services
       serverService = require('../services/server.service'),
       dateService = require('../services/date.service'),
-      imageService = require('../services/image.service');
-
-// object for request options
-let requestOptions = {
-  url: serverService.returnBaseUrl(),
-  method: 'GET',
-  json: {}
-}
-
-let currentImage = imageService.returnHeaderImage();
-
-console.log('currentImage: ' + currentImage);
+      imageService = require('../services/image.service'),
+      // vars
+      currentImage = imageService.returnHeaderImage(new Date()),
+      baseUrl = 'https://jorgevalle.com';
 
 /**
- * 
- * @param {*} req 
- * @param {*} res 
- * @param {*} responseBody 
+ * Renders the content for the main blog page
+ * @since 4.0.0
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @param {object} posts - All the posts
+ * @param {object} quotes - All the quotes
  */
-let renderQueryContent = function(req, res, posts, quotes) {
+const renderBlogContent = function(req, res, posts, quotes) {
   res.render('blog', {
     documentTitle: 'Blog',
     metaDescription: 'I write about many aspects of software, but with a particular focus on JavaScript, web development and machine learning.',
-    canonicalUrl: `https://jorgevalle.com${req.url}`,
+    canonicalUrl: baseUrl + req.url,
     activeUrl: req.url,
     headerImage: currentImage,
     // we parse JSON response to get properties ready for consumption in pug templates
@@ -37,143 +31,146 @@ let renderQueryContent = function(req, res, posts, quotes) {
 };
 
 /**
- * 
- * @param {*} req 
- * @param {*} res
- * @param {*} responseBody 
+ * Renders the dynamic sitemap
+ * @since 3.0.0
+ * @param {pbject} req - The response object
+ * @param {object} res - The response object
+ * @param {object} allPost - All the posts we want in the sitemap
  */
-let renderSitemap = function(req, res, responseBody) {
+const renderSitemap = function(req, res, allPosts) {
   res.render('sitemap', {
     documentTitle: 'Sitemap',
     metaDescription: 'The sitemap',
-    canonicalUrl: 'https://jorgevalle.com' + req.url,
+    canonicalUrl: baseUrl + req.url,
     activeUrl: req.url,
     // we parse JSON response to get properties ready for consumption in pug templates
-    apiResponse: JSON.parse(responseBody)
+    posts: JSON.parse(allPosts)
   });
 };
 
 /**
- * 
- * @param {*} req 
- * @param {*} res 
- * @param {*} responseBody 
+ * Render the timeline view
+ * @since 3.0.0
+ * @param {object} req - The request object
+ * @param {object} res - The respose object
+ * @param {object} allEvents - All the events we want displaying in the timeline
  */
-let renderTimeline = function(req, res, responseBody) {
-
-  console.log(`response body is ${responseBody}`);
-
+const renderTimeline = function(req, res, allEvents) {
   res.render('timeline', {
     documentTitle: 'Timeline',
     metaDescription: 'A timeline view of my professional life as a software developer, and my personal life as a partner, friend, family member and BJJ practicioner.',
-    canonicalUrl: `https://jorgevalle.com${req.url}`,
+    canonicalUrl: baseUrl + req.url,
     headerImage: currentImage,
     activeUrl: req.url,
     // we parse JSON response to get properties ready for consumption in pug templates
-    events: JSON.parse(responseBody)
+    events: JSON.parse(allEvents)
   });
 };
 
 
 /**
- * 
- * @param {*} req 
- * @param {*} res 
- * @param {*} responseBody 
+ * Renders the single post content
+ * @since 3.0.0
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ * @param {object} post - The post we are rendering
  */
-var renderPost = function(req, res, responseBody) {
-
+const renderPost = function(req, res, post) {
   res.render('post', {
-
     // we parse JSON response to get properties ready for consumption in pug templates
-    documentTitle: responseBody.content.title,
-    metaDescription: responseBody.content.description.replace('<p>', '').replace('</p>', '') || '',
+    documentTitle: post.content.title,
+    metaDescription: post.content.description.replace('<p>', '').replace('</p>', '') || '',
     canonicalUrl: 'https://jorgevalle.com' + req.url,
     activeUrl: req.url,
     headerImage: currentImage,
-    title: responseBody.content.title,
-    date: dateService.prettify(responseBody.date.created),
-    city: responseBody.location.city,
-    country: responseBody.location.country,
-    index: responseBody.content.index,
-    body: responseBody.content.bodies[0],
-    references: responseBody.content.references
+    title: post.content.title,
+    date: dateService.prettify(post.date.created),
+    city: post.location.city,
+    country: post.location.country,
+    index: post.content.index,
+    body: post.content.bodies[0],
+    references: post.content.references
   });
 };
 
-// homepage
+/**
+ * Renders the homepage
+ * @since 2.0.0
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ */
 module.exports.homepage = function(req, res) {
-
   res.render('homepage', { 
     documentTitle: 'Home',
     metaDescription: 'Application developer blogging with a focus on JavaScript, web development, and machine learning. I also talk about finance, tech at large, and whatever topic I feel passionate about.',
-    canonicalUrl: 'https://jorgevalle.com' + req.url,
+    canonicalUrl: baseUrl + req.url,
     activeUrl: req.url,
     headerImage: currentImage
   });
 };
 
-// thanks
+/**
+ * Renders the thanks for signing up page
+ * @since 3.0.0
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ */
 module.exports.thanks = function(req, res) {
   res.render('thanks', { 
     documentTitle: 'Thank You',
     metaDescription: "Thanks for signing up. You'll be hearing from me soon with more JavaScript, web development, and machine learning content that I hope you find useful.",
-    canonicalUrl: 'https://jorgevalle.com' + req.url,
+    canonicalUrl: baseUrl + req.url,
     activeUrl: req.url,
-    headerImage: currentImage,
+    headerImage: currentImage
   });
 };
 
-// robots
+/**
+ * Responds with the robots.tx file, which is a static file
+ * @since 3.0.0
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ */
 module.exports.robots = function(req, res) {
   res.sendfile('../robots.txt'); 
 };
 
-request(requestOptions, function(err, response, body) {
-  if(err) {
-    console.log(err);
-  } else if (response.statusCode === 200) {
-    console.log('Request: 200');
-  } else {
-    console.log(response.statusCode);
-  }
-});
-
 /**
- * Queries all the posts
- * @param {*} req 
- * @param {*} res 
+ * Queries all the posts and quotes, and renders them if found
+ * @since 3.0.0
+ * @param {object} req - The request object 
+ * @param {object} res - The response object 
  */
 module.exports.queryPostsAndQuotes = function(req, res) {
 
-  var path = '/api/get/posts',
+  let path = '/api/get/posts',
       fullUrl = serverService.returnBaseUrl() + path,
       requestOptions = {
         url: fullUrl,
         method: 'get'
       };
 
-  // let's get the posts
+  // Let's go get the posts
   request(requestOptions, function(err, response, posts) {
 
     if (err) {
       console.log('Request error' + err);
     } else {
 
-      var path = '/api/get/quotes',
-      fullUrl = serverService.returnBaseUrl() + path,
-      requestOptions = {
-        url: fullUrl,
-        method: 'get'
-      };
+      let path = '/api/get/quotes',
+          fullUrl = serverService.returnBaseUrl() + path,
+          requestOptions = {
+            url: fullUrl,
+            method: 'get'
+          };
 
-      // now let's get the quotes
+      // Now let's get the quotes
       request(requestOptions, function(err, response, quotes) {
 
         if (err) {
-          renderQueryContent(req, res, posts);
+          renderBlogContent(req, res, posts);
         } else {
-          renderQueryContent(req, res, posts, quotes);
+          renderBlogContent(req, res, posts, quotes);
         }
 
       });
@@ -183,20 +180,18 @@ module.exports.queryPostsAndQuotes = function(req, res) {
 
 /**
  * Queries all the events
- * @param {*} req 
- * @param {*} res 
+ * @since 2.0.0
+ * @param {object} req - The request object 
+ * @param {object} res - The response object
  */
 module.exports.queryEvents = function(req, res) {
 
-  var requestOptions, path;
-  path = '/api/get/events';
-
-  var fullUrl = serverService.returnBaseUrl() + path;
-
-  requestOptions = {
-    url: fullUrl,
-    method: 'GET'
-  };
+  let path = '/api/get/events',
+      fullUrl = serverService.returnBaseUrl() + path,
+      requestOptions = {
+        url: fullUrl,
+        method: 'GET'
+      };
 
   request(requestOptions, function(err, response, body) {
       if (err) {
@@ -206,27 +201,23 @@ module.exports.queryEvents = function(req, res) {
         renderTimeline(req, res, body);
       }
   });
-  
 };
 
-
 /**
- * 
- * @param {*} req 
- * @param {*} res 
+ * Queries for individual posts
+ * @since 4.0.0
+ * @param {object} req - The request object
+ * @param {object} res - The response object
  */
 module.exports.postBySlug = function(req, res) {
 
-  let requestOptions,
-      path = `/api/get/post/${req.params.slug}`;
-
-  const fullUrl = serverService.returnBaseUrl() + path;
-
-  requestOptions = {
-    url: fullUrl,
-    method: 'GET',
-    json: {}
-  };
+  let path = `/api/get/post/${req.params.slug}`,
+      fullUrl = serverService.returnBaseUrl() + path,
+      requestOptions = {
+        url: fullUrl,
+        method: 'GET',
+        json: {}
+      };
 
   request(requestOptions, function(err, response, body) {
 
@@ -234,7 +225,7 @@ module.exports.postBySlug = function(req, res) {
 
       console.log(`Request error: ${err}`);
 
-    } else if ( response.statusCode == '404' ) {
+    } else if (response.statusCode == '404') {
 
       res.status(404).render('404', { 
         documentTitle: 'Not Found' ,
@@ -244,29 +235,25 @@ module.exports.postBySlug = function(req, res) {
 
     } else {
       renderPost(req, res, body);
-      console.log(`res.statusCode: ${res.statusCode}`);
     }
 
   });
-  
 };
 
 /**
- * 
- * @param {*} req 
- * @param {*} res 
+ * Queries sitemap
+ * @since 3.0.0
+ * @param {object} req - The request object
+ * @param {object} res - The response object
  */
 module.exports.sitemap = function(req, res) {
 
-  var requestOptions, path;
-  path = '/api/get/posts';
-
-  var fullUrl = serverService.returnBaseUrl() + path;
-
-  requestOptions = {
-    url: fullUrl,
-    method: 'GET'
-  };
+  let path = '/api/get/posts',
+      fullUrl = serverService.returnBaseUrl() + path,
+      requestOptions = {
+        url: fullUrl,
+        method: 'GET'
+      };
 
   request(requestOptions, function(err, response, body) {
 
@@ -275,6 +262,5 @@ module.exports.sitemap = function(req, res) {
     } else {
       renderSitemap(req, res, body);
     }
-
   });
 };

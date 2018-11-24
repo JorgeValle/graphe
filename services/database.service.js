@@ -2,6 +2,8 @@
 
 /**
  * Returns the right Mongo connection string, depending on environment
+ * @since 2.0.0
+ * @returns {string} - The database connection string
  */
 module.exports.returnDbConnectionString = function() {
   

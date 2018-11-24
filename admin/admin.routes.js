@@ -4,11 +4,11 @@ const express = require('express'),
       router = express.Router(),
       adminCtrl = require('./admin.controller');
 
-// query page
+// Query all content
 router.get('/query', adminCtrl.queryAll);
-// create page
+// Create content
 router.get('/create', adminCtrl.create);
-// update page
+// Update content
 router.get('/update', adminCtrl.queryOne);
 
 module.exports = router;

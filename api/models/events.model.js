@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
  */
 const eventSchema = new mongoose.Schema({
 
-  // date
+  // Date
   date: {
     created: {
       type: Date
@@ -16,7 +16,7 @@ const eventSchema = new mongoose.Schema({
       type: Date
     }
   },
-  // content
+  // Content fields
   content: {
     name: {
       type: String,
@@ -37,5 +37,5 @@ const eventSchema = new mongoose.Schema({
   }
 });
 
-// compile schema to bson, telling mongo to use 'events' collection
+// Compile schema down to bson, telling mongo to use 'events' collection
 mongoose.model('Event', eventSchema, 'events');

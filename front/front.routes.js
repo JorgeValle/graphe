@@ -4,19 +4,19 @@ const express = require('express'),
       router = express.Router(),
       frontCtrl = require('./front.controller');
 
-// homepage
+// Homepage
 router.get('/', frontCtrl.homepage);
-// blog post by url
+// Blog post by url
  router.get('/blog/:slug', frontCtrl.postBySlug);
-// blog
+// Blog
 router.get('/blog', frontCtrl.queryPostsAndQuotes);
-// timeline
+// Timeline
 router.get('/timeline', frontCtrl.queryEvents);
-// thanks page
+// Thanks page
 router.get('/thanks', frontCtrl.thanks);
-// sitemap.xml
+// Sitemap.xml
 router.get('/sitemap.xml', frontCtrl.sitemap);
-// robots.txt
+// Robots.txt
 router.get('/robots.txt', frontCtrl.robots);
 
 module.exports = router;

@@ -1,7 +1,9 @@
 'use strict';
 
 /**
- *
+ * Returns the correct base URL, depending on the environment
+ * @since 3.0.0
+ * @returns {string} - The base URL string
  */
 module.exports.returnBaseUrl = function() {
   
@@ -10,4 +12,5 @@ module.exports.returnBaseUrl = function() {
   } else {
     return 'http://localhost:3000';
   }
+  
 };
