@@ -1,18 +1,18 @@
-describe('Database service', function() {
+// describe('Database service', function() {
 
-  const databaseService = require('./database.service'),
-        returnDbConnectionString = databaseService.returnDbConnectionString;
+//   const databaseService = require('./database.service'),
+//         returnDbConnectionString = databaseService.returnDbConnectionString;
 
-  it('should have method to return connection string', function() {
-    expect(returnDbConnectionString()).toBeDefined();
-  });
+//   it('should have method to return connection string', function() {
+//     expect(returnDbConnectionString()).toBeDefined();
+//   });
 
-  describe('return databae connection string method', function() {
+//   describe('return databae connection string method', function() {
 
-    it('should return a connection string', function() {
+//     it('should return a connection string', function() {
   
-      expect(returnDbConnectionString()).toEqual(jasmine.any(String))
+//       expect(returnDbConnectionString()).toEqual(jasmine.any(String))
   
-    });
-  });
-});
+//     });
+//   });
+// });
