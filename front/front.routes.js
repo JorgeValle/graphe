@@ -18,5 +18,7 @@ router.get('/thanks', frontCtrl.thanks);
 router.get('/sitemap.xml', frontCtrl.sitemap);
 // Robots.txt
 router.get('/robots.txt', frontCtrl.robots);
+// Privacy policy
+router.get('/privacy-policy', frontCtrl.privacyPolicy)
 
 module.exports = router;
