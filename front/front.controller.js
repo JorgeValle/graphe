@@ -110,22 +110,6 @@ module.exports.homepage = function(req, res) {
 };
 
 /**
- * Renders the privacy policy
- * @since 4.3.0
- * @param {object} req - The request object
- * @param {object} res - The response object
- */
-module.exports.privacyPolicy = function(req, res) {
-  res.render('privacy', {
-    documentTitle: 'Privacy Policy',
-    metaDescription: 'The privacy policy that governs the use of and interactions with the JorgeValle.com site.',
-    canonicalUrl: baseUrl + req.url,
-    activeUrl: req.url,
-    headerImage: currentImage
-  });
-}
-
-/**
  * Renders the thanks for signing up page
  * @since 3.0.0
  * @param {object} req - The request object
