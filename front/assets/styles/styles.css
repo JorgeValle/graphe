@@ -35,14 +35,6 @@ blockquote span {
   color: #888888;
   font-size: 1.1em;
 }
-button {
-  font-family: Roboto;
-  font-weight: 400;
-  background: #FFFFFF;
-  border: 1px solid #EDEDED;
-  padding: 15px 25px;
-  cursor: pointer;
-}
 h1,
 h2,
 h3,
@@ -172,7 +164,3 @@ em {
   font-family: Domine;
   font-size: 1.17em;
 }
-i.material-icons {
-  padding-right: 10px;
-  vertical-align: middle;
-} 

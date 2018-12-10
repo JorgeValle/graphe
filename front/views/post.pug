@@ -16,15 +16,3 @@ block content
 
     -if (references)
       div !{references}
-
-    button#fb-share(data-url=canonicalUrl)
-      i.material-icons share
-      span Share on Facebook
-
-    script.
-      document.getElementById('fb-share').onclick = function() {
-        FB.ui({
-          method: 'share',
-          href: this.getAttribute('data-url'), // Getting data-url attribute
-        }, function(response){});
-      }
