@@ -16,3 +16,15 @@ block content
 
     -if (references)
       div !{references}
+
+    button#fb-share
+      i.material-icons share
+      span Share on Facebook
+
+    script.
+      document.getElementById('fb-share').onclick = function() {
+        FB.ui({
+          method: 'share',
+          href: 'https://developers.facebook.com/docs/',
+        }, function(response){});
+      }
