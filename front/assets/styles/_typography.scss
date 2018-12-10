@@ -1,0 +1,28 @@
+$serif: Domine;
+$sans-serif: Roboto;
+
+body {
+  font-family: $sans-serif, sans-serif;
+  font-size: 18px; // Per https://learnui.design/blog/mobile-desktop-website-font-size-guidelines.html
+  font-weight: 300;
+  line-height: 1.5em;
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.heading-shared {
+  font-family: $serif;
+  font-weight: 700;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $serif;
+}

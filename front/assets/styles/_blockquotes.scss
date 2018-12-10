@@ -1,0 +1,15 @@
+blockquote {
+  margin: 45px 0;
+  padding-left: 30px;
+  font-size: 1.3em;
+  border-left: 3px solid gray;
+}
+blockquote::before {
+  content: "\201C";
+}
+blockquote span {
+  margin-top: 15px;
+  display: block;
+  color: #888888;
+  font-size: 1.1em;
+}

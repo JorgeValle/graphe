@@ -1,0 +1,10 @@
+$black: #000000;
+$dark-grey: lighten($black, 8%);
+$middle-grey: lighten($black, 21%);
+$light-grey: lighten($black, 55%);
+$practically-white: ligthen($black, 89%);
+$white: #ffffff;
+
+html {
+  background-color: $practically-white;
+}
