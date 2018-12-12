@@ -20,7 +20,7 @@ const routesApi = require('./api/api.routes'),
 
 let app = express();
 
-app.use(require('express-force-domain')('https://jorgevalle.com') );
+// app.use(require('express-force-domain')('https://jorgevalle.com'));
 
 app.listen(process.env.PORT || 3000, function() {
   console.log('Express has started on port 3000');

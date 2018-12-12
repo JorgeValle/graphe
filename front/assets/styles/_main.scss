@@ -1,0 +1,38 @@
+main {
+
+  display: grid;
+  padding-left: $base-unit * fibonacci(6);
+  padding-right: $base-unit * fibonacci(6);
+  background-color: $white;
+
+  @include cast-shadow($main-shadow);
+
+  h3::before {
+    content: "§";
+  }
+
+  // On narrow
+  @media screen and (min-width: $break-narrow) {
+
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto auto;
+
+  }
+
+  // On medium
+  @media screen and (min-width: $break-narrow) {
+    grid-template-columns: 55% 34%;
+    grid-template-rows: auto auto auto;
+
+    border-left: 1px solid $the-one-color;
+
+  }
+
+  // On wide
+  @media screen and (min-width: $break-narrow) {
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto auto;
+
+  }
+
+}

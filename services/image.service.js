@@ -5,8 +5,8 @@ const dateService = require('../services/date.service');
 // Dictionary that maps week number to seasonally-appropriate phot
 const imageMap = {
   1: {
-    name: 'amsterdam',
-    description: 'The view of Amsterdam Centraal train station from stationsplein'
+    name: 'yale-courtyard',
+    description: 'One of the many beautiful courtyards at Yale University'
   },
   2: {
     name: 'yale-library',
@@ -25,8 +25,8 @@ const imageMap = {
     description: 'The NYSE, as seen from Wall St.'
   },
   6: {
-    name: 'amsterdam-train',
-    description: 'A train arrives in Schiphol train station'
+    name: 'yale-courtyard',
+    description: 'One of the many beautiful courtyards at Yale University'
   },
   7: {
     name: 'graz-mountain',
@@ -49,8 +49,8 @@ const imageMap = {
     description: 'A footpath near Malone Engineering Center, in Yale'
   },
   12: {
-    name: 'amsterdam',
-    description: 'The view of Amsterdam Centraal train station from stationsplein'
+    name: 'yale-courtyard',
+    description: 'One of the many beautiful courtyards at Yale University'
   },
   13: {
     name: 'yale-library',
@@ -69,8 +69,8 @@ const imageMap = {
     description: 'The NYSE, as seen from Wall St.'
   },
   17: {
-    name: 'amsterdam-train',
-    description: 'A train arrives in Schiphol train station'
+    name: 'yale-courtyard',
+    description: 'One of the many beautiful courtyards at Yale University'
   },
   18: {
     name: 'graz-mountain',
@@ -93,8 +93,8 @@ const imageMap = {
     description: 'A footpath near Malone Engineering Center, in Yale'
   },
   23: {
-    name: 'amsterdam',
-    description: 'The view of Amsterdam Centraal train station from stationsplein'
+    name: 'yale-courtyard',
+    description: 'One of the many beautiful courtyards at Yale University'
   },
   24: {
     name: 'yale-library',
@@ -113,8 +113,8 @@ const imageMap = {
     description: 'The NYSE, as seen from Wall St.'
   },
   28: {
-    name: 'amsterdam-train',
-    description: 'A train arrives in Schiphol train station'
+    name: 'yale-courtyard',
+    description: 'One of the many beautiful courtyards at Yale University'
   },
   29: {
     name: 'graz-mountain',
@@ -137,8 +137,8 @@ const imageMap = {
     description: 'A footpath near Malone Engineering Center, in Yale'
   },
   34: {
-    name: 'amsterdam',
-    description: 'The view of Amsterdam Centraal train station from stationsplein'
+    name: 'yale-courtyard',
+    description: 'One of the many beautiful courtyards at Yale University'
   },
   35: {
     name: 'yale-library',
@@ -157,8 +157,8 @@ const imageMap = {
     description: 'The NYSE, as seen from Wall St.'
   },
   39: {
-    name: 'amsterdam-train',
-    description: 'A train arrives in Schiphol train station'
+    name: 'yale-courtyard',
+    description: 'One of the many beautiful courtyards at Yale University'
   },
   40: {
     name: 'graz-mountain',
@@ -181,8 +181,8 @@ const imageMap = {
     description: 'A footpath near Malone Engineering Center, in Yale'
   },
   45: {
-    name: 'amsterdam',
-    description: 'The view of Amsterdam Centraal train station from stationsplein'
+    name: 'yale-courtyard',
+    description: 'One of the many beautiful courtyards at Yale University'
   },
   46: {
     name: 'yale-library',
@@ -201,8 +201,8 @@ const imageMap = {
     description: 'The NYSE, as seen from Wall St.'
   },
   50: {
-    name: 'amsterdam-train',
-    description: 'A train arrives in Schiphol train station'
+    name: 'yale-courtyard',
+    description: 'One of the many beautiful courtyards at Yale University'
   },
   51: {
     name: 'graz-mountain',

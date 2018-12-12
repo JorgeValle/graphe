@@ -1,0 +1,14 @@
+.image {
+
+  background-color: $white;
+  padding-top: 34px;
+  padding-bottom: 34px;
+  padding-right: 34px;
+  // -webkit-box-shadow: 4px 6px 43px -8px rgba(0,0,0,0.75);
+  // -moz-box-shadow: 4px 6px 43px -8px rgba(0,0,0,0.75);
+  // box-shadow: 4px 6px 43px -8px rgba(0,0,0,0.75);
+
+  img {
+    max-width: 100%;
+  }
+}
