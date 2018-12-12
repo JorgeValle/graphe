@@ -1,3 +1,31 @@
 footer {
+
   color: $dark-grey;
+  background-color: $white;
+  display: grid;
+  padding-left: $base-unit * fibonacci(4);
+  padding-right: $base-unit * fibonacci(4);
+
+  @include cast-shadow($main-shadow);
+
+  hr {
+    border: 0;
+    height: 0;
+    border-top: 1px solid $the-one-color;
+  }
+
+  // On narrow
+  @media screen and (min-width: $break-narrow) {
+  }
+
+  // On medium
+  @media screen and (min-width: $break-narrow) {
+  
+  }
+
+  // On wide
+  @media screen and (min-width: $break-narrow) {
+  
+  }
+
 }

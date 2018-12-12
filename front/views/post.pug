@@ -3,17 +3,23 @@ extends layout
 block content
 
   div(itemscope, itemtype="http://schema.org/Article")
+
+    //- Main title
     h2(itemprop="headline")=title
 
+    //- Published date
     em
       time(itemprop="datePublished") #{date}
 
+    //- The index when present
     -if (index)
       h3 Index
       div !{index}
 
+    //- The body, which is always present
     div !{body}
 
+    //- The references, if present
     -if (references)
       div !{references}
 

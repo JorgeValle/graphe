@@ -13,30 +13,22 @@ html(lang="en")
     link(rel="stylesheet", href="//fonts.googleapis.com/css?family=Domine:400,700|Roboto:300,400|Material+Icons")
     link(rel="stylesheet", href="/front/assets/styles/styles.css")
 
-  body.container
-
-    div#fb-root
-
-    header.header
-      h1 Jorge Valle
-      ul
-        li
-          a(href="/", title="What I do, with links to work, and social media profiles") Home
-        li
-          a(href="/timeline", title="A timeline view of my professional and personal life") Timeline
-        li
-          a(href="/blog", title="Posts focusing on JavaScript, deep learning, and web development") Blog
+  body
 
     div.image
       img(src=`/front/assets/images/dist/${headerImage.name}.jpg`, alt=headerImage.description, title=headerImage.description)
 
-    main.content
+    //- div.container
+    include header
+
+    main
       block content
 
-    include signature
+    //- include signature
 
     include footer
 
+    div#fb-root
     script(src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML", async)
     script(type="text/x-mathjax-config").
       MathJax.Hub.Config({
@@ -64,3 +56,12 @@ html(lang="en")
         js.src = "https://connect.facebook.net/en_US/sdk.js";
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
+    //- script.
+    //-   var onresize = function() {
+    //-     var e = document.createElement('div');
+    //-     width = document.body.clientWidth;
+    //-     height = document.body.clientHeight;
+    //-     e.innerHTML = `width: ${width}; height: ${height}`;
+    //-     document.getElementsByTagName('body')[0].appendChild(e);
+    //-   }
+    //-   window.addEventListener("resize", onresize);

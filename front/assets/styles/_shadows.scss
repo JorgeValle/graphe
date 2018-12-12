@@ -1,0 +1,7 @@
+$main-shadow: 47px 52px 50px -6px rgba(0, 0, 0, 0.35);
+
+@mixin cast-shadow($shadow) {
+  -webkit-box-shadow: $shadow;
+  -ms-box-shadow: $shadow;
+  box-shadow: $shadow;
+}

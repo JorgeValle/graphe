@@ -1,14 +1,18 @@
 header {
 
   display: grid;
-  grid-template-columns: 55% 34%;
-  grid-template-rows: auto auto 100px;
+  padding-left: $base-unit * fibonacci(6);
+  padding-right: $base-unit * fibonacci(6);
 
+  background-color: $white;
+
+  @include cast-shadow($main-shadow);
 
   // On narrow
   @media screen and (min-width: $break-narrow) {
+
     grid-template-columns: 100%;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: 89px 144px auto;
 
     // The "Jorge Valle" title
     h1 {
@@ -30,13 +34,13 @@ header {
       list-style-type: none;
       padding: 0;
 
-      li {
-        display: inline;
-        list-style-type: katakana;
-      }
+      // li {
+      //   // display: inline;
+      //   list-style-type: katakana;
+      // }
 
       li:not(:first-child) {
-        margin-left: 10px;
+        margin-top: $base-unit * fibonacci(3);
       }
     }
   }
@@ -44,7 +48,7 @@ header {
   // On medium
   @media screen and (min-width: $break-narrow) {
     grid-template-columns: 55% 34%;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: 89px 144px auto;
 
     // The "Jorge Valle" title
     h1 {
@@ -66,13 +70,13 @@ header {
       list-style-type: none;
       padding: 0;
 
-      li {
-        display: inline;
-        list-style-type: katakana;
-      }
+      // li {
+      //   // display: inline;
+      //   list-style-type: katakana;
+      // }
 
       li:not(:first-child) {
-        margin-left: 10px;
+        margin-top: $base-unit * fibonacci(3);
       }
     }
   }
@@ -80,7 +84,37 @@ header {
   // On wide
   @media screen and (min-width: $break-narrow) {
     grid-template-columns: 100%;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: 89px 144px auto;
+
+    // The "Jorge Valle" title
+    h1 {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    // The short bio
+    p {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    // The nav links
+    ul {
+
+      grid-column: 1;
+      grid-row: 3;
+      list-style-type: none;
+      padding: 0;
+
+      // li {
+      //   // display: inline;
+      //   list-style-type: katakana;
+      // }
+
+      li:not(:first-child) {
+        margin-top: $base-unit * fibonacci(3);
+      }
+    }
   }
   
 
