@@ -27,10 +27,6 @@ body {
   line-height: 1;
 }
 
-ol, ul {
-  list-style: none;
-}
-
 blockquote, q {
   quotes: none;
 }
@@ -75,6 +71,10 @@ h6 {
 
 small {
   font-size: 0.8em;
+}
+
+html {
+  background-color: #fcfcfc;
 }
 
 time {
@@ -184,10 +184,6 @@ header {
   display: grid;
   padding-left: 39px;
   padding-right: 39px;
-  background-color: #ffffff;
-  -webkit-box-shadow: 47px 52px 50px -6px rgba(0, 0, 0, 0.35);
-  -ms-box-shadow: 47px 52px 50px -6px rgba(0, 0, 0, 0.35);
-  box-shadow: 47px 52px 50px -6px rgba(0, 0, 0, 0.35);
 }
 @media screen and (min-width: 320px) {
   header {
@@ -263,7 +259,6 @@ main {
   display: grid;
   padding-left: 39px;
   padding-right: 39px;
-  background-color: #ffffff;
 }
 @media screen and (min-width: 320px) {
   main {
@@ -287,13 +282,9 @@ main {
 
 footer {
   color: #1c1c1c;
-  background-color: #ffffff;
   display: grid;
   padding-left: 15px;
   padding-right: 15px;
-  -webkit-box-shadow: 47px 52px 50px -6px rgba(0, 0, 0, 0.35);
-  -ms-box-shadow: 47px 52px 50px -6px rgba(0, 0, 0, 0.35);
-  box-shadow: 47px 52px 50px -6px rgba(0, 0, 0, 0.35);
 }
 footer hr {
   border: 0;
@@ -307,10 +298,8 @@ footer hr {
 }
 
 .image {
-  background-color: #ffffff;
-  padding-top: 34px;
-  padding-bottom: 34px;
-  padding-right: 34px;
+  padding-top: 24px;
+  padding-bottom: 24px;
 }
 .image img {
   max-width: 100%;

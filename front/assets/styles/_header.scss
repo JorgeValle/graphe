@@ -4,10 +4,6 @@ header {
   padding-left: $base-unit * fibonacci(6);
   padding-right: $base-unit * fibonacci(6);
 
-  background-color: $white;
-
-  @include cast-shadow($main-shadow);
-
   // On narrow
   @media screen and (min-width: $break-narrow) {
 
@@ -105,11 +101,6 @@ header {
       grid-row: 3;
       list-style-type: none;
       padding: 0;
-
-      // li {
-      //   // display: inline;
-      //   list-style-type: katakana;
-      // }
 
       li:not(:first-child) {
         margin-top: $base-unit * fibonacci(3);

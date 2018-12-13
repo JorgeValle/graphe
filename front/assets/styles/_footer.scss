@@ -1,12 +1,12 @@
 footer {
 
   color: $dark-grey;
-  background-color: $white;
+  // background-color: $white;
   display: grid;
   padding-left: $base-unit * fibonacci(4);
   padding-right: $base-unit * fibonacci(4);
 
-  @include cast-shadow($main-shadow);
+  // @include cast-shadow($main-shadow);
 
   hr {
     border: 0;
