@@ -23,19 +23,22 @@ block content
     -if (references)
       div !{references}
 
-    div.social-sharing
+  section.social-sharing
+    hr
+    h3
       i.material-icons share
-      span Share on
-      button#fb-share Facebook
-      button#linkedin-share LinkedIn
+      span Share the post
+    p Although I love writing, it sure takes time. If you liked the post, please consider sharing on social networks.
+    button#fb-share Facebook
+    button#linkedin-share LinkedIn
 
-    script.
-      document.getElementById('fb-share').onclick = function() {
-        FB.ui({
-          method: 'share',
-          href: '#{canonicalUrl}', // Passed from Pug
-        }, function(response){});
-      }
-      document.getElementById('linkedin-share').onclick = function() {
-        window.open('https://www.linkedin.com/shareArticle?mini=true&url=' + '#{canonicalUrl}' + '&title=' + '#{title}' + '&summary=' + '#{description}' + '&source=JorgeValle.com', '_blank');
-      }
+  script.
+    document.getElementById('fb-share').onclick = function() {
+      FB.ui({
+        method: 'share',
+        href: '#{canonicalUrl}', // Passed from Pug
+      }, function(response){});
+    }
+    document.getElementById('linkedin-share').onclick = function() {
+      window.open('https://www.linkedin.com/shareArticle?mini=true&url=' + '#{canonicalUrl}' + '&title=' + '#{title}' + '&summary=' + '#{description}' + '&source=JorgeValle.com', '_blank');
+    }
