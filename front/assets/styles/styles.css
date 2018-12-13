@@ -94,18 +94,17 @@ button {
   cursor: pointer;
   font-family: Roboto;
   font-weight: 400;
-  padding: 15px;
   font-size: 0.9em;
 }
-button:hover {
+button:hover,
+button i:hover {
   color: #ffffff;
-  background-color: #00CED1;
+  background-color: #d73a49;
 }
 
 i.material-icons {
   color: #737373;
   vertical-align: middle;
-  padding-right: 10px;
 }
 
 body {
@@ -185,6 +184,9 @@ header {
   padding-left: 39px;
   padding-right: 39px;
 }
+header i.material-icons {
+  padding-right: 9px;
+}
 @media screen and (min-width: 320px) {
   header {
     grid-template-columns: 100%;
@@ -263,20 +265,20 @@ main {
 @media screen and (min-width: 320px) {
   main {
     grid-template-columns: 100%;
-    grid-template-rows: auto auto auto;
-  }
-}
-@media screen and (min-width: 320px) {
-  main {
-    grid-template-columns: 55% 34%;
-    grid-template-rows: auto auto auto;
-    border-left: 1px solid #00CED1;
+    grid-template-rows: auto;
   }
 }
 @media screen and (min-width: 320px) {
   main {
     grid-template-columns: 100%;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto;
+    border-left: 1px solid #d73a49;
+  }
+}
+@media screen and (min-width: 320px) {
+  main {
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
   }
 }
 
@@ -285,11 +287,12 @@ footer {
   display: grid;
   padding-left: 15px;
   padding-right: 15px;
+  border-top: 1px solid #d73a49;
 }
 footer hr {
   border: 0;
   height: 0;
-  border-top: 1px solid #00CED1;
+  border-top: 1px solid #d73a49;
 }
 .mjx-chtml {
   font-family: Domine !important;
@@ -319,11 +322,15 @@ footer hr {
   font-family: Roboto;
   font-weight: 400;
 }
+.social-sharing i.material-icons {
+  padding-right: 9px;
+}
 .social-sharing span {
   padding-right: 15px;
   font-size: 0.9em;
 }
 .social-sharing button {
+  padding: 15px;
   margin-right: 15px;
 }
 
@@ -331,6 +338,11 @@ hr {
   border: 0;
   height: 0;
   border-bottom: 1px solid #737373;
+}
+
+.pagination button {
+  padding: 6px 15px;
+  margin-right: 15px;
 }
 
 /*# sourceMappingURL=styles.css.map */

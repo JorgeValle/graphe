@@ -5,6 +5,10 @@
   font-family: $sans-serif;
   font-weight: 400;
 
+  i.material-icons {
+    padding-right: $base-unit * fibonacci(3);
+  }
+
   span {
     padding-right: $base-unit * fibonacci(4);
     // padding-left: $base-unit * fibonacci(4);
@@ -12,6 +16,7 @@
   }
 
   button {
+    padding: $base-unit * fibonacci(4);
     margin-right: $base-unit * fibonacci(4);
   }
 }

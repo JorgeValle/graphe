@@ -6,21 +6,27 @@ block content
   -var quoteNumber = quotes.length
   -var postNumber = posts.length
   -var j = 0
+  -var startIndex = 0
+  -var lastIndex = 9
+
+  nav.pagination
+    button
+      i.material-icons arrow_back
+    button
+      i.material-icons arrow_forward
 
   each post, index in posts
 
-    a(href=`/blog/${post.content.slug}`, title=post.content.title)
-      h2 #{post.content.title}
-    em
-      time #{prettify(post.date.created)}
-    p !{post.content.description}
-    //- p #{index}
+    - if (index >= startIndex && index <= lastIndex) {
+        a(href=`/blog/${post.content.slug}`, title=post.content.title)
+          h2 #{post.content.title}
+        em
+          time #{prettify(post.date.created)}
+        div !{post.content.description}
+    - }
 
-    //- if (index && index % 3 == 0)
-
-    //-   while (j < quoteNumber)
-
-    //-     blockquote #{quotes[j].content.quote}
-    //-       span #{quotes[j].content.author}
-
-        //- -j++
+  nav.pagination
+    button
+      i.material-icons arrow_back
+    button
+      i.material-icons arrow_forward

@@ -4,6 +4,10 @@ header {
   padding-left: $base-unit * fibonacci(6);
   padding-right: $base-unit * fibonacci(6);
 
+  i.material-icons {
+    padding-right: $base-unit * fibonacci(3);
+  }
+
   // On narrow
   @media screen and (min-width: $break-narrow) {
 
