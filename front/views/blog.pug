@@ -7,20 +7,13 @@ block content
   -var postNumber = posts.length
   -var j = 0
 
-  each post, index in posts
+  include sidebar
 
-    a(href=`/blog/${post.content.slug}`, title=post.content.title)
-      h2 #{post.content.title}
-    em
-      time #{prettify(post.date.created)}
-    p !{post.content.description}
-    //- p #{index}
+  article
+    each post, index in posts
 
-    //- if (index && index % 3 == 0)
-
-    //-   while (j < quoteNumber)
-
-    //-     blockquote #{quotes[j].content.quote}
-    //-       span #{quotes[j].content.author}
-
-        //- -j++
+      a(href=`/blog/${post.content.slug}`, title=post.content.title)
+        h2 #{post.content.title}
+      em
+        time #{prettify(post.date.created)}
+      p !{post.content.description}

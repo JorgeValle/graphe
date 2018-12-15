@@ -3,8 +3,10 @@ footer {
   color: $dark-grey;
   // background-color: $white;
   display: grid;
-  padding-left: $base-unit * fibonacci(4);
-  padding-right: $base-unit * fibonacci(4);
+  padding-top: $base-unit * fibonacci(4);
+  padding-right: $base-unit * fibonacci(6);
+  padding-bottom: $base-unit * fibonacci(4);
+  padding-left: $base-unit * fibonacci(6);
 
   // @include cast-shadow($main-shadow);
 

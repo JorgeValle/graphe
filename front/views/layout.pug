@@ -15,11 +15,10 @@ html(lang="en")
 
   body
 
+    include header
+
     div.image
       img(src=`/front/assets/images/dist/${headerImage.name}.jpg`, alt=headerImage.description, title=headerImage.description)
-
-    //- div.container
-    include header
 
     main
       block content
