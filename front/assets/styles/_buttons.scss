@@ -5,11 +5,12 @@ button {
   cursor: pointer;
   font-family: $sans-serif;
   font-weight: 400;
-  padding: $base-unit * fibonacci(4);
   font-size: 0.9em;
 
-  &:hover {
+  &:hover,
+  i:hover {
     color: $white;
     background-color: $the-one-color;
   }
+  
 }

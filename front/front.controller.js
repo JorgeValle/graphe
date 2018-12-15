@@ -17,11 +17,15 @@ const request = require('request'),
  * @param {object} posts - All the posts
  * @param {object} quotes - All the quotes
  */
-const renderBlogContent = function(req, res, posts, quotes) {
+const renderBlogContent = function(req, res, posts, quotes, startIndex) {
+
+  console.log('startIndex:' + startIndex);
+
   res.render('blog', {
     documentTitle: 'Blog',
     metaDescription: 'I write about many aspects of software, but with a particular focus on JavaScript, web development and machine learning.',
     canonicalUrl: baseUrl + req.url,
+    startIndex: startIndex,
     activeUrl: req.url,
     headerImage: currentImage,
     // we parse JSON response to get properties ready for consumption in pug templates
@@ -159,6 +163,8 @@ module.exports.robots = function(req, res) {
  */
 module.exports.queryPostsAndQuotes = function(req, res) {
 
+  let startIndex = req.query.start || 0; // The start index
+
   let path = '/api/get/posts',
       fullUrl = serverService.returnBaseUrl() + path,
       requestOptions = {
@@ -184,9 +190,9 @@ module.exports.queryPostsAndQuotes = function(req, res) {
       request(requestOptions, function(err, response, quotes) {
 
         if (err) {
-          renderBlogContent(req, res, posts);
+          renderBlogContent(req, res, posts, startIndex);
         } else {
-          renderBlogContent(req, res, posts, quotes);
+          renderBlogContent(req, res, posts, quotes, startIndex);
         }
 
       });

@@ -84,18 +84,21 @@ button {
   cursor: pointer;
   font-family: Roboto;
   font-weight: 400;
-  padding: 15px;
   font-size: 0.9em;
 }
-button:hover {
+button:hover,
+button i:hover {
   color: #ffffff;
+<<<<<<< HEAD
   background-color: #FFD700;
+=======
+  background-color: #d73a49;
+>>>>>>> feature/blog-pagination
 }
 
 i.material-icons {
   color: #737373;
   vertical-align: middle;
-  padding-right: 10px;
 }
 
 body {
@@ -165,9 +168,37 @@ header ul {
   list-style-type: none;
   padding: 0;
 }
+<<<<<<< HEAD
 header ul li {
   display: inline;
   padding-right: 15px;
+=======
+header i.material-icons {
+  padding-right: 9px;
+}
+@media screen and (min-width: 320px) {
+  header {
+    grid-template-columns: 100%;
+    grid-template-rows: 89px 144px auto;
+  }
+  header h1 {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  header p {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  header ul {
+    grid-column: 1;
+    grid-row: 3;
+    list-style-type: none;
+    padding: 0;
+  }
+  header ul li:not(:first-child) {
+    margin-top: 9px;
+  }
+>>>>>>> feature/blog-pagination
 }
 header ul li:not(:first-child) {
   padding-right: 9px;
@@ -218,6 +249,7 @@ main aside {
   padding-right: 39px;
   padding-left: 39px;
 }
+<<<<<<< HEAD
 main aside img {
   grid-row: 1;
   grid-column: 1;
@@ -225,6 +257,20 @@ main aside img {
 main aside div {
   grid-row: 1;
   grid-column: 2;
+=======
+@media screen and (min-width: 320px) {
+  main {
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+  }
+}
+@media screen and (min-width: 320px) {
+  main {
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    border-left: 1px solid #d73a49;
+  }
+>>>>>>> feature/blog-pagination
 }
 @media screen and (min-width: 800px) {
   main {
@@ -244,6 +290,7 @@ main aside div {
     grid-row: 1;
     display: grid;
     grid-template-columns: 100%;
+<<<<<<< HEAD
     grid-template-rows: auto auto;
     padding-top: 15px;
     padding-right: 39px;
@@ -257,21 +304,44 @@ main aside div {
   main aside div {
     grid-column: 1;
     grid-row: 2;
+=======
+    grid-template-rows: auto;
+>>>>>>> feature/blog-pagination
   }
 }
 
 footer {
   color: #1c1c1c;
   display: grid;
+<<<<<<< HEAD
   padding-top: 15px;
   padding-right: 39px;
   padding-bottom: 15px;
   padding-left: 39px;
+=======
+  padding-left: 15px;
+  padding-right: 15px;
+  border-top: 1px solid #d73a49;
+>>>>>>> feature/blog-pagination
 }
 footer hr {
   border: 0;
   height: 0;
+<<<<<<< HEAD
   border-top: 1px solid #FFD700;
+=======
+  border-top: 1px solid #d73a49;
+}
+.mjx-chtml {
+  font-family: Domine !important;
+  margin: 20px 0 15px !important;
+  /* text-align: left !important; */
+}
+
+.image {
+  padding-top: 24px;
+  padding-bottom: 24px;
+>>>>>>> feature/blog-pagination
 }
 .image img {
   max-width: 100%;
@@ -291,11 +361,15 @@ footer hr {
   font-family: Roboto;
   font-weight: 400;
 }
+.social-sharing i.material-icons {
+  padding-right: 9px;
+}
 .social-sharing span {
   padding-right: 15px;
   font-size: 0.9em;
 }
 .social-sharing button {
+  padding: 15px;
   margin-right: 15px;
 }
 
@@ -307,6 +381,11 @@ hr {
 
 a:hover {
   text-decoration: none;
+}
+
+.pagination button {
+  padding: 6px 15px;
+  margin-right: 15px;
 }
 
 /*# sourceMappingURL=styles.css.map */

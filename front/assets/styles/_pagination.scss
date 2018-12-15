@@ -1,0 +1,8 @@
+.pagination {
+
+  button {
+    padding: ($base-unit * fibonacci(2)) ($base-unit * fibonacci(4));
+    margin-right: $base-unit * fibonacci(4); 
+  }
+
+}

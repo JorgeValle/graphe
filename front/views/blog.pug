@@ -6,14 +6,27 @@ block content
   -var quoteNumber = quotes.length
   -var postNumber = posts.length
   -var j = 0
+  -var firstIndex = parseInt(startIndex)
+  -var lastIndex = firstIndex + 9
 
-  include sidebar
+  each post, index in posts
 
-  article
-    each post, index in posts
+    - if (index >= firstIndex && index <= lastIndex) {
+        a(href=`/blog/${post.content.slug}`, title=post.content.title)
+          h2 #{post.content.title}
+        em
+          time #{prettify(post.date.created)}
+        div !{post.content.description}
+    - }
 
-      a(href=`/blog/${post.content.slug}`, title=post.content.title)
-        h2 #{post.content.title}
-      em
-        time #{prettify(post.date.created)}
-      p !{post.content.description}
+  nav.pagination
+
+    - if (firstIndex > 0) {
+      button(onclick="location.href='/blog?start=" + String(firstIndex - 10) + "'")
+        i.material-icons arrow_back
+    - }
+
+    - if (lastIndex < postNumber) {
+      button(onclick="location.href='/blog?start=" + String(firstIndex + 10) + "'")
+        i.material-icons arrow_forward
+    - }
