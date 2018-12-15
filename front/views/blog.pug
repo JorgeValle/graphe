@@ -6,18 +6,21 @@ block content
   -var quoteNumber = quotes.length
   -var postNumber = posts.length
   -var j = 0
-  -var startIndex = 0
-  -var lastIndex = 9
+  -var firstIndex = parseInt(startIndex)
+  -var lastIndex = firstIndex + 9
 
-  nav.pagination
-    button
-      i.material-icons arrow_back
-    button
-      i.material-icons arrow_forward
+  //- nav.pagination
+  //-   button
+  //-     i.material-icons arrow_back
+  //-   button
+  //-     i.material-icons arrow_forward
+
+  p= firstIndex
+  p= lastIndex
 
   each post, index in posts
 
-    - if (index >= startIndex && index <= lastIndex) {
+    - if (index >= firstIndex && index <= lastIndex) {
         a(href=`/blog/${post.content.slug}`, title=post.content.title)
           h2 #{post.content.title}
         em
@@ -26,7 +29,13 @@ block content
     - }
 
   nav.pagination
-    button
-      i.material-icons arrow_back
-    button
-      i.material-icons arrow_forward
+
+    - if (firstIndex > 0) {
+      button(onclick="location.href='/blog?start=" + String(firstIndex - 10) + "'")
+        i.material-icons arrow_back
+    - }
+
+    - if (lastIndex < postNumber) {
+      button(onclick="location.href='/blog?start=" + String(firstIndex + 10) + "'")
+        i.material-icons arrow_forward
+    - }
