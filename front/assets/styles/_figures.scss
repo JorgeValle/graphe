@@ -10,8 +10,6 @@ main {
     display: grid;
     // border-top-left-radius: $tight-radius;
     background-color: $white;
-
-  
     grid-template-columns: 100%;
     grid-template-rows: auto auto;
 
@@ -32,6 +30,7 @@ main {
       color: $middle-grey;
       border-top-left-radius: $tight-radius;
       background-color: $white;
+      padding-top: $base-unit * fibonacci(5);
       padding-bottom: $base-unit * fibonacci(3);
     }
 
