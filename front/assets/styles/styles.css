@@ -248,7 +248,7 @@ main aside div {
     grid-row: 1;
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 165px auto;
+    grid-template-rows: 180px auto;
     padding-right: 39px;
     padding-bottom: 15px;
     padding-left: 39px;
