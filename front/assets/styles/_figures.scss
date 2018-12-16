@@ -1,0 +1,41 @@
+.mjx-chtml {
+  font-family: Domine !important;
+  margin: 20px 0 15px !important;
+}
+
+main {
+
+  figure {
+
+    display: grid;
+    // border-top-left-radius: $tight-radius;
+    background-color: $white;
+
+  
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto;
+
+    // Main content
+    div {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    // Figure caption
+    figcaption {
+      margin: 0 auto;
+      font-family: $serif;
+      font-size: 0.8em;
+      font-style: italic;
+      grid-column: 1;
+      grid-row: 2;
+      color: $middle-grey;
+      border-top-left-radius: $tight-radius;
+      background-color: $white;
+      padding-bottom: $base-unit * fibonacci(3);
+    }
+
+
+  }
+
+}
