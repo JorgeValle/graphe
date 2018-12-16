@@ -1,7 +1,7 @@
 html, body, div, span, applet, object, iframe, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
+small, strike, sub, sup, tt, var,
 b, u, i, center,
 dl, dt, dd,
 fieldset, form, label, legend,
@@ -89,11 +89,7 @@ button {
 button:hover,
 button i:hover {
   color: #ffffff;
-<<<<<<< HEAD
-  background-color: #FFD700;
-=======
-  background-color: #d73a49;
->>>>>>> feature/blog-pagination
+  background-color: #000000;
 }
 
 i.material-icons {
@@ -168,37 +164,9 @@ header ul {
   list-style-type: none;
   padding: 0;
 }
-<<<<<<< HEAD
 header ul li {
   display: inline;
   padding-right: 15px;
-=======
-header i.material-icons {
-  padding-right: 9px;
-}
-@media screen and (min-width: 320px) {
-  header {
-    grid-template-columns: 100%;
-    grid-template-rows: 89px 144px auto;
-  }
-  header h1 {
-    grid-column: 1;
-    grid-row: 1;
-  }
-  header p {
-    grid-column: 1;
-    grid-row: 2;
-  }
-  header ul {
-    grid-column: 1;
-    grid-row: 3;
-    list-style-type: none;
-    padding: 0;
-  }
-  header ul li:not(:first-child) {
-    margin-top: 9px;
-  }
->>>>>>> feature/blog-pagination
 }
 header ul li:not(:first-child) {
   padding-right: 9px;
@@ -231,46 +199,36 @@ main {
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: auto auto;
-  padding-top: 15px;
-  padding-bottom: 39px;
+  padding-top: 39px;
 }
 main article {
   grid-column: 1;
   grid-row: 1;
   padding-right: 39px;
+  padding-bottom: 39px;
   padding-left: 39px;
 }
 main aside {
+  background-color: #fcfcfc;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23#ffffff' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
   grid-column: 1;
   grid-row: 2;
   display: grid;
   grid-template-columns: 34% 55%;
-  grid-template-rows: auto;
+  grid-template-rows: auto auto;
+  padding-top: 24px;
   padding-right: 39px;
   padding-left: 39px;
 }
-<<<<<<< HEAD
 main aside img {
   grid-row: 1;
   grid-column: 1;
+  max-width: 89%;
+  width: 89%;
 }
 main aside div {
   grid-row: 1;
   grid-column: 2;
-=======
-@media screen and (min-width: 320px) {
-  main {
-    grid-template-columns: 100%;
-    grid-template-rows: auto;
-  }
-}
-@media screen and (min-width: 320px) {
-  main {
-    grid-template-columns: 100%;
-    grid-template-rows: auto;
-    border-left: 1px solid #d73a49;
-  }
->>>>>>> feature/blog-pagination
 }
 @media screen and (min-width: 800px) {
   main {
@@ -280,19 +238,17 @@ main aside div {
   main article {
     grid-column: 2;
     grid-row: 1;
-    padding-top: 15px;
     padding-right: 39px;
-    padding-bottom: 15px;
+    padding-bottom: 39px;
     padding-left: 39px;
   }
   main aside {
+    background: #fcfcfc;
     grid-column: 1;
     grid-row: 1;
     display: grid;
     grid-template-columns: 100%;
-<<<<<<< HEAD
-    grid-template-rows: auto auto;
-    padding-top: 15px;
+    grid-template-rows: 165px auto;
     padding-right: 39px;
     padding-bottom: 15px;
     padding-left: 39px;
@@ -300,37 +256,27 @@ main aside div {
   main aside img {
     grid-column: 1;
     grid-row: 1;
+    max-width: 55%;
+    width: 55%;
   }
   main aside div {
     grid-column: 1;
     grid-row: 2;
-=======
-    grid-template-rows: auto;
->>>>>>> feature/blog-pagination
   }
 }
 
 footer {
   color: #1c1c1c;
   display: grid;
-<<<<<<< HEAD
   padding-top: 15px;
   padding-right: 39px;
   padding-bottom: 15px;
   padding-left: 39px;
-=======
-  padding-left: 15px;
-  padding-right: 15px;
-  border-top: 1px solid #d73a49;
->>>>>>> feature/blog-pagination
 }
 footer hr {
   border: 0;
   height: 0;
-<<<<<<< HEAD
   border-top: 1px solid #FFD700;
-=======
-  border-top: 1px solid #d73a49;
 }
 .mjx-chtml {
   font-family: Domine !important;
@@ -339,70 +285,28 @@ footer hr {
 
 main figure {
   display: grid;
+  background-color: #ffffff;
+  grid-template-columns: 100%;
+  grid-template-rows: auto auto;
+}
+main figure div {
+  grid-column: 1;
+  grid-row: 1;
+}
+main figure figcaption {
+  margin: 0 auto;
+  font-family: Domine;
+  font-size: 0.8em;
+  font-style: italic;
+  grid-column: 1;
+  grid-row: 2;
+  color: #737373;
   border-top-left-radius: 9px;
   background-color: #ffffff;
-}
-@media screen and (min-width: 320px) {
-  main figure {
-    grid-template-columns: 100%;
-    grid-template-rows: auto auto;
-  }
-  main figure div {
-    grid-column: 1;
-    grid-row: 1;
-  }
-  main figure figcaption {
-    font-family: Domine;
-    font-size: 0.8em;
-    font-style: italic;
-    grid-column: 1;
-    grid-row: 2;
-    color: #737373;
-    border-top-left-radius: 9px;
-    background-color: #ffffff;
-  }
-}
-@media screen and (min-width: 320px) {
-  main figure {
-    grid-template-columns: 21% 55%;
-    grid-template-rows: auto;
-  }
-  main figure div {
-    grid-column: 2;
-    grid-row: 1;
-  }
-  main figure figcaption {
-    font-family: Domine;
-    font-size: 0.8em;
-    font-style: italic;
-    grid-column: 1;
-    grid-row: 1;
-  }
-}
-@media screen and (min-width: 320px) {
-  main figure {
-    grid-template-columns: 13% 87%;
-    grid-template-rows: auto;
-  }
-  main figure div {
-    grid-column: 2;
-    grid-row: 1;
-  }
-  main figure figcaption {
-    font-family: Domine;
-    font-size: 0.8em;
-    font-style: italic;
-    padding: 3px 9px;
-    grid-column: 1;
-    grid-row: 1;
-  }
+  padding-top: 24px;
+  padding-bottom: 9px;
 }
 
-.image {
-  padding-top: 24px;
-  padding-bottom: 24px;
->>>>>>> feature/blog-pagination
-}
 .image img {
   max-width: 100%;
 }
@@ -439,13 +343,13 @@ hr {
   border-bottom: 1px solid #c9c9c9;
 }
 
-a:hover {
-  text-decoration: none;
-}
-
 .pagination button {
   padding: 6px 15px;
   margin-right: 15px;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=styles.css.map */
