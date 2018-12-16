@@ -7,6 +7,8 @@ aside {
   padding-right: $base-unit * fibonacci(6);
 
   img {
+    max-width: 100%;
+    width: 144px;
     grid-row: 1;
     grid-column: 1;
   }
