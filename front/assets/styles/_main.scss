@@ -1,9 +1,13 @@
 main {
 
+  /*
+  Aside element is styled through sidebar.scss
+  */
+
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: auto auto;
-  padding-top: $base-unit * fibonacci(6);
+  padding-top: $base-unit * fibonacci(5);
 
   article {
     grid-column: 1;
@@ -11,32 +15,6 @@ main {
     padding-right: $base-unit * fibonacci(6);
     padding-bottom: $base-unit * fibonacci(6);
     padding-left: $base-unit * fibonacci(6);
-  }
-
-  aside {
-
-    background-color: $practically-white;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23#{$white}' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
-    grid-column: 1;
-    grid-row: 2;
-    display: grid;
-    grid-template-columns: 34% 55%;
-    grid-template-rows: auto auto;
-    padding-top: $base-unit * fibonacci(5);
-    padding-right: $base-unit * fibonacci(6);
-    padding-left: $base-unit * fibonacci(6);
-
-    img {
-      grid-row: 1;
-      grid-column: 1;
-      max-width: 89%;
-      width: 89%;
-    }
-
-    div {
-      grid-row: 1;
-      grid-column: 2;
-    }
   }
 
   // On medium and wide
@@ -48,33 +26,6 @@ main {
     article {
       grid-column: 2;
       grid-row: 1;
-      padding-right: $base-unit * fibonacci(6);
-      padding-bottom: $base-unit * fibonacci(6);
-      padding-left: $base-unit * fibonacci(6);
-    }
-
-    aside {
-      background: $practically-white;
-      grid-column: 1;
-      grid-row: 1;
-      display: grid;
-      grid-template-columns: 100%;
-      grid-template-rows: 180px auto;
-      padding-right: $base-unit * fibonacci(6);
-      padding-bottom: $base-unit * fibonacci(4);
-      padding-left: $base-unit * fibonacci(6);
-
-      img {
-        grid-column: 1;
-        grid-row: 1;
-        max-width: 55%;
-        width: 55%;
-      }
-
-      div {
-        grid-column: 1;
-        grid-row: 2;
-      }
     }
   }
 }

@@ -13,6 +13,7 @@ header {
     grid-column: 1;
     grid-row: 1;
     font-size: 1.8em;
+    line-height: 1.1em;
   }
 
   // The nav links
@@ -52,6 +53,9 @@ header {
       grid-row: 1;
       list-style-type: none;
       padding: 0;
+
+      padding-right: $base-unit * fibonacci(6);
+      padding-left: $base-unit * fibonacci(6);
 
       li {
         display: inline;
