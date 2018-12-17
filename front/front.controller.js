@@ -23,7 +23,7 @@ const renderBlogContent = function(req, res, posts, quotes, startIndex) {
 
   res.render('blog', {
     documentTitle: 'Blog',
-    metaDescription: 'I write about many aspects of software, but with a particular focus on JavaScript, web development and machine learning.',
+    metaDescription: 'I write about many aspects of software, but with a particular focus on JavaScript, user interfaces and machine learning.',
     canonicalUrl: baseUrl + req.url,
     startIndex: startIndex,
     activeUrl: req.url,
