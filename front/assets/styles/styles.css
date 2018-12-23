@@ -272,6 +272,9 @@ main {
   grid-template-rows: auto auto;
   padding-top: 24px;
 }
+main ul li {
+  margin-bottom: 15px;
+}
 main article {
   grid-column: 1;
   grid-row: 1;

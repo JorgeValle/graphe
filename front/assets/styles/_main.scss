@@ -4,6 +4,13 @@ main {
   Aside element is styled through sidebar.scss
   */
 
+  ul {
+
+    li{
+      margin-bottom: $base-unit * fibonacci(4);
+    }
+  }
+
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: auto auto;
