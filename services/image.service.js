@@ -3,220 +3,92 @@
 const dateService = require('../services/date.service');
 
 // Dictionary that maps week number to seasonally-appropriate phot
-const imageMap = {
-  1: {
-    name: 'amsterdam-train',
-    description: 'A train arrives at Schipol airport'
-  },
-  2: {
-    name: 'yale-library',
-    description: 'The interior of Beinecke Library in Yale University'
-  },
-  3: {
-    name: 'yale-hallway',
-    description: 'A hallway in Sterling Memorial Library in Yale University'
-  },
-  4: {
-   name: 'yale-courtyard',
-   description: 'One of the many beautiful courtyards at Yale University' 
-  },
-  5: {
-    name: 'new-york-stock-exchange',
-    description: 'The NYSE, as seen from Wall St.'
-  },
-  6: {
-    name: 'yale-courtyard',
-    description: 'One of the many beautiful courtyards at Yale University'
-  },
-  7: {
-    name: 'graz-mountain',
-    description: 'View of highway and mountains near Graz'
-  },
-  8: {
-    name: 'bridgeport-beach',
-    description: "A view from St.Mary's by the Sea, in Bridgeport"
-  },
-  9: {
-    name: 'krk-bay',
-    description: 'Overlooking a bay on the island of Krk, in Istria' 
-  },
-  10: {
-    name: 'krk-beach',
-    description: 'Looking out towards the Adriatic, from a beach in Krk'
-  },
-  11: {
-    name: 'yale-footpath',
-    description: 'A footpath near Malone Engineering Center, in Yale'
-  },
-  12: {
-    name: 'amsterdam-train',
-    description: 'A train arrives at Schipol airport'
-  },
-  13: {
-    name: 'yale-library',
-    description: 'The interior of Beinecke Library in Yale University'
-  },
-  14: {
-    name: 'yale-hallway',
-    description: 'A hallway in Sterling Memorial Library in Yale University'
-  },
-  15: {
-   name: 'yale-courtyard',
-   description: 'One of the many beautiful courtyards at Yale University' 
-  },
-  16: {
-    name: 'new-york-stock-exchange',
-    description: 'The NYSE, as seen from Wall St.'
-  },
-  17: {
-    name: 'yale-courtyard',
-    description: 'One of the many beautiful courtyards at Yale University'
-  },
-  18: {
-    name: 'graz-mountain',
-    description: 'View of highway and mountains near Graz'
-  },
-  19: {
-    name: 'bridgeport-beach',
-    description: "A view from St.Mary's by the Sea, in Bridgeport"
-  },
-  20: {
-    name: 'krk-marina',
-    description: 'Looking towards Krk old town, from the marina' 
-  },
-  21: {
-    name: 'krk-beach',
-    description: 'Looking out towards the Adriatic, from a beach in Krk'
-  },
-  22: {
-    name: 'krk-bay',
-    description: 'Overlooking a bay on the island of Krk, in Istria' 
-  },
-  23: {
-    name: 'amsterdam-train',
-    description: 'A train arrives at Schipol airport'
-  },
-  24: {
-    name: 'yale-library',
-    description: 'The interior of Beinecke Library in Yale University'
-  },
-  25: {
-    name: 'yale-hallway',
-    description: 'A hallway in Sterling Memorial Library in Yale University'
-  },
-  26: {
-   name: 'yale-courtyard',
-   description: 'One of the many beautiful courtyards at Yale University' 
-  },
-  27: {
-    name: 'new-york-stock-exchange',
-    description: 'The NYSE, as seen from Wall St.'
-  },
-  28: {
-    name: 'yale-courtyard',
-    description: 'One of the many beautiful courtyards at Yale University'
-  },
-  29: {
-    name: 'graz-mountain',
-    description: 'View of highway and mountains near Graz'
-  },
-  30: {
-    name: 'bridgeport-beach',
-    description: "A view from St.Mary's by the Sea, in Bridgeport"
-  },
-  31: {
-    name: 'krk-bay',
-    description: 'Overlooking a bay on the island of Krk, in Istria' 
-  },
-  32: {
-    name: 'krk-beach',
-    description: 'Looking out towards the Adriatic, from a beach in Krk'
-  },
-  33: {
-    name: 'yale-footpath',
-    description: 'A footpath near Malone Engineering Center, in Yale'
-  },
-  34: {
-    name: 'amsterdam-train',
-    description: 'A train arrives at Schipol airport'
-  },
-  35: {
-    name: 'yale-library',
-    description: 'The interior of Beinecke Library in Yale University'
-  },
-  36: {
-    name: 'yale-hallway',
-    description: 'A hallway in Sterling Memorial Library in Yale University'
-  },
-  37: {
-   name: 'yale-courtyard',
-   description: 'One of the many beautiful courtyards at Yale University' 
-  },
-  38: {
-    name: 'new-york-stock-exchange',
-    description: 'The NYSE, as seen from Wall St.'
-  },
-  39: {
-    name: 'yale-courtyard',
-    description: 'One of the many beautiful courtyards at Yale University'
-  },
-  40: {
-    name: 'graz-mountain',
-    description: 'View of highway and mountains near Graz'
-  },
-  41: {
-    name: 'bridgeport-beach',
-    description: "A view from St.Mary's by the Sea, in Bridgeport"
-  },
-  42: {
-    name: 'krk-marina',
-    description: 'Looking towards Krk old town, from the marina' 
-  },
-  43: {
-    name: 'krk-beach',
-    description: 'Looking out towards the Adriatic, from a beach in Krk'
-  },
-  44: {
-    name: 'yale-footpath',
-    description: 'A footpath near Malone Engineering Center, in Yale'
-  },
-  45: {
-    name: 'amsterdam-train',
-    description: 'A train arrives at Schipol airport'
-  },
-  46: {
-    name: 'yale-library',
-    description: 'The interior of Beinecke Library in Yale University'
-  },
-  47: {
-    name: 'yale-hallway',
-    description: 'A hallway in Sterling Memorial Library in Yale University'
-  },
-  48: {
-   name: 'yale-courtyard',
-   description: 'One of the many beautiful courtyards at Yale University' 
-  },
-  49: {
-    name: 'new-york-stock-exchange',
-    description: 'The NYSE, as seen from Wall St.'
-  },
-  50: {
-    name: 'yale-courtyard',
-    description: 'One of the many beautiful courtyards at Yale University'
-  },
-  51: {
-    name: 'krk-bay',
-    description: 'Overlooking a bay on the island of Krk, in Istria' 
-  },
-  52: {
-    name: 'bridgeport-beach',
-    description: "A view from St.Mary's by the Sea, in Bridgeport"
-  },
-  53: {
-    name: 'krk-marina',
-    description: 'Looking towards Krk old town, from the marina' 
-  }
-};
+let imageMap = {};
+
+imageMap[1] = imageMap[18] = imageMap[35] = imageMap[52] = {
+  name: 'amsterdam-train',
+  description: 'A train arrives at Schipol airport'
+}
+
+imageMap[2] = imageMap[19] = imageMap[36] = imageMap[53] = {
+  name: 'yale-library',
+  description: 'The interior of Beinecke Library in Yale University'
+}
+
+imageMap[3] = imageMap[20] = imageMap[37] = {
+  name: 'yale-hallway',
+  description: 'A hallway in Sterling Memorial Library in Yale University'
+}
+
+imageMap[4] = imageMap[21] = imageMap[38] = {
+  name: 'yale-courtyard',
+  description: 'One of the many beautiful courtyards at Yale University' 
+}
+
+imageMap[5] = imageMap[22] = imageMap[39] = {
+  name: 'new-york-stock-exchange',
+  description: 'The NYSE, as seen from Wall St.'
+}
+
+imageMap[6] = imageMap[23] = imageMap[40] = {
+  name: 'yale-courtyard',
+  description: 'One of the many beautiful courtyards at Yale University'
+}
+
+imageMap[7] = imageMap[24] = imageMap[41] = {
+  name: 'graz-mountain',
+  description: 'View of highway and mountains near Graz'
+}
+
+imageMap[8] = imageMap[25] = imageMap[42] = {
+  name: 'bridgeport-beach',
+  description: "A view from St.Mary's by the Sea, in Bridgeport"
+}
+
+imageMap[9] = imageMap[26] = imageMap[43] = {
+  name: 'krk-bay',
+  description: 'Overlooking a bay on the island of Krk, in Istria' 
+}
+
+imageMap[10] = imageMap[27] = imageMap[44] = {
+  name: 'krk-beach',
+  description: 'Looking out towards the Adriatic, from a beach in Krk'
+}
+
+imageMap[11] = imageMap[28] = imageMap[45] = {
+  name: 'yale-footpath',
+  description: 'A footpath near Malone Engineering Center, in Yale'
+}
+
+imageMap[12] = imageMap[29] = imageMap[46] = {
+  name: 'trieste-caffe',
+  description: 'Books, patrons and coffee in Caffè San Marco, Trieste'
+}
+
+imageMap[13] = imageMap[30] = imageMap[47] = {
+  name: 'brussels-plaza',
+  description: 'Life passes by at the Grand Place in Brussels'
+}
+
+imageMap[14] = imageMap[31] = imageMap[48] = {
+  name: 'new-york-cathedral',
+  description: `After a mass, at St.Patrick's Cathedral in Manhattan`
+}
+
+imageMap[15] = imageMap[32] = imageMap[49] = {
+  name: 'rijeka-port',
+  description: `Panoramic view of the port of Rijeka, Croatia's largest`
+}
+
+imageMap[16] = imageMap[33] = imageMap[50] = {
+  name: 'zagreb-gric',
+  description: `One of the most beautiful parks in Zagreb's Gornji Grad`
+}
+
+imageMap[17] = imageMap[34] = imageMap[51] = {
+  name: 'amsterdam',
+  description: `Amsterdam Centraal station and plaza`
+}
 
 /**
  * Maps a week number to a given image, and returns the dictionary entry for it
