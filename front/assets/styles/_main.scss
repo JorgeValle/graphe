@@ -24,6 +24,14 @@ main {
     padding-left: $base-unit * fibonacci(6);
   }
 
+  section.signup {
+    grid-column: 1;
+    grid-row: 4;
+    padding-right: $base-unit * fibonacci(6);
+    padding-bottom: $base-unit * fibonacci(6);
+    padding-left: $base-unit * fibonacci(6);
+  }
+
   // On medium and wide
   @media screen and (min-width: $break-medium) {
 
@@ -33,6 +41,14 @@ main {
     article {
       grid-column: 2;
       grid-row: 1;
+    }
+
+    section.signup {
+      grid-column: 3;
+      grid-row: 1;
+      padding-right: $base-unit * fibonacci(3);
+      padding-bottom: $base-unit * fibonacci(6);
+      padding-left: $base-unit * fibonacci(3);
     }
   }
 }

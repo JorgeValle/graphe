@@ -12,7 +12,6 @@ block content
   include sidebar
 
   article
-
     each post, index in posts
 
       - if (index >= firstIndex && index <= lastIndex) {
@@ -34,3 +33,5 @@ block content
         button(onclick="location.href='/blog?start=" + String(firstIndex + 10) + "'")
           i.material-icons arrow_forward
       - }
+    
+  include signup

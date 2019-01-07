@@ -27,7 +27,7 @@ aside {
 
     grid-template-columns: 100%;
     grid-template-rows: auto auto;
-    padding-top: $base-unit * fibonacci(5);
+    padding-top: $base-unit * fibonacci(3);
     padding-right: $base-unit * fibonacci(6);
     padding-left: $base-unit * fibonacci(6);
 
@@ -43,6 +43,9 @@ aside {
   
   // On medium and wide
   @media screen and (min-width: $break-medium) {
+
+    position: sticky;
+    top: 0;
 
     background-image: none;
 

@@ -104,7 +104,7 @@ aside div {
   aside {
     grid-template-columns: 100%;
     grid-template-rows: auto auto;
-    padding-top: 24px;
+    padding-top: 9px;
     padding-right: 39px;
     padding-left: 39px;
   }
@@ -292,7 +292,7 @@ main article {
   padding-bottom: 39px;
   padding-left: 39px;
 }
-main section {
+main section.signup {
   grid-column: 1;
   grid-row: 4;
   padding-right: 39px;
@@ -308,9 +308,12 @@ main section {
     grid-column: 2;
     grid-row: 1;
   }
-  main section {
+  main section.signup {
     grid-column: 3;
     grid-row: 1;
+    padding-right: 9px;
+    padding-bottom: 39px;
+    padding-left: 9px;
   }
 }
 
@@ -401,19 +404,34 @@ a:hover {
   text-decoration: none;
 }
 
-input {
-  margin: 0;
-  font-family: inherit;
-  border: 1px solid #c9c9c9;
-  padding: 6px;
-}
-
 .signup i.material-icons {
   padding-right: 9px;
 }
 .signup span {
   padding-right: 15px;
   font-size: 0.9em;
+}
+.signup form {
+  font-family: Roboto;
+}
+.signup form input {
+  margin: 0;
+  border: 1px solid #c9c9c9;
+  padding: 11px;
+  height: 100%;
+  vertical-align: bottom;
+  float: left;
+  width: 55%;
+  box-sizing: content-box;
+}
+.signup form button {
+  float: left;
+  width: 21%;
+  border-left: none;
+  padding-top: 8px;
+  padding-bottom: 9px;
+  height: 100%;
+  box-sizing: content-box;
 }
 
 /*# sourceMappingURL=styles.css.map */

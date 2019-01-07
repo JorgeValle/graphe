@@ -34,10 +34,14 @@ header {
     }
   }
 
+  .social {
+    display: none;
+  }
+
 
   // On medium and wide
   @media screen and (min-width: $break-medium) {
-    grid-template-columns: 34% 55%;
+    grid-template-columns: 34% 55% 21%;
     grid-template-rows: auto;
 
     // The "Jorge Valle" title
@@ -66,6 +70,15 @@ header {
         padding-right: $base-unit * fibonacci(3);
       }
     }
+
+    // The social icons
+    .social {
+      display: block;
+      grid-column: 3;
+      grid-row: 1;
+    }
+
+
   }
 
 }
