@@ -2,11 +2,10 @@ extends layout
 
 block content
 
-  include sidebar
+  include profile
 
-  article
-    h2
-      span Timeline
+  article.content
+    h2 Timeline
     p A selection of events from my professional and personal life.
 
     -var prettify = function(dateString) { var date = new Date(dateString), d = date.getDate(dateString), monthNames = ['January', 'February', 'March', 'April', 'May', 'June','July', 'August', 'September','October', 'November', 'December'],m = monthNames[date.getMonth()],y = date.getFullYear();return m + ' ' + y;}

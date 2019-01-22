@@ -1,5 +1,17 @@
 body {
 
+  font-size: 18px;
+
+  p {
+
+    // Line height
+    line-height: 1.5;
+
+    // Margin
+    margin-bottom: 1.3em;
+  }
+
+
   display: grid;
   margin-left: auto;
   margin-right: auto;
@@ -32,11 +44,11 @@ body {
   // On medium and wide
   @media screen and (min-width: $break-medium) {
 
-    grid-template-columns: 21% 34% 13% 9% 23%; // Last one 23 is not a Fibonacci number
+    grid-template-columns: 21% 34% 13% 9% auto; // Last one 23 is not a Fibonacci number
     grid-template-rows: auto auto auto auto;
 
     header {
-      grid-column: 1 / span 4;
+      grid-column: 1 / span 5;
       grid-row: 1;
     }
   
@@ -57,5 +69,35 @@ body {
     }
 
   }
+
+  // On wide
+  @media screen and (min-width: $break-wide) {
+
+    grid-template-columns: 21% 34% 13% 9% auto; // Last one 23 is not a Fibonacci number
+    grid-template-rows: auto auto auto auto;
+
+    header {
+      grid-column: 1 / span 5;
+      grid-row: 1;
+    }
+  
+    main {
+      grid-column: 1 / span 4;
+      grid-row: 2;
+    }
+
+    .image {
+      grid-column: 1 / span 3;
+      grid-row: 3;
+      display: block;
+    }
+
+    footer {
+      grid-column: 1 / span 4;
+      grid-row: 4;
+    }
+    
+  }
+  
 
 }

@@ -14,8 +14,11 @@
 
     font-family: $sans-serif;
 
-    input {
+    label {
+      display: none;
+    }
 
+    input {
       margin: 0;
       border: 1px solid $light-grey;
       padding: 11px; // Have to get this to Fibonacci later

@@ -2,11 +2,10 @@ extends layout
 
 block content
 
-  include sidebar
+  include profile
 
-  article
-    h2 
-      span Home
+  article.content
+    h2 Home
 
     p I'm a front end developer with a particular interest and expertise in JavaScript and user interfaces. I love the marriage of form and function.
     p Lately, I have been diving into deep learning, and reconnecting with my interest in linear algebra and multivariate calculus. I'm looking forward to blogging more about this journey.
@@ -15,9 +14,7 @@ block content
     p Spam, etc can be sent to #[a(href="mailto:jorge.e.valle@gmail.com") jorge.e.valle@gmail.com].
     p Finally, here's a few projects I've been involved with over the last few years.
 
-    div.
-
-    ul(style="float: left")
+    ul
       li
         a(href="https://www.efficiencyvermont.com/") Efficiency Vermont
       li

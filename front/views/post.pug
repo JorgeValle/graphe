@@ -2,9 +2,9 @@ extends layout
 
 block content
 
-  include sidebar
+  include profile
 
-  article(itemscope, itemtype="http://schema.org/Article")
+  article.content(itemscope, itemtype="http://schema.org/Article")
 
     //- Main title
     h2(itemprop="headline")=title
