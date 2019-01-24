@@ -1,23 +1,36 @@
 header {
 
   display: grid;
-  padding-left: $base-unit * fibonacci(6);
-  padding-right: $base-unit * fibonacci(6);
-  border-bottom: 1px solid $light-grey;
-
   grid-template-columns: 100%;
   grid-template-rows: auto auto;
 
-  // The "Jorge Valle" title
-  .brand {
+  // Padding
+  padding-top: $base-unit * fibonacci(4);
+  padding-right: $base-unit * fibonacci(5);
+  padding-bottom: $base-unit * fibonacci(4);
+  padding-left: $base-unit * fibonacci(5);
+
+  // Border
+  border-bottom: 1px solid $light-grey;
+
+  // The "Jorge Valle" brand
+  div.brand {
+
     grid-column: 1;
     grid-row: 1;
-    font-size: 1.8em;
-    line-height: 1.1em;
+
+    h1 {
+      font-size: 1.8em;
+      line-height: 1.1em;
+
+      // Margin
+      margin-bottom: $base-unit * fibonacci(3);
+    }
+
   }
 
   // The nav links
-  .main-nav {
+  nav.main-nav {
 
     grid-column: 1;
     grid-row: 2;
@@ -37,56 +50,39 @@ header {
     }
   }
 
-  .social {
-    display: none;
-  }
-
-
-  // On medium and wide
+  // On medium
   @media screen and (min-width: $break-medium) {
 
-    grid-template-columns: 34% 55% 21% auto;
+    grid-template-columns: 21% 13% 34% 8% auto;
     grid-template-rows: auto;
 
-    // The "Jorge Valle" title
-    .brand {
-      grid-column: 1;
+    div.brand {
+      grid-column: 1 / span 2;
       grid-row: 1;
     }
 
     // The nav links
-
-    .main-nav {
-
-      grid-column: 2;
-      grid-row: 1;
-
-      padding-left: $base-unit * fibonacci(5);
-
-      ul {
-
-        list-style-type: none;  
-
-        li {
-          display: inline;
-          padding-right: $base-unit * fibonacci(4);
-        }
-  
-        li:not(:first-child) {
-          padding-right: $base-unit * fibonacci(3);
-        }
-      }
-    }
-    
-
-    // The social icons
-    .social {
-      display: block;
-      grid-column: 3;
+    nav.main-nav {
+      grid-column: 3 / span 3;
       grid-row: 1;
     }
-
-
   }
 
+  // On wide
+  @media screen and (min-width: $break-wide) {
+
+    grid-template-columns: 21% 34% 13% 8% auto;
+    grid-template-rows: auto;
+
+    div.brand {
+      grid-column: 1 / span 2;
+      grid-row: 1;
+    }
+
+    // The nav links
+    nav.main-nav {
+      grid-column: 2;
+      grid-row: 1;
+    }
+  }
 }

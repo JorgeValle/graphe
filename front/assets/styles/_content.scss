@@ -1,3 +1,15 @@
 article.content {
 
+  // Padding
+  padding-top: $base-unit * fibonacci(5);
+  padding-right: $base-unit * fibonacci(5);
+  padding-bottom: $base-unit * fibonacci(6);
+  padding-left: $base-unit * fibonacci(5);
+
+  // Headings
+  h2,
+  h3 {
+    margin-bottom: $base-unit * fibonacci(4);
+  }
+
 }

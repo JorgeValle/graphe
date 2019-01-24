@@ -1,17 +1,19 @@
+// The profile, with Jorge's bio
 aside.profile {
 
-  background-color: $practically-white;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23#{$white}' fill-opacity='0.13' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
-  grid-column: 1;
-  grid-row: 2;
-
-  display: grid;
+  display: grid !important;
   grid-template-columns: 100%;
-  grid-template-rows: auto;
+  grid-template-rows: auto auto;
 
+  // Backgrounds
+  background-color: $practically-white;
+  background-image: $diagonals;
+
+  // Padding
   padding-top: $base-unit * fibonacci(5);
-  padding-right: $base-unit * fibonacci(6);
-  padding-left: $base-unit * fibonacci(6);
+  padding-right: $base-unit * fibonacci(5);
+  padding-bottom: $base-unit * fibonacci(5);
+  padding-left: $base-unit * fibonacci(5);
 
   img {
     display: none;
@@ -21,52 +23,24 @@ aside.profile {
     grid-row: 1;
     grid-column: 1;
   }
-
-  // On narrow
-  @media screen and (min-width: $break-narrow) {
-
-    grid-template-columns: 100%;
-    grid-template-rows: auto auto;
-    padding-top: $base-unit * fibonacci(3);
-    padding-right: $base-unit * fibonacci(6);
-    padding-left: $base-unit * fibonacci(6);
-
-    img {
-      display: none;
-    }
-
-    div {
-      grid-row: 1;
-      grid-column: 1;
-    }
-  }
   
   // On medium and wide
   @media screen and (min-width: $break-medium) {
 
-    position: sticky;
-    top: 0;
-
-    background-image: none;
-
-    grid-template-columns: 100%;
-    grid-template-rows: auto auto;
-
-    grid-column: 1;
-    grid-row: 1;
-
     grid-template-columns: 100%;
     grid-template-rows: ($base-unit * fibonacci(9)) auto;
-    padding-right: $base-unit * fibonacci(6);
-    padding-bottom: $base-unit * fibonacci(4);
-    padding-left: $base-unit * fibonacci(6);
+
+    // Backgrounds
+    background-image: none;
 
     img {
       display: block;
       grid-column: 1;
       grid-row: 1;
       height: 89%;
-      max-height: 89%;
+      max-height: 100%;
+      // margin: 0 auto;
+      // border-radius: 50%;
     }
 
     div {

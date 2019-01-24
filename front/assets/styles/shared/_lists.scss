@@ -1,3 +1,11 @@
-li:not(first) {
-  margin-top: 5px;
+ul {
+
+  li:not(first) {
+    margin-top: 5px;
+  }
+
+  &.unbulleted {
+    list-style-type: none;
+  }
+
 }

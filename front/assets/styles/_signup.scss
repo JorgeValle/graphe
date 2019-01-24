@@ -1,15 +1,26 @@
-.signup {
+section.signup {
+
+  // Padding
+  padding-top: $base-unit * fibonacci(5);
+  padding-right: $base-unit * fibonacci(5);
+  padding-bottom: $base-unit * fibonacci(6);
+  padding-left: $base-unit * fibonacci(5);
 
   i.material-icons {
-    padding-right: $base-unit * fibonacci(3);
+    padding-right: $base-unit * fibonacci(2);
     display: inline;
   }
 
   span {
-    padding-right: $base-unit * fibonacci(4);
+    padding-right: $base-unit * fibonacci(3);
     font-size: 0.9em;
   }
 
+  h3 {
+    margin-bottom: $base-unit * fibonacci(4);
+  }
+
+  // The form
   form {
 
     font-family: $sans-serif;
@@ -21,11 +32,10 @@
     input {
       margin: 0;
       border: 1px solid $light-grey;
-      padding: 11px; // Have to get this to Fibonacci later
+      padding: $base-unit * fibonacci(3);
       height: 100%;
       vertical-align: bottom;
-      float: left;
-      width: 100%;
+      width: 89%;
       box-sizing: content-box;
       border-radius: 0;
     }
@@ -38,19 +48,12 @@
       padding-bottom: 9px; // Have to get this to Fibonacci later
       height: 75%;
       box-sizing: content-box;
-
     }
-
   }
 
-  // On wide
+  // On medium and wide
   @media screen and (min-width: $break-medium) {
 
-    display: inline;
-
-    input {
-      width: 100%;
-    }
 
   }
   

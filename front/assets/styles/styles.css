@@ -37,8 +37,12 @@ body {
   font-family: Roboto, sans-serif;
   font-size: 18px;
   font-weight: 300;
-  line-height: 1.5em;
+  line-height: 1.5;
   color: #1c1c1c;
+}
+
+p {
+  margin-bottom: 1.2em;
 }
 
 a {
@@ -190,16 +194,9 @@ a:hover {
 }
 
 body {
-  font-size: 18px;
-  display: grid;
-  margin-left: auto;
-  margin-right: auto;
+  display: grid !important;
   grid-template-columns: 100%;
   grid-template-rows: auto auto auto auto;
-}
-body p {
-  line-height: 1.5;
-  margin-bottom: 1.3em;
 }
 body header {
   grid-column: 1;
@@ -220,7 +217,7 @@ body footer {
 }
 @media screen and (min-width: 800px) {
   body {
-    grid-template-columns: 21% 34% 13% 9% auto;
+    grid-template-columns: 21% 34% 13% 8% auto;
     grid-template-rows: auto auto auto auto;
   }
   body header {
@@ -228,11 +225,11 @@ body footer {
     grid-row: 1;
   }
   body main {
-    grid-column: 1/span 4;
+    grid-column: 1/span 5;
     grid-row: 2;
   }
   body .image {
-    grid-column: 1/span 3;
+    grid-column: 1/span 4;
     grid-row: 3;
     display: block;
   }
@@ -243,7 +240,7 @@ body footer {
 }
 @media screen and (min-width: 1100px) {
   body {
-    grid-template-columns: 21% 34% 13% 9% auto;
+    grid-template-columns: 21% 34% 13% 8% auto;
     grid-template-rows: auto auto auto auto;
   }
   body header {
@@ -251,7 +248,7 @@ body footer {
     grid-row: 1;
   }
   body main {
-    grid-column: 1/span 4;
+    grid-column: 1/span 5;
     grid-row: 2;
   }
   body .image {
@@ -267,131 +264,137 @@ body footer {
 
 header {
   display: grid;
-  padding-left: 39px;
-  padding-right: 39px;
-  border-bottom: 1px solid #c9c9c9;
   grid-template-columns: 100%;
   grid-template-rows: auto auto;
+  padding-top: 15px;
+  padding-right: 24px;
+  padding-bottom: 15px;
+  padding-left: 24px;
+  border-bottom: 1px solid #c9c9c9;
 }
-header .brand {
+header div.brand {
   grid-column: 1;
   grid-row: 1;
+}
+header div.brand h1 {
   font-size: 1.8em;
   line-height: 1.1em;
+  margin-bottom: 9px;
 }
-header .main-nav {
+header nav.main-nav {
   grid-column: 1;
   grid-row: 2;
 }
-header .main-nav ul {
+header nav.main-nav ul {
   list-style-type: none;
 }
-header .main-nav ul li {
+header nav.main-nav ul li {
   display: inline;
   padding-right: 15px;
 }
-header .main-nav ul li:not(:first-child) {
+header nav.main-nav ul li:not(:first-child) {
   padding-right: 9px;
-}
-header .social {
-  display: none;
 }
 @media screen and (min-width: 800px) {
   header {
-    grid-template-columns: 34% 55% 21% auto;
+    grid-template-columns: 21% 13% 34% 8% auto;
     grid-template-rows: auto;
   }
-  header .brand {
-    grid-column: 1;
+  header div.brand {
+    grid-column: 1/span 2;
     grid-row: 1;
   }
-  header .main-nav {
+  header nav.main-nav {
+    grid-column: 3/span 3;
+    grid-row: 1;
+  }
+}
+@media screen and (min-width: 1100px) {
+  header {
+    grid-template-columns: 21% 34% 13% 8% auto;
+    grid-template-rows: auto;
+  }
+  header div.brand {
+    grid-column: 1/span 2;
+    grid-row: 1;
+  }
+  header nav.main-nav {
     grid-column: 2;
-    grid-row: 1;
-    padding-left: 24px;
-  }
-  header .main-nav ul {
-    list-style-type: none;
-  }
-  header .main-nav ul li {
-    display: inline;
-    padding-right: 15px;
-  }
-  header .main-nav ul li:not(:first-child) {
-    padding-right: 9px;
-  }
-  header .social {
-    display: block;
-    grid-column: 3;
     grid-row: 1;
   }
 }
 
 main {
-  /*
-  Aside element is styled through sidebar.scss
-  */
-  display: grid;
+  display: grid !important;
   grid-template-columns: 100%;
   grid-template-rows: auto auto auto;
-  margin-top: 24px;
-}
-main ul li {
-  margin-bottom: 15px;
-}
-main h2,
-main h3 {
-  margin-bottom: 15px;
-}
-main h3 {
-  margin-top: 24px;
-}
-main time {
-  margin-bottom: 15px;
 }
 main article.content {
   grid-column: 1;
   grid-row: 1;
-  padding-right: 39px;
-  margin-bottom: 39px;
-  padding-left: 39px;
 }
 main section.signup {
   grid-column: 1;
   grid-row: 4;
-  padding-right: 39px;
-  margin-bottom: 39px;
-  padding-left: 39px;
 }
 @media screen and (min-width: 800px) {
   main {
-    grid-template-columns: 34% 55% 21% auto;
+    grid-template-columns: 21% 13% 34% 8% auto;
     grid-template-rows: auto auto;
   }
+  main aside.profile {
+    grid-column: 1/span 2;
+    grid-row: 1;
+  }
   main article.content {
-    grid-column: 2;
+    grid-column: 3/span 3;
     grid-row: 1;
   }
   main section.signup {
-    grid-column: 3;
+    grid-column: 3/span 3;
+    grid-row: 2;
+  }
+}
+@media screen and (min-width: 1100px) {
+  main {
+    grid-template-columns: 21% 34% 13% 8% auto;
+    grid-template-rows: auto auto;
+  }
+  main aside.profile {
+    grid-column: 1;
     grid-row: 1;
-    padding-right: 9px;
-    margin-bottom: 39px;
-    padding-left: 9px;
+  }
+  main article.content {
+    grid-column: 2/span 2;
+    grid-row: 1;
+  }
+  main section.signup {
+    grid-column: 4/span 2;
+    grid-row: 1;
   }
 }
 
-aside.profile {
-  background-color: #fcfcfc;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23#ffffff' fill-opacity='0.13' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
-  grid-column: 1;
-  grid-row: 2;
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: auto;
+article.content {
   padding-top: 24px;
-  padding-right: 39px;
-  padding-left: 39px;
+  padding-right: 24px;
+  padding-bottom: 39px;
+  padding-left: 24px;
+}
+article.content h2,
+article.content h3 {
+  margin-bottom: 15px;
+}
+
+aside.profile {
+  display: grid !important;
+  grid-template-columns: 100%;
+  grid-template-rows: auto auto;
+  background-color: #fcfcfc;
+  background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23#ffffff' fill-opacity='0.09' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+  padding-top: 24px;
+  padding-right: 24px;
+  padding-bottom: 24px;
+  padding-left: 24px;
 }
 aside.profile img {
   display: none;
@@ -400,43 +403,18 @@ aside.profile div {
   grid-row: 1;
   grid-column: 1;
 }
-@media screen and (min-width: 320px) {
-  aside.profile {
-    grid-template-columns: 100%;
-    grid-template-rows: auto auto;
-    padding-top: 9px;
-    padding-right: 39px;
-    padding-left: 39px;
-  }
-  aside.profile img {
-    display: none;
-  }
-  aside.profile div {
-    grid-row: 1;
-    grid-column: 1;
-  }
-}
 @media screen and (min-width: 800px) {
   aside.profile {
-    position: sticky;
-    top: 0;
-    background-image: none;
-    grid-template-columns: 100%;
-    grid-template-rows: auto auto;
-    grid-column: 1;
-    grid-row: 1;
     grid-template-columns: 100%;
     grid-template-rows: 165px auto;
-    padding-right: 39px;
-    padding-bottom: 15px;
-    padding-left: 39px;
+    background-image: none;
   }
   aside.profile img {
     display: block;
     grid-column: 1;
     grid-row: 1;
     height: 89%;
-    max-height: 89%;
+    max-height: 100%;
   }
   aside.profile div {
     grid-column: 1;
@@ -444,32 +422,40 @@ aside.profile div {
   }
 }
 
-.signup i.material-icons {
-  padding-right: 9px;
+section.signup {
+  padding-top: 24px;
+  padding-right: 24px;
+  padding-bottom: 39px;
+  padding-left: 24px;
+}
+section.signup i.material-icons {
+  padding-right: 6px;
   display: inline;
 }
-.signup span {
-  padding-right: 15px;
+section.signup span {
+  padding-right: 9px;
   font-size: 0.9em;
 }
-.signup form {
+section.signup h3 {
+  margin-bottom: 15px;
+}
+section.signup form {
   font-family: Roboto;
 }
-.signup form label {
+section.signup form label {
   display: none;
 }
-.signup form input {
+section.signup form input {
   margin: 0;
   border: 1px solid #c9c9c9;
-  padding: 11px;
+  padding: 9px;
   height: 100%;
   vertical-align: bottom;
-  float: left;
-  width: 100%;
+  width: 89%;
   box-sizing: content-box;
   border-radius: 0;
 }
-.signup form button {
+section.signup form button {
   float: left;
   width: 21%;
   border-left: none;
@@ -478,22 +464,13 @@ aside.profile div {
   height: 75%;
   box-sizing: content-box;
 }
-@media screen and (min-width: 800px) {
-  .signup {
-    display: inline;
-  }
-  .signup input {
-    width: 100%;
-  }
-}
-
 footer {
   color: #1c1c1c;
   display: grid;
   padding-top: 15px;
-  padding-right: 39px;
-  padding-bottom: 15px;
-  padding-left: 39px;
+  padding-right: 24px;
+  padding-bottom: 24px;
+  padding-left: 24px;
 }
 footer hr {
   border: 0;
