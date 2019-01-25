@@ -2,8 +2,10 @@ extends layout
 
 block content
 
+  // Jorge's profile
   include profile
 
+  // The homepage
   article.content
     h2 Home
 
@@ -13,6 +15,8 @@ block content
     p #[a(href="/blog", title="Posts focusing on JavaScript, deep learning, and web development") Reading my blog] is always a good way to check out where my mind is at. I write about what I know, what I'm learning, and what I'm exploring.
     p If you'd like to reach out, you can do so directly at #[a(href="mailto:jorge.e.valle@gmail.com") jorge.e.valle@gmail.com].
     p Finally, here's a few projects I've been involved with over the last few years.
+    p This blog is to be read as part of my research and 
+    p I'm telling you what I know, but I'm also trying to figure things out. This blog is my main vehicle through which I'm doing that.
 
     ul
       li
@@ -23,5 +27,6 @@ block content
         a(href="https://www.sipi.app") Sipi
       li
         a(href="http://efficiencysmart.org/") Efficiency Smart
-  
-  include signup
+
+  // The sidebar
+  include sidebar

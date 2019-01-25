@@ -1,5 +1,5 @@
 // The profile, with Jorge's bio
-aside.profile {
+section.profile {
 
   display: grid !important;
   grid-template-columns: 100%;
@@ -33,14 +33,18 @@ aside.profile {
     // Backgrounds
     background-image: none;
 
+    // Padding
+    padding-top: $base-unit * fibonacci(5);
+    padding-right: $base-unit * fibonacci(5);
+    padding-bottom: none;
+    padding-left: $base-unit * fibonacci(5);
+
     img {
       display: block;
       grid-column: 1;
       grid-row: 1;
       height: 89%;
       max-height: 100%;
-      // margin: 0 auto;
-      // border-radius: 50%;
     }
 
     div {

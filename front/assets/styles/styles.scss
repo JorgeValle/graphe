@@ -4,9 +4,9 @@
 // Shared
 @import 'shared/media-queries';
 @import 'shared/colors';
-@import 'shared/typography';
 @import 'shared/spacing';
 @import 'shared/functions';
+@import 'shared/typography';
 @import 'shared/backgrounds';
 @import 'shared/borders';
 @import 'shared/shadows';
@@ -21,6 +21,7 @@
 @import 'shared/hr';
 @import 'shared/pagination';
 @import 'shared/state';
+@import 'shared/lists';
 
 // Components
 @import 'body';
@@ -28,6 +29,6 @@
 @import 'main';
 @import 'content';
 @import 'profile';
-@import 'signup';
+@import 'sidebar';
 @import 'blog';
 @import 'footer';

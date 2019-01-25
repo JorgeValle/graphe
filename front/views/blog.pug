@@ -9,15 +9,17 @@ block content
   -var firstIndex = parseInt(startIndex)
   -var lastIndex = firstIndex + 9
 
+  // Jorge's profile
   include profile
 
+  // The blog query
   article.content
     each post, index in posts
 
       - if (index >= firstIndex && index <= lastIndex) {
           a(href=`/blog/${post.content.slug}`, title=post.content.title)
             h2 #{post.content.title}
-          em
+          em.post-date
             time #{prettify(post.date.created)}
           div !{post.content.description}
       - }
@@ -33,5 +35,6 @@ block content
         button(onclick="location.href='/blog?start=" + String(firstIndex + 10) + "'")
           i.material-icons arrow_forward
       - }
-    
-  include signup
+  
+  // Sidebar area
+  include sidebar

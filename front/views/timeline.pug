@@ -2,8 +2,10 @@ extends layout
 
 block content
 
+  // Jorge's profile
   include profile
 
+  // The timeline
   article.content
     h2 Timeline
     p A selection of events from my professional and personal life.
@@ -21,5 +23,6 @@ block content
             td
               time(datetime="!{event.content.date}") #{prettify(event.content.date)}
             td !{event.content.name}
-            
-  include signup
+
+  // The sidebar area
+  include sidebar

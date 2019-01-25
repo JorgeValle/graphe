@@ -3,7 +3,7 @@ article.content {
   // Padding
   padding-top: $base-unit * fibonacci(5);
   padding-right: $base-unit * fibonacci(5);
-  padding-bottom: $base-unit * fibonacci(6);
+  padding-bottom: $base-unit * fibonacci(5);
   padding-left: $base-unit * fibonacci(5);
 
   // Headings
@@ -11,5 +11,31 @@ article.content {
   h3 {
     margin-bottom: $base-unit * fibonacci(4);
   }
+
+  // Time
+  em.post-date {
+    display: block;
+    margin-bottom: $base-unit * fibonacci(5);
+  }
+
+  // The article index
+  nav.index {
+
+    ul {
+
+      // Margin
+      margin-bottom: $base-unit * fibonacci(5);
+    }
+  }
+
+  // The post body
+  div.post-body {
+    h3 {
+      margin-top: $base-unit * fibonacci(6);
+    }
+
+  }
+
+
 
 }
