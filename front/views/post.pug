@@ -2,31 +2,35 @@ extends layout
 
 block content
 
-  include sidebar
+  // Jorge's profile
+  include profile
 
-  article(itemscope, itemtype="http://schema.org/Article")
+  // The content of the blog post
+  article.content(itemscope, itemtype="http://schema.org/Article")
 
     //- Main title
-    h2(itemprop="headline")=title
+    h1.post-title(itemprop="headline")=title
 
     //- Published date
-    em
+    em.post-date
       time(itemprop="datePublished") #{date}
 
     //- The index when present
     -if (index)
-      h3 Index
-      div !{index}
+      div.index
+        h2 Index
+        nav !{index}
 
     //- The body, which is always present
-    div !{body}
+    div.post-body !{body}
 
     //- The references, if present
     -if (references)
       div !{references}
 
+    hr
+    
     section.social-sharing
-      hr
       h3
         i.material-icons share
         span Share the post
@@ -45,4 +49,5 @@ block content
         window.open('https://www.linkedin.com/shareArticle?mini=true&url=' + '#{canonicalUrl}' + '&title=' + '#{title}' + '&summary=' + '#{description}' + '&source=JorgeValle.com', '_blank');
       }
   
-  include signup
+  // The sidebar area
+  include sidebar

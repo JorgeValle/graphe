@@ -2,11 +2,12 @@ extends layout
 
 block content
 
-  include sidebar
+  // Jorge's profile
+  include profile
 
-  article
-    h2
-      span Timeline
+  // The timeline
+  article.content
+    h1.post-title Timeline
     p A selection of events from my professional and personal life.
 
     -var prettify = function(dateString) { var date = new Date(dateString), d = date.getDate(dateString), monthNames = ['January', 'February', 'March', 'April', 'May', 'June','July', 'August', 'September','October', 'November', 'December'],m = monthNames[date.getMonth()],y = date.getFullYear();return m + ' ' + y;}
@@ -22,5 +23,6 @@ block content
             td
               time(datetime="!{event.content.date}") #{prettify(event.content.date)}
             td !{event.content.name}
-            
-  include signup
+
+  // The sidebar area
+  include sidebar

@@ -1,0 +1,18 @@
+ul {
+
+  // Padding
+  padding-left: $base-unit * fibonacci(5);
+
+  li {
+    margin-bottom: $base-unit * fibonacci(2);
+  }
+
+  // li:not(first) {
+  //   margin-top: $base-unit *;
+  // }
+
+  &.unbulleted {
+    list-style-type: none;
+  }
+
+}

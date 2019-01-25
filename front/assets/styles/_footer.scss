@@ -3,9 +3,9 @@ footer {
   color: $dark-grey;
   display: grid;
   padding-top: $base-unit * fibonacci(4);
-  padding-right: $base-unit * fibonacci(6);
-  padding-bottom: $base-unit * fibonacci(4);
-  padding-left: $base-unit * fibonacci(6);
+  padding-right: $base-unit * fibonacci(5);
+  padding-bottom: $base-unit * fibonacci(5);
+  padding-left: $base-unit * fibonacci(5);
 
   // @include cast-shadow($main-shadow);
 

@@ -1,0 +1,55 @@
+article.content {
+
+  // Padding
+  padding-top: $base-unit * fibonacci(5);
+  padding-right: $base-unit * fibonacci(5);
+  padding-bottom: $base-unit * fibonacci(5);
+  padding-left: $base-unit * fibonacci(5);
+
+  h1.post-title {
+    margin-bottom: $base-unit * fibonacci(2);
+    font-size: 1.4em;
+  }
+
+  h2,
+  h3 {
+    font-size: 1.2em;
+  }
+
+  // Time
+  em.post-date {
+    display: block;
+    margin-bottom: $base-unit * fibonacci(5);
+  }
+
+  // The article index
+  div.index {
+
+    h2 {
+      margin-bottom: $base-unit * fibonacci(3);
+    }
+
+    ul {
+      // Margin
+      margin-bottom: $base-unit * fibonacci(5);
+    }
+
+
+  }
+
+  // The post body
+  div.post-body {
+
+    // Padding
+    padding-bottom: $base-unit * fibonacci(3);
+    
+    h2,
+    h3 {
+      margin-bottom: $base-unit * fibonacci(3);
+    }
+
+  }
+
+
+
+}

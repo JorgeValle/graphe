@@ -1,78 +1,63 @@
-aside {
+// The sidebar
+aside.sidebar {
 
-  background-color: $practically-white;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23#{$white}' fill-opacity='0.13' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
-  grid-column: 1;
-  grid-row: 2;
-
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: auto;
-
+  // Padding
   padding-top: $base-unit * fibonacci(5);
-  padding-right: $base-unit * fibonacci(6);
-  padding-left: $base-unit * fibonacci(6);
+  padding-right: $base-unit * fibonacci(5);
+  padding-bottom: $base-unit * fibonacci(6);
+  padding-left: $base-unit * fibonacci(5);
 
-  img {
-    display: none;
+  i.material-icons {
+    padding-right: $base-unit * fibonacci(2);
+    display: inline;
   }
 
-  div {
-    grid-row: 1;
-    grid-column: 1;
+  span {
+    padding-right: $base-unit * fibonacci(3);
+    font-size: 0.9em;
   }
 
-  // On narrow
-  @media screen and (min-width: $break-narrow) {
+  h3 {
+    margin-bottom: $base-unit * fibonacci(4);
+  }
 
-    grid-template-columns: 100%;
-    grid-template-rows: auto auto;
-    padding-top: $base-unit * fibonacci(3);
-    padding-right: $base-unit * fibonacci(6);
-    padding-left: $base-unit * fibonacci(6);
+  // The signup section
+  .signup {
+    // The form
+    form {
 
-    img {
-      display: none;
+      font-family: $sans-serif;
+
+      label {
+        display: none;
+      }
+
+      input {
+        margin: 0;
+        border: 1px solid $light-grey;
+        padding: $base-unit * fibonacci(3);
+        height: 100%;
+        vertical-align: bottom;
+        width: 89%;
+        box-sizing: content-box;
+        border-radius: 0;
+      }
     }
-
-    div {
-      grid-row: 1;
-      grid-column: 1;
-    }
   }
-  
+
+  // The news section
+  .news {
+
+    // Margin
+    margin-top: $base-unit * fibonacci(6);
+
+  }
+
+
   // On medium and wide
   @media screen and (min-width: $break-medium) {
 
-    position: sticky;
-    top: 0;
 
-    background-image: none;
-
-    grid-template-columns: 100%;
-    grid-template-rows: auto auto;
-
-    grid-column: 1;
-    grid-row: 1;
-
-    grid-template-columns: 100%;
-    grid-template-rows: ($base-unit * fibonacci(9)) auto;
-    padding-right: $base-unit * fibonacci(6);
-    padding-bottom: $base-unit * fibonacci(4);
-    padding-left: $base-unit * fibonacci(6);
-
-    img {
-      display: block;
-      grid-column: 1;
-      grid-row: 1;
-      height: 89%;
-      max-height: 89%;
-    }
-
-    div {
-      grid-column: 1;
-      grid-row: 2;
-    }
   }
   
 }

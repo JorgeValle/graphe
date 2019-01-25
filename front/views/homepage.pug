@@ -2,22 +2,21 @@ extends layout
 
 block content
 
-  include sidebar
+  // Jorge's profile
+  include profile
 
-  article
-    h2 
-      span Home
+  // The homepage
+  article.content
+    h1.post-title Home
 
-    p I'm a front end developer with a particular interest and expertise in JavaScript and user interfaces. I love the marriage of form and function.
-    p Lately, I have been diving into deep learning, and reconnecting with my interest in linear algebra and multivariate calculus. I'm looking forward to blogging more about this journey.
+    p I'm a front end developer with a particular interest and expertise in JavaScript and user interfaces. I love the marriage of form and function at the heart of user interface development.
+    p Lately, I have also been diving into deep learning, and frameworks like TensorFlow. I've been studying a lot of linear algebra, multivariate calculus, and principal component analysis, and how these all relate to machine learning; I'm really looking forward to blogging more about this journey.
     p A good place to keep up to date with what I'm doing is #[a(href="https://github.com/JorgeValle", title="Where many of my applications live" ) my Github page], where a lot of my software lives. I can also be reached on #[a(href="https://stackoverflow.com/users/3371677/jorge-valle", title="Where I ask and answer questions regarding software" ) my Stack Overflow page]. I'm mostly active on posts tagged with JavaScript and front end.
-    p #[a(href="/blog", title="Posts focusing on JavaScript, deep learning, and web development") Reading my blog] is always a good way to check out where my mind is at. I write about what I know, what I'm learning, and what I'm exploring.
-    p Spam, etc can be sent to #[a(href="mailto:jorge.e.valle@gmail.com") jorge.e.valle@gmail.com].
-    p Finally, here's a few projects I've been involved with over the last few years.
+    p #[a(href="/blog", title="Posts focusing on JavaScript, deep learning, and web development") Reading my blog] is always a good way to check out where my mind is at. I write about what I know, but also about what I'm learning. As such my blog is the primary vehicle through which I figure things out.
+    p If you'd like to reach out, you can do so directly at #[a(href="mailto:jorge.e.valle@gmail.com") jorge.e.valle@gmail.com].
+    p Finally, here are a few projects I've been involved with over the last few years.
 
-    div.
-
-    ul(style="float: left")
+    ul
       li
         a(href="https://www.efficiencyvermont.com/") Efficiency Vermont
       li
@@ -26,5 +25,6 @@ block content
         a(href="https://www.sipi.app") Sipi
       li
         a(href="http://efficiencysmart.org/") Efficiency Smart
-  
-  include signup
+
+  // The sidebar
+  include sidebar

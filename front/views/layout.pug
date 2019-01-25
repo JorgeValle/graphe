@@ -17,13 +17,11 @@ html(lang="en")
 
     include header
 
-    div.image
-      img(src=`/front/assets/images/dist/${headerImage.name}.jpg`, alt=headerImage.description, title=headerImage.description)
-
     main
       block content
 
-    //- include signature
+    div.image
+      img(src=`/front/assets/images/dist/${headerImage.name}.jpg`, alt=headerImage.description, title=headerImage.description)
 
     include footer
 

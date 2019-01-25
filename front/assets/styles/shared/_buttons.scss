@@ -8,6 +8,9 @@ button {
   font-size: 0.9em;
   padding: $base-unit * fibonacci(2);
 
+  // Transitions
+  transition-duration: 0.4s;
+
   &:hover,
   i:hover {
     color: $white;

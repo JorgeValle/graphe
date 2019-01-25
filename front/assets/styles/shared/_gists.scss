@@ -1,0 +1,17 @@
+main {
+
+  .gist {
+
+    // Shadows
+    box-shadow: $light-shadow;
+
+    .gist-meta {
+      display: none;
+    }
+
+    .gist-file {
+      border: none;
+    }
+
+  }
+}
