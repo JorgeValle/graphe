@@ -1,6 +1,5 @@
 .mjx-chtml {
   font-family: Domine !important;
-  // margin: 20px 0 15px !important;
 }
 
 main {
@@ -15,7 +14,11 @@ main {
     background-color: $white;
 
     // Margin
-    margin-bottom: $base-unit * fibonacci(4);
+    margin-top: $base-unit * fibonacci(5);
+    margin-bottom: $base-unit * fibonacci(5);
+
+    // Shadows
+    box-shadow: $light-shadow;
 
     // Math content
     div.math {
@@ -24,7 +27,7 @@ main {
       overflow-x: auto;
     }
 
-    // 
+    // Code content
     div.code {
       grid-column: 1;
       grid-row: 2;

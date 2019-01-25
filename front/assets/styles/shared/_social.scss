@@ -1,7 +1,8 @@
 .social-sharing {
 
-  padding-top: $base-unit * fibonacci(3);
-  padding-bottom: $base-unit * fibonacci(5);
+  // Padding
+  padding-top: $base-unit * fibonacci(4);
+  padding-bottom: $base-unit * fibonacci(4);
   font-family: $sans-serif;
 
   i.material-icons {
@@ -17,5 +18,9 @@
   button {
     padding: $base-unit * fibonacci(4);
     margin-right: $base-unit * fibonacci(4);
+  }
+
+  h3 {
+    margin-bottom: $base-unit * fibonacci(4);
   }
 }

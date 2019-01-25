@@ -9,7 +9,7 @@ block content
   article.content(itemscope, itemtype="http://schema.org/Article")
 
     //- Main title
-    h2(itemprop="headline")=title
+    h1.post-title(itemprop="headline")=title
 
     //- Published date
     em.post-date
@@ -17,8 +17,9 @@ block content
 
     //- The index when present
     -if (index)
-      h3 Index
-      nav.index !{index}
+      div.index
+        h2 Index
+        nav !{index}
 
     //- The body, which is always present
     div.post-body !{body}
@@ -27,8 +28,9 @@ block content
     -if (references)
       div !{references}
 
+    hr
+    
     section.social-sharing
-      hr
       h3
         i.material-icons share
         span Share the post

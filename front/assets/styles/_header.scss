@@ -43,9 +43,15 @@ header {
     padding-right: $base-unit * fibonacci(5);
     padding-left: $base-unit * fibonacci(5);
 
+    // Margin
+    margin-top: $base-unit * fibonacci(3);
+
     ul {
 
       list-style-type: none;
+
+      // Padding
+      padding-left: 0;
   
       li {
         display: inline;
@@ -73,6 +79,9 @@ header {
     nav.main-nav {
       grid-column: 3 / span 3;
       grid-row: 1;
+
+      // Margin
+      margin-top: 0;
     }
   }
 
