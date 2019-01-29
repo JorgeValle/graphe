@@ -11,10 +11,13 @@ button {
   // Transitions
   transition-duration: 0.4s;
 
-  &:hover,
-  i:hover {
+  &:hover {
     color: $white;
     background-color: $black;
+
+    i {
+      color: $white;
+    }
   }
   
 }

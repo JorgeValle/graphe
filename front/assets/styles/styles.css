@@ -109,10 +109,12 @@ button {
   padding: 6px;
   transition-duration: 0.4s;
 }
-button:hover,
-button i:hover {
+button:hover {
   color: #ffffff;
   background-color: #000000;
+}
+button:hover i {
+  color: #ffffff;
 }
 
 i.material-icons {
@@ -219,7 +221,7 @@ ul.unbulleted {
 body {
   display: grid !important;
   grid-template-columns: 100%;
-  grid-template-rows: auto auto auto auto;
+  grid-template-rows: auto auto auto auto auto;
 }
 body header {
   grid-column: 1;
@@ -233,9 +235,13 @@ body .image {
   grid-column: 1;
   grid-row: 3;
 }
-body footer {
+body section#cookie-consent {
   grid-column: 1;
   grid-row: 4;
+}
+body footer {
+  grid-column: 1;
+  grid-row: 5;
 }
 
 header {
@@ -465,6 +471,51 @@ aside.sidebar .signup form input {
 aside.sidebar .news {
   margin-top: 39px;
 }
+section#cookie-consent {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto auto;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  padding-top: 9px;
+  padding-bottom: 15px;
+  padding-right: 24px;
+  padding-left: 24px;
+  background-color: #000000;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23#ffffff' fill-opacity='0.08' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+  border-top: 1px solid #c9c9c9;
+  z-index: 2;
+}
+section#cookie-consent small {
+  grid-row: 1;
+  grid-column: 1;
+  margin-bottom: 9px;
+  padding-right: 0;
+  color: #fcfcfc;
+}
+section#cookie-consent button {
+  grid-row: 2;
+  grid-column: 1;
+}
+@media screen and (min-width: 800px) {
+  section#cookie-consent {
+    grid-template-columns: 8fr 1fr;
+    grid-template-rows: auto;
+    padding-top: 15px;
+    padding-right: 15px;
+  }
+  section#cookie-consent small {
+    grid-row: 1;
+    grid-column: 1;
+    padding-right: 9px;
+  }
+  section#cookie-consent button {
+    grid-row: 1;
+    grid-column: 2;
+  }
+}
+
 footer {
   color: #1c1c1c;
   display: grid;
