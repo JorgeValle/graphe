@@ -4,6 +4,9 @@ main {
   grid-template-columns: 100%;
   grid-template-rows: auto auto auto;
 
+  // Margin
+  margin-top: $base-unit * fibonacci(4);
+
   // Profile
   section.profile {
 
@@ -24,7 +27,7 @@ main {
   // On medium
   @media screen and (min-width: $break-medium) {
 
-    grid-template-columns: 21% 13% 34% 8% auto;
+    grid-template-columns: 21% 13% 34% 8% 24%;
     grid-template-rows: auto auto auto;
 
     // Profile
@@ -49,7 +52,7 @@ main {
   // On wide
   @media screen and (min-width: $break-wide) {
 
-    grid-template-columns: 21% 34% 13% 8% auto;
+    grid-template-columns: 21% 34% 13% 8% 24%;
     grid-template-rows: auto auto;
 
     // Profile

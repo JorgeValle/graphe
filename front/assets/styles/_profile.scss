@@ -50,6 +50,9 @@ section.profile {
     div {
       grid-column: 1;
       grid-row: 2;
+
+      // Margin
+      margin-top: $base-unit * fibonacci(3);
     }
   }
   
