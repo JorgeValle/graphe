@@ -208,13 +208,16 @@ a:hover {
   text-decoration: none;
 }
 
-ul {
+ul,
+ol {
   padding-left: 24px;
 }
-ul li {
+ul li,
+ol li {
   margin-bottom: 6px;
 }
-ul.unbulleted {
+ul.unbulleted,
+ol.unbulleted {
   list-style-type: none;
 }
 
