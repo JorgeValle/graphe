@@ -5,7 +5,7 @@ html(lang='en')
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     link(rel='stylesheet', href='//stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css')
-    link(rel="stylesheet", href='/node_modules/mdi/css/materialdesignicons.css')
+    link(rel="stylesheet", href="//fonts.googleapis.com/css?family=Material+Icons")
     script(src="https://code.jquery.com/jquery-3.3.1.min.js", integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=", crossorigin="anonymous")
     script(src='//stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js')
 
@@ -14,9 +14,13 @@ body.container.mb-5
     div.col
       ul.nav.justify-content-center.mt-4.mb-4
         li.nav-item
-          a.nav-link.mdi.mdi-note-multiple-outline(href='/admin/query') &nbsp;Query
+          a.nav-link(href='/admin/query')
+            i.material-icons location_searching
+            span Query
         li.nav-item
-          a.nav-link.mdi.mdi-lead-pencil(href='/admin/create') &nbsp;Create
+          a.nav-link(href='/admin/create')
+            i.material-icons create
+            span Create
 
   div.row
     div.col

@@ -11,10 +11,9 @@ block content
 
   div.tab-content#nav-tabContent
     div.tab-pane.fade.show.active#post
-      //- this gets converted to a put by method-override package
+      //- This gets converted to a put by method-override package
       form(action='/api/update/post?_method=put', method='post')
         div.row
-          p !{post}
           div.col-12.form-group
             label(for='pageTitle') Title
             input#pageTitle.form-control(type='text', aria-describedby='pageTitleHelp', name='title', value=`${post.content.title}`)

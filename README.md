@@ -1,6 +1,6 @@
 # JorgeValle.com
 
-A simple CMS for blogging, running on Node.js.
+A micro CMS created to run my website and bloggingplatform. Created on Express, Mongoose and Pug.
 
  - About JorgeValle.com
  - Getting Started
@@ -33,6 +33,10 @@ node app.js
 ```
 
 App can then be found in http://localhost:3000
+
+## Security
+
+[![Known Vulnerabilities](https://snyk.io/test/github/JorgeValle/jorge-valle/badge.svg)](https://snyk.io/test/github/JorgeValle/jorge-valle)
 
 ## License
 
