@@ -6,7 +6,8 @@ const express = require('express'),
       cookieParser = require('cookie-parser'),
       bodyParser = require('body-parser'),
       methodOverride = require('method-override'),
-      compression = require('compression');
+      compression = require('compression'),
+      secure = require('express-force-https');
 
 
 // hook for database connection
@@ -26,13 +27,13 @@ app.listen(process.env.PORT || 3000, function() {
 });
 
 // force https
-// app.use(secure);
+app.use(secure);
 
 // force to non-www
-app.use(require('express-naked-redirect')({
-  reverse: true,
-  https: true
-}));
+// app.use(require('express-naked-redirect')({
+//   reverse: true,
+//   https: true
+// }));
 
 // compress all responses
 app.use(compression());
