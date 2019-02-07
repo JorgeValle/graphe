@@ -29,10 +29,10 @@ app.listen(process.env.PORT || 3000, function() {
 // app.use(secure);
 
 // force to non-www
-// app.use(require('express-naked-redirect')({
-//   reverse: true,
-//   https: true
-// }));
+app.use(require('express-naked-redirect')({
+  reverse: true,
+  https: true
+}));
 
 // compress all responses
 app.use(compression());
