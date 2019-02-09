@@ -3,14 +3,14 @@
   'use strict';
 
   const mongoose = require('mongoose'),
-        // models
+        // Models
         post = mongoose.model('Post'),
         event = mongoose.model('Event'),
         quote = mongoose.model('Quote'),
-        // services
+        // Services
         jsonService = require('../services/json.service'),
         passwordService = require('../services/password.service'),
-        // constants
+        // Constants
         apiPassword = passwordService.returnApiPassword();
   
   /**

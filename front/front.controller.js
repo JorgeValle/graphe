@@ -162,12 +162,9 @@
    */
   module.exports.queryPostsAndQuotes = function(req, res) {
   
-    let startIndex = req.query.start || 0; // The start index
-  
     let path = '/api/get/posts',
-        fullUrl = serverService.returnBaseUrl() + path,
         requestOptions = {
-          url: fullUrl,
+          url: serverService.returnBaseUrl() + path,
           method: 'get'
         };
   
@@ -175,19 +172,20 @@
     request(requestOptions, function(err, response, posts) {
   
       if (err) {
-        console.log('Request error' + err);
+        console.log(`Request error: ${err}`);
       } else {
   
         let path = '/api/get/quotes',
-            fullUrl = serverService.returnBaseUrl() + path,
             requestOptions = {
-              url: fullUrl,
+              url: serverService.returnBaseUrl() + path,
               method: 'get'
             };
   
         // Now let's get the quotes
-        request(requestOptions, function(err, response, quotes) {
+        request(requestOptions, function(err, response, quotes, startIndex = 0) {
   
+          startIndex = req.query.startIndex;
+
           if (err) {
             renderBlogContent(req, res, posts, startIndex);
           } else {
@@ -208,15 +206,14 @@
   module.exports.queryEvents = function(req, res) {
   
     let path = '/api/get/events',
-        fullUrl = serverService.returnBaseUrl() + path,
         requestOptions = {
-          url: fullUrl,
+          url: serverService.returnBaseUrl() + path,
           method: 'GET'
         };
   
     request(requestOptions, function(err, response, body) {
         if (err) {
-          console.log('Request error' + err);
+          console.log(`Request error: ${err}`);
         } else {
           console.log('Timeline was rendered');
           renderTimeline(req, res, body);
@@ -233,9 +230,8 @@
   module.exports.postBySlug = function(req, res) {
   
     let path = `/api/get/post/${req.params.slug}`,
-        fullUrl = serverService.returnBaseUrl() + path,
         requestOptions = {
-          url: fullUrl,
+          url: serverService.returnBaseUrl() + path,
           method: 'GET',
           json: {}
         };
@@ -250,7 +246,7 @@
   
         res.status(404).render('404', { 
           documentTitle: 'Not Found' ,
-          canonicalUrl: 'https://jorgevalle.com' + req.url,
+          canonicalUrl: `https://jorgevalle.com${req.url}`,
           activeUrl: req.url
         });
   
@@ -270,9 +266,8 @@
   module.exports.sitemap = function(req, res) {
   
     let path = '/api/get/posts',
-        fullUrl = serverService.returnBaseUrl() + path,
         requestOptions = {
-          url: fullUrl,
+          url: serverService.returnBaseUrl() + path,
           method: 'GET'
         };
   

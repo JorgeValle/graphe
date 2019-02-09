@@ -12,7 +12,7 @@
    */
   const gracefulShutdown = function(msg, callback) {
     mongoose.connection.close(function() {
-      console.log('Mongoose disconnected through' + msg);
+      console.log(`Mongoose disconnected through ${msg}`);
       callback();
     });
   };
@@ -22,12 +22,12 @@
   
   // Trigger on database connection
   mongoose.connection.on('connected', function() {
-    console.log('Mongoose connected to ' + databaseService.returnDbConnectionString());
+    console.log(`Mongoose connected to ${databaseService.returnDbConnectionString()}`);
   });
   
   // Logs on database connection error
   mongoose.connection.on('error', function(err) {
-    console.log('Mongoose connection error: ' + err)
+    console.log(`Mongoose connection error: ${err}`);
   });
   
   // Logs on database disconnection
