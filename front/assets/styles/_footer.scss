@@ -15,6 +15,11 @@ footer {
     border-top: 1px solid $the-one-color;
   }
 
+  // Paragraph
+  p {
+    margin-bottom: $base-unit * fibonacci(3);
+  }
+
   // On narrow
   @media screen and (min-width: $break-narrow) {
   }

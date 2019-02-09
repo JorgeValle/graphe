@@ -15,6 +15,10 @@ section.profile {
   padding-bottom: $base-unit * fibonacci(5);
   padding-left: $base-unit * fibonacci(5);
 
+  // Fonts
+  font-family: $sans-serif;
+  font-weight: 300;
+
   img {
     display: none;
   }
@@ -22,6 +26,11 @@ section.profile {
   div {
     grid-row: 1;
     grid-column: 1;
+  }
+
+  // Paragraph
+  p {
+    margin-bottom: $base-unit * fibonacci(3);
   }
   
   // On medium and wide
@@ -31,10 +40,10 @@ section.profile {
     grid-template-rows: ($base-unit * fibonacci(9)) auto;
 
     // Backgrounds
-    background-image: none;
+    // background-image: none;
 
     // Padding
-    padding-top: $base-unit * fibonacci(5);
+    padding-top: $base-unit * fibonacci(6);
     padding-right: $base-unit * fibonacci(5);
     padding-bottom: 0;
     padding-left: $base-unit * fibonacci(5);
@@ -45,6 +54,7 @@ section.profile {
       grid-row: 1;
       height: 89%;
       max-height: 100%;
+      border-radius: 50%;
     }
 
     div {

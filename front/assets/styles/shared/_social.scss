@@ -20,7 +20,12 @@
     margin-right: $base-unit * fibonacci(4);
   }
 
-  h3 {
+  p {
+    font-weight: 300;
+  }
+
+  h3.social-title {
+    margin-top: 0;
     margin-bottom: $base-unit * fibonacci(4);
   }
 }

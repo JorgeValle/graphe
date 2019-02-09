@@ -5,7 +5,13 @@ ol {
   padding-left: $base-unit * fibonacci(5);
 
   li {
-    margin-bottom: $base-unit * fibonacci(2);
+    margin-bottom: $base-unit * fibonacci(4);
+
+    ul {
+      li {
+        margin-top: $base-unit * fibonacci(3);
+      }
+    }
   }
 
   // li:not(first) {

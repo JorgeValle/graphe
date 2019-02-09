@@ -1,9 +1,9 @@
 article.content {
 
   // Padding
-  padding-top: $base-unit * fibonacci(4);
+  padding-top: $base-unit * fibonacci(6);
   padding-right: $base-unit * fibonacci(5);
-  padding-bottom: $base-unit * fibonacci(5);
+  padding-bottom: $base-unit * fibonacci(7);
   padding-left: $base-unit * fibonacci(5);
 
   h1.post-title {
@@ -13,6 +13,8 @@ article.content {
 
   h2,
   h3 {
+    margin-top: $base-unit * fibonacci(6);
+    margin-bottom: $base-unit * fibonacci(4);
     font-size: 1.2em;
   }
 
@@ -49,4 +51,11 @@ article.content {
     }
 
   }
+
+ // On medium
+ @media screen and (min-width: $break-medium) {
+
+    padding-left: $base-unit * fibonacci(6);
+  }
+
 }

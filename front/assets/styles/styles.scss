@@ -17,7 +17,6 @@
 @import 'shared/figures';
 @import 'shared/images';
 @import 'shared/gists';
-@import 'shared/social';
 @import 'shared/hr';
 @import 'shared/pagination';
 @import 'shared/state';
@@ -33,3 +32,6 @@
 @import 'blog';
 @import 'cookie-consent';
 @import 'footer';
+
+// Further shared
+@import 'shared/social';

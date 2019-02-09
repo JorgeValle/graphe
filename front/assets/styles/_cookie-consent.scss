@@ -1,7 +1,6 @@
 // The cookie consent section
 section#cookie-consent {
 
-  
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: auto auto;
@@ -18,7 +17,7 @@ section#cookie-consent {
   padding-left: $base-unit * fibonacci(5);
 
   // Backgrounds
-  background-color: $black;
+  background-color: $practically-white;
   background-image: $dotted;
 
   // Border
@@ -38,7 +37,7 @@ section#cookie-consent {
     padding-right: 0;
 
     // Color
-    color: $practically-white;
+    color: $black;
   }
 
   button {

@@ -11,9 +11,10 @@ header {
   padding-top: $base-unit * fibonacci(4);
   padding-bottom: $base-unit * fibonacci(4);
 
-  // Border
-  border-bottom: 1px solid $light-grey;
-
+  // Backgrounds
+  background-color: $dark-grey;
+  color: $white;
+  
   // The "Jorge Valle" brand
   div.brand {
 
@@ -55,12 +56,9 @@ header {
   
       li {
         display: inline;
-        padding-right: $base-unit * fibonacci(4);
+        padding-right: $base-unit * fibonacci(5);
       }
-  
-      li:not(:first-child) {
-        padding-right: $base-unit * fibonacci(3);
-      }
+
     }
   }
 
@@ -77,11 +75,15 @@ header {
 
     // The nav links
     nav.main-nav {
+
       grid-column: 3 / span 3;
       grid-row: 1;
 
       // Margin
-      margin-top: 0;
+      margin-top: $base-unit * fibonacci(3);
+
+      // Padding
+      padding-left: $base-unit * fibonacci(6);
     }
   }
 

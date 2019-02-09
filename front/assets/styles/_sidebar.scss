@@ -2,7 +2,7 @@
 aside.sidebar {
 
   // Padding
-  padding-top: $base-unit * fibonacci(4);
+  padding-top: $base-unit * fibonacci(6);
   padding-right: $base-unit * fibonacci(5);
   padding-bottom: $base-unit * fibonacci(6);
   padding-left: $base-unit * fibonacci(5);
@@ -21,8 +21,13 @@ aside.sidebar {
     margin-bottom: $base-unit * fibonacci(4);
   }
 
+  // Fonts
+  font-family: $sans-serif;
+  font-weight: 300;
+
   // The signup section
   .signup {
+
     // The form
     form {
 
@@ -52,7 +57,6 @@ aside.sidebar {
     margin-top: $base-unit * fibonacci(6);
 
   }
-
 
   // On medium and wide
   @media screen and (min-width: $break-medium) {
