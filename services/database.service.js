@@ -6,7 +6,7 @@
    * @since 2.0.0
    * @returns {string} - The database connection string
    */
-  module.exports.returnDbConnectionString = function() {
+  module.exports.returnDbConnectionString = () => {
     
     if (process.env.NODE_ENV === 'production') {
       return process.env.MONGOLAB_URI;

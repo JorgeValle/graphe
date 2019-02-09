@@ -2,11 +2,11 @@
   'use strict';
 
   const request = require('request'),
-        // services
+        // Services
         serverService = require('../services/server.service'),
         dateService = require('../services/date.service'),
         imageService = require('../services/image.service'),
-        // vars
+        // Vars
         currentImage = imageService.returnHeaderImage(new Date()),
         baseUrl = 'https://jorgevalle.com';
   
@@ -40,7 +40,7 @@
    * @param {object} res - The response object
    * @param {object} allPost - All the posts we want in the sitemap
    */
-  const renderSitemap = function(req, res, allPosts) {
+  const renderSitemap = (req, res, allPosts) => {
     res.render('sitemap', {
       documentTitle: 'Sitemap',
       metaDescription: 'The sitemap',
@@ -58,7 +58,7 @@
    * @param {object} res - The respose object
    * @param {object} allEvents - All the events we want displaying in the timeline
    */
-  const renderTimeline = function(req, res, allEvents) {
+  const renderTimeline = (req, res, allEvents) => {
     res.render('timeline', {
       documentTitle: 'Timeline',
       metaDescription: 'A timeline view of my professional life as a software developer, and my personal life as a partner, friend, family member and BJJ practicioner.',
@@ -78,7 +78,7 @@
    * @param {object} res - The response object
    * @param {object} post - The post we are rendering
    */
-  const renderPost = function(req, res, post) {
+  const renderPost = (req, res, post) => {
     res.render('post', {
       // we parse JSON response to get properties ready for consumption in pug templates
       documentTitle: post.content.title,
@@ -102,7 +102,7 @@
    * @param {object} req - The request object
    * @param {object} res - The response object
    */
-  module.exports.homepage = function(req, res) {
+  module.exports.homepage = (req, res) => {
     res.render('homepage', { 
       documentTitle: 'Home',
       metaDescription: 'Application developer blogging with a focus on JavaScript, web development, and machine learning. I also talk about finance, tech at large, and whatever topic I feel passionate about.',
@@ -118,7 +118,7 @@
    * @param {object} req - The request object
    * @param {object} res - The response object
    */
-  module.exports.privacy = function(req, res) {
+  module.exports.privacy = (req, res) => {
     res.render('privacy', { 
       documentTitle: 'Privacy Policy',
       metaDescription: 'The privacy policy governing the use of the JorgeValle.com website.',
@@ -134,7 +134,7 @@
    * @param {object} req - The request object
    * @param {object} res - The response object
    */
-  module.exports.thanks = function(req, res) {
+  module.exports.thanks = (req, res) => {
     res.render('thanks', { 
       documentTitle: 'Thank You',
       metaDescription: "Thanks for signing up. You'll be hearing from me soon with more JavaScript, web development, and machine learning content that I hope you find useful.",
@@ -150,7 +150,7 @@
    * @param {object} req - The request object
    * @param {object} res - The response object
    */
-  module.exports.robots = function(req, res) {
+  module.exports.robots = (req, res) => {
     res.sendfile('../robots.txt'); 
   };
   
@@ -160,7 +160,7 @@
    * @param {object} req - The request object 
    * @param {object} res - The response object 
    */
-  module.exports.queryPostsAndQuotes = function(req, res) {
+  module.exports.queryPostsAndQuotes = (req, res) => {
   
     let path = '/api/get/posts',
         requestOptions = {
@@ -169,7 +169,7 @@
         };
   
     // Let's go get the posts
-    request(requestOptions, function(err, response, posts) {
+    request(requestOptions, (err, response, posts) => {
   
       if (err) {
         console.log(`Request error: ${err}`);
@@ -182,7 +182,7 @@
             };
   
         // Now let's get the quotes
-        request(requestOptions, function(err, response, quotes, startIndex = 0) {
+        request(requestOptions, (err, response, quotes, startIndex = 0) => {
   
           startIndex = req.query.startIndex;
 
@@ -203,7 +203,7 @@
    * @param {object} req - The request object 
    * @param {object} res - The response object
    */
-  module.exports.queryEvents = function(req, res) {
+  module.exports.queryEvents = (req, res) => {
   
     let path = '/api/get/events',
         requestOptions = {
@@ -211,11 +211,10 @@
           method: 'GET'
         };
   
-    request(requestOptions, function(err, response, body) {
+    request(requestOptions, (err, response, body) => {
         if (err) {
           console.log(`Request error: ${err}`);
         } else {
-          console.log('Timeline was rendered');
           renderTimeline(req, res, body);
         }
     });
@@ -227,7 +226,7 @@
    * @param {object} req - The request object
    * @param {object} res - The response object
    */
-  module.exports.postBySlug = function(req, res) {
+  module.exports.postBySlug = (req, res) => {
   
     let path = `/api/get/post/${req.params.slug}`,
         requestOptions = {
@@ -236,7 +235,7 @@
           json: {}
         };
   
-    request(requestOptions, function(err, response, body) {
+    request(requestOptions, (err, response, body) => {
   
       if (err) {
   
@@ -263,7 +262,7 @@
    * @param {object} req - The request object
    * @param {object} res - The response object
    */
-  module.exports.sitemap = function(req, res) {
+  module.exports.sitemap = (req, res) => {
   
     let path = '/api/get/posts',
         requestOptions = {
@@ -271,7 +270,7 @@
           method: 'GET'
         };
   
-    request(requestOptions, function(err, response, body) {
+    request(requestOptions, (err, response, body) => {
   
       if (err) {
         console.log('Request error' + err);

@@ -14,7 +14,7 @@
    * @param {object} res - The response object
    * @param {object} post - The post object that we will render
    */
-  const renderUpdateForm = function(req, res, post) {
+  const renderUpdateForm = (req, res, post) => {
     res.render('update', {
       documentTitle: `Update | ${siteName}`,
       // We parse JSON response to get properties ready for consumption in pug templates
@@ -32,7 +32,7 @@
    * @param {object} quotes - The quotes we will render
    * @param {object} events - The events we are rendering
    */
-  const renderQueryContent = function(req, res, posts, quotes, events) {
+  const renderQueryContent = (req, res, posts, quotes, events) => {
     res.render('query', {
       documentTitle: `Query | ${siteName}`,
       // We parse JSON response to get properties ready for consumption in pug templates
@@ -48,7 +48,7 @@
    * @param {object} req - The request object
    * @param {object} res - The response object
    */
-  module.exports.create = function(req, res) {
+  module.exports.create = (req, res) => {
     res.render('create', { 
       documentTitle: `Create | ${siteName}`
     });
@@ -63,17 +63,17 @@
    * @param {object} events - The events we are querying
    * @param {object} quotes - The quotes we are querying
    */
-  module.exports.queryAll = function(req, res) {
+  module.exports.queryAll = (req, res) => {
   
     let path = '/api/get/posts',
         fullUrl = serverService.returnBaseUrl() + path,
         requestOptions = {
           url: fullUrl,
-          method: 'get'
+          method: 'GET'
         };
   
     // Let's get the posts
-    request(requestOptions, function(err, response, posts) {
+    request(requestOptions, (err, response, posts) => {
   
       if (err) {
         console.log('Request error' + err);
@@ -86,7 +86,7 @@
             };
   
         // Now let's get the quotes
-        request(requestOptions, function(err, response, quotes) {
+        request(requestOptions, (err, response, quotes) => {
   
           if (err) {
             renderQueryContent(req, res, posts);
@@ -98,7 +98,7 @@
                   method: 'GET'
                 };
   
-            request(requestOptions, function(err, response, events) {
+            request(requestOptions, (err, response, events) => {
   
               if (err) {
                 renderQueryContent(req, res, posts, quotes)
@@ -119,7 +119,7 @@
    * @param {object} req - The request object
    * @param {oject} res - The response object
    */
-  module.exports.queryOne = function(req, res) {
+  module.exports.queryOne = (req, res) => {
   
     let path = `/api/get/post/${req.query.post}`,
         requestOptions = {
@@ -127,7 +127,7 @@
           method: 'GET'
         };
   
-    request(requestOptions, function(err, response, post) {
+    request(requestOptions, (err, response, post) => {
   
       if (err) {
         console.error(`Request error: ${err}`);

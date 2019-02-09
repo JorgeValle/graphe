@@ -6,7 +6,7 @@
    * @since 3.0.0
    * @returns {string} - The base URL string
    */
-  module.exports.returnBaseUrl = function() {
+  module.exports.returnBaseUrl = () => {
     
     if (process.env.NODE_ENV === 'production') {
       return 'http://jorgevalle.herokuapp.com';

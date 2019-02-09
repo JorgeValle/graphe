@@ -20,9 +20,9 @@
    * @param {object} res - The response object
    * @returns {string} - The JSON formatted string of blog posts
    */
-  module.exports.retrieveAllPosts = function(req, res) {
+  module.exports.retrieveAllPosts = (req, res) => {
   
-    post.find({}).sort([['date.created', -1]]).exec(function(err, posts) {
+    post.find({}).sort([['date.created', -1]]).exec((err, posts) => {
       jsonService.sendResponse(res, 200, posts);
     });
   
@@ -35,9 +35,9 @@
    * @param {object} res - The response object
    * @returns {string} - The JSON formatted string of quotes
    */
-  module.exports.retrieveAllQuotes = function(req, res) {
+  module.exports.retrieveAllQuotes = (req, res) => {
   
-    quote.find({}).sort([['date.created', -1]]).exec(function(err, quotes) {
+    quote.find({}).sort([['date.created', -1]]).exec((err, quotes) => {
       jsonService.sendResponse(res, 200, quotes);
     });
   
@@ -50,9 +50,9 @@
    * @param {object} res - The response object
    * @returns {string} - The JSON formatted string of events
    */
-  module.exports.retrieveAllEvents = function(req, res) {
+  module.exports.retrieveAllEvents = (req, res) => {
   
-    event.find({}).sort([['content.date', -1]]).exec(function(err, events) {
+    event.find({}).sort([['content.date', -1]]).exec((err, events) => {
       jsonService.sendResponse(res, 200, events);
     });
   
@@ -66,7 +66,7 @@
    * @param {object} res - The response object
    * @returns {string} - The JSON formatted content of the blog post, if found
    */
-  module.exports.retrievePostBySlug = function(req, res) {
+  module.exports.retrievePostBySlug = (req, res) => {
   
     // Fetch wanted content via Mongoose
     post.findOne({
@@ -90,7 +90,7 @@
    * @param {object} res - The response object
    * @returns {string} - The JSON for the newly created blog post, if authorized
    */
-  module.exports.createPost = function(req, res) {
+  module.exports.createPost = (req, res) => {
   
     // Create a new model document with parameters
     const newPost = new post({
@@ -126,7 +126,7 @@
     if (req.body.password === apiPassword) {
   
       // Save the final document to the database
-      newPost.save(function(err, post) {
+      newPost.save((err, post) => {
   
         if (err) {
           jsonService.sendResponse(res, 500, err);
@@ -149,7 +149,7 @@
    * @param {object} res - The response object
    * @returns {string} - The JSON for the newly created quote, if authorized
    */
-  module.exports.createQuote = function(req, res) {
+  module.exports.createQuote = (req, res) => {
   
     // Create a new model document
     const newQuote = new quote({
@@ -170,7 +170,7 @@
     if (req.body.password === apiPassword) {
   
       // Save the final document to the database
-      newQuote.save(function(err, quote) {
+      newQuote.save((err, quote) => {
   
         if (err) {
           console.log(err);
@@ -194,7 +194,7 @@
    * @param {object} res - The response object
    * @returns {string} - The JSON for the newly created event, if authorized
    */
-  module.exports.createEvent = function(req, res) {
+  module.exports.createEvent = (req, res) => {
   
     // Create a new model document
     const newEvent = new event({
@@ -216,7 +216,7 @@
     if (req.body.password === apiPassword) {
   
       // Save the final document to the database
-      newEvent.save(function(err, event) {
+      newEvent.save((err, event) => {
   
         if (err) {
           jsonService.sendResponse(res, 500, err);
@@ -239,7 +239,7 @@
    * @param {object} res - The response object
    * @returns {string} - The JSON for the freshly updated blog post
    */
-  module.exports.updatePost = function(req, res) {
+  module.exports.updatePost = (req, res) => {
   
     // Get url to update from router middleware and set to var
     let query = {
@@ -280,7 +280,7 @@
       // Reminder: {new:true} returns updated doc, instead of old doc
       post.findOneAndUpdate(query, updatedData, {
         new: true
-      }, function(err, post) {
+      }, (err, post) => {
         jsonService.sendResponse(res, 201, post);
       });
   
@@ -297,7 +297,7 @@
    * @param {object} res - The response object
    * @returns {string} - The JSON for the freshly updated quote
    */
-  module.exports.updateQuote = function(req, res) {
+  module.exports.updateQuote = (req, res) => {
   
     // Get url to update from router middleware and set to var
     let query = {
@@ -347,7 +347,7 @@
    * @param {object} res - The response object
    * @returns {string} - The JSON for the freshly updated event
    */
-  module.exports.updateEvent = function(req, res) {
+  module.exports.updateEvent = (req, res) => {
   
     // Get url to update from router middleware and set to var
     let query = {

@@ -96,7 +96,7 @@
    * @since 4.0.0
    * @returns {object} - A header image object, with filename and description for image
    */
-  module.exports.returnHeaderImage = function(date = new Date()) {
+  module.exports.returnHeaderImage = (date = new Date()) => {
 
     const currentWeek = dateService.getWeekNumber(date);
 

@@ -8,7 +8,7 @@
    * @param {string} status - The status object
    * @param {string} content - The actual content for response
    */
-  module.exports.sendResponse = function(res, status, content) {
+  module.exports.sendResponse = (res, status, content) => {
     res.status(status);
     res.json(content);
   };

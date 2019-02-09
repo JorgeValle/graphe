@@ -10,8 +10,8 @@
    * @since 2.0.0
    * @async
    */
-  const gracefulShutdown = function(msg, callback) {
-    mongoose.connection.close(function() {
+  const gracefulShutdown = (msg, callback) => {
+    mongoose.connection.close(() => {
       console.log(`Mongoose disconnected through ${msg}`);
       callback();
     });
@@ -21,35 +21,35 @@
   mongoose.connect(databaseService.returnDbConnectionString());
   
   // Trigger on database connection
-  mongoose.connection.on('connected', function() {
+  mongoose.connection.on('connected', () => {
     console.log(`Mongoose connected to ${databaseService.returnDbConnectionString()}`);
   });
   
   // Logs on database connection error
-  mongoose.connection.on('error', function(err) {
+  mongoose.connection.on('error', (err) => {
     console.log(`Mongoose connection error: ${err}`);
   });
   
   // Logs on database disconnection
-  mongoose.connection.on('disconnected', function() {
+  mongoose.connection.on('disconnected', () => {
     console.log('Mongoose disconnected');
   });
   
   // Kills process 
-  process.once('SIGUSR2', function() {
-    gracefulShutdown('nodemon restart', function() {
+  process.once('SIGUSR2', () => {
+    gracefulShutdown('nodemon restart', () => {
       process.kill(process.pid, 'SIGUSR2');
     });
   });
   
-  process.once('SIGINT', function() {
-    gracefulShutdown('app termination', function() {
+  process.once('SIGINT', () => {
+    gracefulShutdown('app termination', () => {
       process.exit(0);
     });
   });
   
-  process.once('SIGTERM', function() {
-    gracefulShutdown('Heroku app shutdown', function() {
+  process.once('SIGTERM', () => {
+    gracefulShutdown('Heroku app shutdown', () => {
       process.exit(0);
     });
   });

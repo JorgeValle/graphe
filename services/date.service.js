@@ -8,7 +8,7 @@
    * @param {date} date - The JS date to make pretty
    * @returns {string} - The prettyfied date
    */
-  module.exports.prettify = function(date = new Date()) {
+  module.exports.prettify = (date = new Date()) => {
 
     const dateCopy = new Date(date),
           monthNames = [
@@ -32,7 +32,7 @@
    * @param {date} dateString - The date we want to return yearly week number for
    * @returns {number} - The number of the week in the year, from 1 to 52, of the passed date
    */
-  module.exports.getWeekNumber = function(date = new Date()) {
+  module.exports.getWeekNumber = (date = new Date()) => {
 
     // Copy date so don't modify original
     let dateCopy = new Date(date);
