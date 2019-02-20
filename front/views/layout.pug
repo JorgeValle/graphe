@@ -11,7 +11,7 @@ html(lang="en")
     title=`${documentTitle} | Jorge Valle: blogging about JavaScript, user interfaces, and machine learning`
     link(rel="canonical", href= canonicalUrl)
     link(rel="stylesheet", href="//fonts.googleapis.com/css?family=Karma|Roboto:300,400,700|Material+Icons")
-    link(rel="stylesheet", href="/front/assets/styles/styles.css")
+    link(rel="stylesheet", href="/front/assets/styles.css")
 
   body
 
@@ -29,63 +29,56 @@ html(lang="en")
 
     div#fb-root
     script(src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML', async)
-    script(src='https://d3js.org/d3.v5.min.js', async)
-    script(type='text/x-mathjax-config').
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-          processEscapes: true
-        },
-        CommonHTML: { linebreaks: { automatic: true } },
-        "HTML-CSS": { linebreaks: { automatic: true } },
-         SVG: { linebreaks: { automatic: true } }
-      });
-    script.
-      (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-65509004-1', 'auto'); ga('send', 'pageview');
-    script.
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId            : '347038975858578',
-          autoLogAppEvents : true,
-          xfbml            : true,
-          version          : 'v3.2'
-        });
-      };
-
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/en_US/sdk.js';
-        fjs.parentNode.insertBefore(js, fjs);
-      } (document, 'script', 'facebook-jssdk'));
-    script.
-      (function() {
-
-          var cookieConsent = document.getElementById('cookie-consent'),
-              acceptCookies = document.getElementById('accept-cookies');
-
-          // Check for cookie flag
-          if (localStorage.getItem('jv-accept-cookies') == 'true') {
-            
-            // Hide
-            cookieConsent.style.display = 'none';
-          }
-
-          acceptCookies.onclick = function() {
-
-            localStorage.setItem('jv-accept-cookies', 'true');
-
-            // Hide
-            cookieConsent.style.display = 'none';
-          }
-      })();
+    script(src="/front/assets/bundle.js", async)
     //- script.
-    //-   var onresize = function() {
-    //-     var e = document.createElement('div');
-    //-     width = document.body.clientWidth;
-    //-     height = document.body.clientHeight;
-    //-     e.innerHTML = `width: ${width}; height: ${height}`;
-    //-     document.getElementsByTagName('body')[0].appendChild(e);
-    //-   }
-    //-   window.addEventListener("resize", onresize);
+    //-   (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-65509004-1', 'auto'); ga('send', 'pageview');
+    //- script(src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML', async)
+    //- script(src='https://d3js.org/d3.v5.min.js', async)
+    //- script(type='text/x-mathjax-config').
+    //-   MathJax.Hub.Config({
+    //-     tex2jax: {
+    //-       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+    //-       processEscapes: true
+    //-     },
+    //-     CommonHTML: { linebreaks: { automatic: true } },
+    //-     "HTML-CSS": { linebreaks: { automatic: true } },
+    //-      SVG: { linebreaks: { automatic: true } }
+    //-   });
+    //- script.
+    //-   window.fbAsyncInit = function() {
+    //-     FB.init({
+    //-       appId            : '347038975858578',
+    //-       autoLogAppEvents : true,
+    //-       xfbml            : true,
+    //-       version          : 'v3.2'
+    //-     });
+    //-   };
+
+    //-   (function(d, s, id) {
+    //-     var js, fjs = d.getElementsByTagName(s)[0];
+    //-     if (d.getElementById(id)) {return;}
+    //-     js = d.createElement(s); js.id = id;
+    //-     js.src = 'https://connect.facebook.net/en_US/sdk.js';
+    //-     fjs.parentNode.insertBefore(js, fjs);
+    //-   } (document, 'script', 'facebook-jssdk'));
+    //- script.
+    //-   (function() {
+
+    //-       var cookieConsent = document.getElementById('cookie-consent'),
+    //-           acceptCookies = document.getElementById('accept-cookies');
+
+    //-       // Check for cookie flag
+    //-       if (localStorage.getItem('jv-accept-cookies') == 'true') {
+            
+    //-         // Hide
+    //-         cookieConsent.style.display = 'none';
+    //-       }
+
+    //-       acceptCookies.onclick = function() {
+
+    //-         localStorage.setItem('jv-accept-cookies', 'true');
+
+    //-         // Hide
+    //-         cookieConsent.style.display = 'none';
+    //-       }
+    //-   })();

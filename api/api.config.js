@@ -18,7 +18,7 @@
   };
   
   // Connect to database
-  mongoose.connect(databaseService.returnDbConnectionString());
+  mongoose.connect(databaseService.returnDbConnectionString(), { useNewUrlParser: true });
   
   // Trigger on database connection
   mongoose.connection.on('connected', () => {
