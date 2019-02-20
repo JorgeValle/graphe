@@ -8,7 +8,7 @@
     "url": "https://github.com/JorgeValle/jorge-valle"
   },
   "engines": {
-    "node": "~4.2.1",
+    "node": "~10.15.1",
     "npm": "~2.2.0"
   },
   "dependencies": {
