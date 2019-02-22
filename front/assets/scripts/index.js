@@ -1,5 +1,14 @@
 import * as d3 from 'd3';
 
+// MathJax config
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+    processEscapes: true
+  }
+});
+
+
 // Accept cookies
 (function() {
 
