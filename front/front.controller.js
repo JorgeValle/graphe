@@ -170,6 +170,7 @@
   
     // Let's go get the posts
     request(requestOptions, (err, response, posts) => {
+      
   
       if (err) {
         console.log(`Request error: ${err}`);
@@ -182,9 +183,9 @@
             };
   
         // Now let's get the quotes
-        request(requestOptions, (err, response, quotes, startIndex = 0) => {
+        request(requestOptions, (err, response, quotes, startIndex) => {
   
-          startIndex = req.query.startIndex;
+          startIndex = req.query.start || 0; // The start index
 
           if (err) {
             renderBlogContent(req, res, posts, startIndex);
