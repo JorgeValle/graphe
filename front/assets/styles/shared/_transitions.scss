@@ -1,0 +1,6 @@
+@mixin set-transition($shorthand) {
+  -webkit-transition: $shorthand;
+  -moz-transition: $shorthand;
+  -o-transition: $shorthand;
+  transition: $shorthand;
+}

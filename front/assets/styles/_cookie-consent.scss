@@ -17,11 +17,13 @@ section#cookie-consent {
   padding-left: $base-unit * fibonacci(5);
 
   // Backgrounds
-  background-color: $practically-white;
-  background-image: $dotted;
+  background-color: $middle-grey;
 
   // Border
   border-top: 1px solid $light-grey;
+
+  // Transition
+  @include set-transition(visibility 1s linear);
 
   // Z-index
   z-index: 2;
@@ -37,7 +39,7 @@ section#cookie-consent {
     padding-right: 0;
 
     // Color
-    color: $black;
+    color: $white;
   }
 
   button {

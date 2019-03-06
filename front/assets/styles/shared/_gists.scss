@@ -3,7 +3,7 @@ main {
   .gist {
 
     // Shadows
-    box-shadow: $light-shadow;
+    @include cast-shadow($light-shadow);
 
     .gist-meta {
       display: none;
@@ -11,6 +11,15 @@ main {
 
     .gist-file {
       border: none;
+    }
+
+    table th,
+    table td {
+      border-top: none;
+    }
+
+    .blob-num {
+      color: $lightest-grey;
     }
 
   }
