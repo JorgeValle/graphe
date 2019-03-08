@@ -53,6 +53,9 @@ a {
   color: inherit;
   text-decoration: underline;
 }
+a:hover {
+  text-decoration: none;
+}
 
 .heading-shared {
   font-family: "Roboto", sans-serif;

@@ -16,6 +16,10 @@ p {
 a {
   color: inherit;
   text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .heading-shared {

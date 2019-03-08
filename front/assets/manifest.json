@@ -1,0 +1,9 @@
+{
+  "short_name": "Jorge Valle",
+  "name": "Jorge Valle",
+  "start_url": "./blog",
+  "background_color": "#737373",
+  "display": "standalone",
+  "scope": "./",
+  "theme_color": "#000000"
+}
