@@ -1,10 +1,10 @@
 {
   "short_name": "Jorge Valle",
   "name": "Jorge Valle",
-  "start_url": ".",
+  "start_url": "/",
   "background_color": "#737373",
   "display": "standalone",
-  "scope": ".",
+  "scope": "/",
   "theme_color": "#000000",
   "icons": [{
     "src": "images/icons/homescreen512.png",
