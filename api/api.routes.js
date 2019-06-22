@@ -22,6 +22,8 @@
   router.post('/create/quote', apiCtrl.createQuote);
   // Create a new event
   router.post('/create/event', apiCtrl.createEvent);
+  // Create a new event
+  router.post('/create/day', apiCtrl.createDay);
   // Update a specific post
   router.put('/update/post', apiCtrl.updatePost);
   // Update a specific quote

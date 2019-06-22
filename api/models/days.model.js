@@ -39,4 +39,4 @@ const daySchema = new mongoose.Schema({
 });
 
 // Compile schema to bson, telling mongo to use 'days' collection
-mongoose.model('Day', postSchema, 'days');
+mongoose.model('Day', daySchema, 'days');
