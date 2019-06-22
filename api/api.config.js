@@ -58,5 +58,6 @@
   require('./models/posts.model');
   require('./models/events.model');
   require('./models/quotes.model');
+  require('./models/days.model');
 
 }

@@ -32,13 +32,14 @@
    * @param {object} quotes - The quotes we will render
    * @param {object} events - The events we are rendering
    */
-  const renderQueryContent = (req, res, posts, quotes, events) => {
+  const renderQueryContent = (req, res, posts, quotes, events, days) => {
     res.render('query', {
       documentTitle: `Query | ${siteName}`,
       // We parse JSON response to get properties ready for consumption in pug templates
       posts: JSON.parse(posts),
       quotes: JSON.parse(quotes),
-      events: JSON.parse(events)
+      events: JSON.parse(events),
+      days: JSON.parse(days),
     });
   };
   
@@ -62,6 +63,7 @@
    * @param {object} posts - The blog posts we are querying
    * @param {object} events - The events we are querying
    * @param {object} quotes - The quotes we are querying
+   * @param {object} days - The days we are querying
    */
   module.exports.queryAll = (req, res) => {
   
@@ -98,14 +100,29 @@
                   method: 'GET'
                 };
   
+            // Now we get the events
             request(requestOptions, (err, response, events) => {
   
               if (err) {
                 renderQueryContent(req, res, posts, quotes)
               } else {
-                renderQueryContent(req, res, posts, quotes, events);
+
+                let path = '/api/get/days',
+                    requestOptions = {
+                      url: serverService.returnBaseUrl() + path,
+                      method: 'GET'
+                    };
+
+                // Finally the days...
+                request(requestOptions, (err, response, days) => {
+
+                  if (err) {
+                    renderQueryContent(req, res, post, quotes, events);
+                  } else {
+                    renderQueryContent(req, res, posts, quotes, events, days);
+                  }
+                })
               }
-  
             });
           }
         });
