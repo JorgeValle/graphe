@@ -18,16 +18,13 @@ block content
         p !{post.content.description}
     div.tab-pane.fade#events
       each event in events
-        h2
-          a(href=`/admin/update?event=${event.content.slug}`)= event.content.name
+        h2 #{event.content.name}
         p !{event.content.description}
     div.tab-pane.fade#quotes
       each quote in quotes
-        h2
-          a(href=`/admin/update?quote=${quote.content.slug}`)= quote.content.quote
+        h2 #{quote.content.quote}
         p !{quote.content.author}
     div.tab-pane.fade#days
       each day in days
-        h2
-          a(href=`/admin/update?day=${day.content.slug}`)= day.content.title
+        h2 #{day.content.title}
         p !{day.content.description}
