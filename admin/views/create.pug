@@ -8,6 +8,7 @@ block content
       a.nav-item.nav-link.active#post-tab(href="#post", data-toggle="tab") Post
       a.nav-item.nav-link#event-tab(href="#event", data-toggle="tab") Event
       a.nav-item.nav-link#quote-tab(href="#quote", data-toggle="tab") Quote
+      a.nav-item.nav-link#day-tab(href="#day", data-toggle="day") Day
 
   div.tab-content#nav-tabContent
     div.tab-pane.fade.show.active#post
@@ -101,9 +102,42 @@ block content
             small#password.form-text.text-muted The API password.
           div.col-12.col-sm-4
             button.btn.btn-primary(type='submit') Publish
-  script.
-    var countChars = function(orig, dest) {
-      var chars = document.getElementById(orig).value.length;
-      var node = document.getElementById(dest);
-      node.innerHTML = chars;
-    }
+    div.tab-pane.fade#day
+      form(action='/api/create/day', method='post')
+        div.row
+          div.col-12.form-group
+            label(for='title') Title
+            input#title.form-control(type='text', aria-describedby='titleHelp', name='title')
+            small#titleHelp.form-text.text-muted The title of the day (journal entry).
+          div.col-12.form-group
+            label(for='slug') Slug
+            input#slug.form-control(type='text', aria-describedby='slugHelp', name='slug')
+            small#slugHelp.form-text.text-muted The URL of the journal entry.
+          div.col-12.form-group
+            label(for='body') Description
+            textarea#description.form-control(rows='2', aria-describedby='bodyHelp', name='description', onKeyDown="countChars('description', 'descriptionCount')", onKeyUp="countChars('description', 'descriptionCount')")
+            small#descriptionHelp.form-text.text-muted The description, the elevator pitch. It should answer the question of people searching for the keywords. Aim for between 160 and 320 characters. Current characters: #[span#descriptionCount]
+          div.col-12.form-group
+            label(for='body') Body
+            textarea#body.form-control(rows='8', aria-describedby='bodyHelp', name='body', onKeyDown="countChars('body', 'bodyCount')", onKeyUp="countChars('body', 'bodyCount')")
+            small#bodyHelp.form-text.text-muted The body. Current characters: #[span#bodyCount]
+          div.col-12.form-group
+            label(for='city') City
+            input#city.form-control(type='text', aria-describedby='cityHelp', name='city')
+            small#cityHelp.form-text.text-muted The city where you're journaling from.
+          div.col-12.form-group
+            label(for='country') Country
+            input#country.form-control(type='text', aria-describedby='countryHelp', name='country')
+            small#countryHelp.form-text.text-muted The country where you're journaling from.
+          div.col-12.col-sm-4.form-group
+            label(for='password') Password
+            input#password.form-control(type='text', aria-describedby='passwordHelp', name='password')
+            small#password.form-text.text-muted The API password.
+          div.col-12.col-sm-4
+            button.btn.btn-primary(type='submit') Publish
+  //- script.
+  //-   var countChars = function(orig, dest) {
+  //-     var chars = document.getElementById(orig).value.length;
+  //-     var node = document.getElementById(dest);
+  //-     node.innerHTML = chars;
+  //-   }
