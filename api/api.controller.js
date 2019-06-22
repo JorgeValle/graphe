@@ -7,6 +7,7 @@
         post = mongoose.model('Post'),
         event = mongoose.model('Event'),
         quote = mongoose.model('Quote'),
+        day = mongoose.model('Day'),
         // Services
         jsonService = require('../services/json.service'),
         passwordService = require('../services/password.service'),
@@ -54,6 +55,21 @@
   
     event.find({}).sort([['content.date', -1]]).exec((err, events) => {
       jsonService.sendResponse(res, 200, events);
+    });
+  
+  }
+
+  /**
+   * Retrieves all days, sorted desc by event date
+   * @since 4.4.0
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @returns {string} - The JSON formatted string of days
+   */
+  module.exports.retrieveAllDays = (req, res) => {
+  
+    day.find({}).sort([['date.created', -1]]).exec((err, days) => {
+      jsonService.sendResponse(res, 200, days);
     });
   
   }
@@ -231,6 +247,56 @@
     }
   }
   
+  /**
+   * Creates a new day (journal entry)
+   * @since 4.4.0
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @returns {string} - The JSON for the newly created day, if authorized
+   */
+  module.exports.createDay = (req, res) => {
+  
+    // Create a new model document
+    const newDay = new day({
+  
+      // Date
+      date: {
+        created: new Date()
+      },
+      // Content fields
+      content: {
+        title: req.body.title,
+        body: req.body.body,
+        slug: req.body.slug,
+        description: req.body.description,
+      },
+      // Location fields
+      location: {
+        city: req.body.city,
+        country: req.body.country,
+      },
+    });
+  
+    // Check for auth
+    if (req.body.password === apiPassword) {
+  
+      // Save the final document to the database
+      newDay.save((err, day) => {
+  
+        if (err) {
+          console.log(err);
+          jsonService.sendResponse(res, 500, err);
+        } else {
+          jsonService.sendResponse(res, 201, day);
+        }
+      });
+  
+    // Not authorized
+    } else {
+      jsonService.sendResponse(res, 403, 'Nice try.');
+    }
+  
+  }
   
   /**
    * Updates the post we find, by slug
@@ -383,6 +449,57 @@
     // Not authorized
     } else {
       jsonService.sendResponsee(res, 403, 'Nice try, buddy.');
+    }
+  }
+
+  /**
+   * Updates the day
+   * @since 4.4.0
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @returns {string} - The JSON for the freshly updated day
+   */
+  module.exports.updateDay = (req, res) => {
+  
+    // Get url to update from router middleware and set to var
+    let query = {
+      'content.slug': req.body.slug
+    };
+  
+    const updatedData = {
+  
+      // Content field
+      content: {
+        title: req.body.title,
+        body: req.body.body,
+        slug: req.body.slug,
+        description: req.body.description,
+      },
+      // Location
+      location: {
+        city: req.body.city,
+        country: req.body.country
+      }
+    }
+  
+    // Updating the mod date
+    updatedData['date.modified'] = new Date();
+  
+    // Check for auth
+    if (req.body.password === apiPassword) {
+  
+      // Reminder: {new:true} returns updated doc
+      day.findOneAndUpdate(query, updatedData, {
+        new: true
+      }, function(err, day) {
+  
+        jsonService.sendResponse(res, 201, day);
+  
+      });
+  
+    // Not authorized
+    } else {
+      jsonService.sendResponsee(res, 403, 'Nice try.');
     }
   }
 

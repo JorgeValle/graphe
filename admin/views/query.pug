@@ -8,6 +8,7 @@ block content
       a.nav-item.nav-link.active#posts-tab(href="#posts", data-toggle="tab") Posts
       a.nav-item.nav-link#events-tab(href="#events", data-toggle="tab") Events
       a.nav-item.nav-link#quotes-tab(href="#quotes", data-toggle="tab") Quotes
+      a.nav-item.nav-link#days-tab(href="#days", data-toggle="tab") Days
 
   div.tab-content#nav-tabContent
     div.tab-pane.fade.show.active#posts
@@ -25,3 +26,8 @@ block content
         h2
           a(href=`/admin/update?quote=${quote.content.slug}`)= quote.content.quote
         p !{quote.content.author}
+    div.tab-pane.fade#days
+      each day in days
+        h2
+          a(href=`/admin/update?day=${day.content.slug}`)= day.content.title
+        p !{day.content.description}
