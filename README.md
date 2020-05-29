@@ -1,18 +1,16 @@
-# JorgeValle.com
+# Graphe
 
-A micro CMS created to run my website and bloggingplatform. Created on Express, Mongoose and Pug.
+A micro blogging platform created to run my website. Created on Express and Mongoose.
 
- - About JorgeValle.com
+ - About Graphe
  - Getting Started
  - License
 
 ## About JorgeValle.com
 
-This repository holds the Node.js application that powers my personal site. It's built with [Mongoose](https://mongoosejs.com/), [Express](https://expressjs.com/) and [Pug](https://pugjs.org/api/getting-started.html).
+This repository holds the Node.js application Graphe that manages the content for my personal site [Jorge Valle](https://jorgevalle.com). It's built with [Mongoose](https://mongoosejs.com/) and [Express](https://expressjs.com/).
 
-Its made up of a front end that's currently designed with CSS grid, and a backend admin that's styled with Bootstrap.
-
-It can be seen at [jorgevalle.com](https://jorgevalle.com)
+The backend admin is styled with Bootstrap.
 
 ## Getting started
 
@@ -40,7 +38,7 @@ App can then be found in http://localhost:3000
 
 ## License
 
-Copyright 2018 Jorge Valle
+Copyright 2018 - 2020 Jorge Valle
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
