@@ -6,7 +6,7 @@ A micro blogging platform created to run my website. Created on Express and Mong
  - Getting Started
  - License
 
-## About JorgeValle.com
+## About Graphe
 
 This repository holds the Node.js application Graphe that manages the content for my personal site [Jorge Valle](https://jorgevalle.com). It's built with [Mongoose](https://mongoosejs.com/) and [Express](https://expressjs.com/).
 
