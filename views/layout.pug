@@ -1,0 +1,54 @@
+doctype html
+html(lang='en')
+  head
+    title= documentTitle
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='//stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css')
+    link(rel="stylesheet", href="//fonts.googleapis.com/css?family=Material+Icons")
+    script(src="https://code.jquery.com/jquery-3.3.1.min.js", integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=", crossorigin="anonymous")
+    script(src='//stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js')
+    style(type='text/css').
+        a {
+          color: darkgray;
+        }
+        a:hover {
+          color: black;
+        }
+        .btn {
+          background-color: darkgray;
+          border-color: darkgray;
+        }
+        .btn:hover {
+          background-color: black;
+          border-color: black;
+        }
+        i.material-icons {
+          vertical-align: middle;
+          margin-right: 5px;
+        }
+        .tab-pane h2 {
+          font-size: 1.3em;
+        }
+
+body.container.mb-5
+  div.row
+    div.col
+      ul.nav.justify-content-center.mt-4.mb-4
+        li.nav-item
+          a.nav-link(href='/query')
+            i.material-icons search
+            span Query
+        li.nav-item
+          a.nav-link(href='/create')
+            i.material-icons create
+            span Create
+
+  div.row
+    div.col
+      block content
+  
+  footer.row
+    div.col
+      hr
+      small Copyright 2017 - 2020 Graphe

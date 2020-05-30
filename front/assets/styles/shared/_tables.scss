@@ -1,9 +1,0 @@
-table {
-  margin-top: $base-unit * fibonacci(3);
-}
-
-table th,
-table td {
-  padding: $base-unit * fibonacci(4);
-  border-top: 1px solid $light-grey;
-}

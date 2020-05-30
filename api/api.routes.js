@@ -16,22 +16,22 @@
   router.get('/get/days', apiCtrl.retrieveAllDays);
   // Get a specific post
   router.get('/get/post/:slug', apiCtrl.retrievePostBySlug);
+  // Get a specific event
+  router.get('/get/event/:slug', apiCtrl.retrieveEventBySlug);
+  // Get a specific quote
+  router.get('/get/quote/:slug', apiCtrl.retrieveQuoteBySlug);
   // Create a new post
   router.post('/create/post', apiCtrl.createPost);
   // Create a new quote
   router.post('/create/quote', apiCtrl.createQuote);
   // Create a new event
   router.post('/create/event', apiCtrl.createEvent);
-  // Create a new event
-  router.post('/create/day', apiCtrl.createDay);
   // Update a specific post
   router.put('/update/post', apiCtrl.updatePost);
   // Update a specific quote
   router.put('/update/quote', apiCtrl.updateQuote);
   // Update a specific event
   router.put('/update/event', apiCtrl.updateEvent);
-  // Updates a specific day
-  router.put('/update/day', apiCtrl.updateDay);
   
   module.exports = router;
 

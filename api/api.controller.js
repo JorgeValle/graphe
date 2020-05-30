@@ -100,6 +100,54 @@
   }
   
   /**
+   * Retrieves a single event, found by slug
+   * @since 3.3.0
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @returns {string} - The JSON formatted content of the event, if found
+   */
+  module.exports.retrieveEventBySlug = (req, res) => {
+  
+    // Fetch wanted content via Mongoose
+    event.findOne({
+      'content.slug': req.params.slug
+    }, function(err, event) {
+  
+      // Return 200 only if found
+      if (event) {
+        jsonService.sendResponse(res, 200, event);
+      } else {
+        jsonService.sendResponse(res, 404);
+      }
+    });
+  
+  }
+
+  /**
+   * Retrieves a single quote, found by slug
+   * @since 3.3.0
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @returns {string} - The JSON formatted content of the quote, if found
+   */
+  module.exports.retrieveQuoteBySlug = (req, res) => {
+  
+    // Fetch wanted content via Mongoose
+    quote.findOne({
+      'content.slug': req.params.slug
+    }, function(err, quote) {
+  
+      // Return 200 only if found
+      if (quote) {
+        jsonService.sendResponse(res, 200, quote);
+      } else {
+        jsonService.sendResponse(res, 404);
+      }
+    });
+  
+  }
+  
+  /**
    * Creates a new blog post
    * @since 3.3.0
    * @param {object} req - The request object
@@ -139,7 +187,7 @@
     });
   
     // Check for auth
-    if (req.body.password === apiPassword) {
+    if (req.body.password !== '' && req.body.password === apiPassword) {
   
       // Save the final document to the database
       newPost.save((err, post) => {
@@ -183,7 +231,7 @@
     });
   
     // Check for auth
-    if (req.body.password === apiPassword) {
+    if (req.body.password !== '' && req.body.password === apiPassword) {
   
       // Save the final document to the database
       newQuote.save((err, quote) => {
@@ -229,7 +277,7 @@
     });
   
     // Check for auth
-    if (req.body.password === apiPassword) {
+    if (req.body.password !== '' && req.body.password === apiPassword) {
   
       // Save the final document to the database
       newEvent.save((err, event) => {
@@ -377,11 +425,6 @@
         quote: req.body.quote,
         slug: req.body.slug,
         author: req.body.author
-      },
-      // Location
-      location: {
-        city: req.body.city,
-        country: req.body.country
       }
     }
   
@@ -389,7 +432,7 @@
     updatedData['date.modified'] = new Date();
   
     // Check for auth
-    if (req.body.password === apiPassword) {
+    if (req.body.password.length > 0 && req.body.password === apiPassword) {
   
       // Reminder: {new:true} returns updated doc, instead of old doc
       quote.findOneAndUpdate(query, updatedData, {
@@ -435,12 +478,12 @@
     updatedData['date.modified'] = new Date();
   
     // Check for auth
-    if (req.body.password === apiPassword) {
+    if (req.body.password.length > 0 && req.body.password === apiPassword) {
   
       // Reminder: {new:true} returns updated doc
       event.findOneAndUpdate(query, updatedData, {
         new: true
-      }, function(err, quote) {
+      }, function(err, event) {
   
         jsonService.sendResponse(res, 201, event);
   
@@ -449,57 +492,6 @@
     // Not authorized
     } else {
       jsonService.sendResponsee(res, 403, 'Nice try, buddy.');
-    }
-  }
-
-  /**
-   * Updates the day
-   * @since 4.4.0
-   * @param {object} req - The request object
-   * @param {object} res - The response object
-   * @returns {string} - The JSON for the freshly updated day
-   */
-  module.exports.updateDay = (req, res) => {
-  
-    // Get url to update from router middleware and set to var
-    let query = {
-      'content.slug': req.body.slug
-    };
-  
-    const updatedData = {
-  
-      // Content field
-      content: {
-        title: req.body.title,
-        body: req.body.body,
-        slug: req.body.slug,
-        description: req.body.description,
-      },
-      // Location
-      location: {
-        city: req.body.city,
-        country: req.body.country
-      }
-    }
-  
-    // Updating the mod date
-    updatedData['date.modified'] = new Date();
-  
-    // Check for auth
-    if (req.body.password === apiPassword) {
-  
-      // Reminder: {new:true} returns updated doc
-      day.findOneAndUpdate(query, updatedData, {
-        new: true
-      }, function(err, day) {
-  
-        jsonService.sendResponse(res, 201, day);
-  
-      });
-  
-    // Not authorized
-    } else {
-      jsonService.sendResponsee(res, 403, 'Nice try.');
     }
   }
 

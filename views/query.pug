@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  h1.mb-5 Query
+
+  nav.mb-3
+    div.nav.nav-tabs#nav-tab
+      a.nav-item.nav-link.active#posts-tab(href="#posts", data-toggle="tab") Posts
+      a.nav-item.nav-link#events-tab(href="#events", data-toggle="tab") Events
+      a.nav-item.nav-link#quotes-tab(href="#quotes", data-toggle="tab") Quotes
+
+  div.tab-content#nav-tabContent
+    div.tab-pane.fade.show.active#posts
+      each post in posts
+        h2
+          a(href=`/update?type=post&slug=${post.content.slug}`)= post.content.title
+        p !{post.content.description}
+    div.tab-pane.fade#events
+      each event in events
+        h2 
+          a(href=`/update?type=event&slug=${event.content.slug}`)= event.content.name
+        p !{event.content.description}
+    div.tab-pane.fade#quotes
+      each quote in quotes
+        h2 
+          a(href=`/update?type=quote&slug=${quote.content.slug}`)= quote.content.quote
+        p !{quote.content.author}

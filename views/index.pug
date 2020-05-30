@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1 Query content
+
+  div.container
+    div.row
+      //- iterate over query api response
+      each page in apiResponse
+        div.col-4
+          div.card
+            div.card-block
+              h4
+                a(href='/update?page=#{page.url}')= page.title
+              p.card-text !{page.bodyOne.substr(0, 100) + '...'}
+              em &nbsp;last modified on March 4th, 2017
+              a.btn.btn-primary(href='/update?page=#{page.url}') Edit
+              a.btn.btn-danger(href='#' + page.url) Delete

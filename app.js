@@ -10,36 +10,27 @@ const express = require('express'),
       secure = require('express-force-https');
 
 
-// hook for database connection
+// Hook for database connection
 require('./api/api.config');
 
-// route setup for api, back and front
+// Route setup for api and back end
 const routesApi = require('./api/api.routes'),
-      routesAdmin = require('./admin/admin.routes'),
-      routesFront = require('./front/front.routes');
+      routesAdmin = require('./admin.routes');
 
 let app = express();
-
-// app.use(require('express-force-domain')('https://jorgevalle.com'));
 
 app.listen(process.env.PORT || 3000, function() {
   console.log('Express has started on port 3000');
 });
 
-// force https
+// Force https
 app.use(secure);
-
-// force to non-www
-// app.use(require('express-naked-redirect')({
-//   reverse: true,
-//   https: true
-// }));
 
 // compress all responses
 app.use(compression());
 
 // view directory setup
-app.set('views', [`${__dirname}/admin/views`, `${__dirname}/front/views`]);
+app.set('views', [`${__dirname}/views`]);
 app.set('view engine', 'pug');
 
 // logging middleware
@@ -56,8 +47,7 @@ app.use(methodOverride('_method'));
 
 // route setup
 app.use('/api', routesApi);
-app.use('/', routesFront);
-app.use('/admin', routesAdmin);
+app.use('/', routesAdmin);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

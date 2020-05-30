@@ -1,0 +1,115 @@
+extends layout
+
+block content
+  h1.mb-5 Update #{contentType}
+
+  if contentType == 'post'
+    //- This gets converted to a put by method-override package
+    form(action='/api/update/post?_method=put', method='post')
+      div.row
+        div.col-12.form-group
+          label(for='pageTitle') Title
+          input#pageTitle.form-control(type='text', aria-describedby='pageTitleHelp', name='title', value=`${contentItem.content.title}`)
+          small#pageTitleHelp.form-text.text-muted The title of your page.
+        div.col-12.form-group
+          label(for='pageSlug') Slug
+          input#pageSlug.form-control(type='text', aria-describedby='pageSlugHelp', name='slug', value=`${contentItem.content.slug}`)
+          small#pageSlugHelp.form-text.text-muted The URL slug for your page. If left blank, we'll generate an automatic one.
+        div.col-12.form-group
+          label(for='body') Description
+          textarea#description.form-control(rows='2', aria-describedby='bodyHelp', name='description', onKeyDown="countChars('description', 'descriptionCount')", onKeyUp="countChars('description', 'descriptionCount')")=contentItem.content.description
+          small#descriptionHelp.form-text.text-muted The description, the elevator pitch. It should answer the question of people searching for the keywords. Aim for between 160 and 320 characters. Current characters: #[span#descriptionCount]
+        div.col-12.form-group
+          label(for='index') Index
+          textarea#body.form-control(rows='4', aria-describedby='indexHelp', name='index')=contentItem.content.index
+          small#indexHelp.form-text.text-muted The index.
+        div.col-12.form-group
+          label(for='pageContentOne') Body
+          textarea#body.form-control(rows='8', aria-describedby='bodyHelp', name='body', onKeyDown="countChars('body', 'bodyCount')", onKeyUp="countChars('body', 'bodyCount')")=contentItem.content.bodies[0]
+          small#bodyHelp.form-text.text-muted The body. Current characters: #[span#bodyCount]
+        div.col-12.form-group
+          label(for='index') References
+          textarea#body.form-control(rows='2', aria-describedby='indexHelp', name='references')=contentItem.content.references
+          small#indexHelp.form-text.text-muted The index.
+        div.col-12.form-group
+          label(for='pageContentFive') City
+          input#password.form-control(type='text', aria-describedby='passwordHelp', name='city', value=`${contentItem.location.city}`)
+          small#pageContentFiveHelp.form-text.text-muted The city where you're blogging from.
+        div.col-12.form-group
+          label(for='pageContentFive') Country
+          input#password.form-control(type='text', aria-describedby='passwordHelp', name='country', value=`${contentItem.location.country}`)
+          small#pageContentFiveHelp.form-text.text-muted The country where you're blogging from.
+        div.col-12.form-group
+          label(for='country') Reading Estimate
+          input#country.form-control(type='number', aria-describedby='countryHelp', name='estimate', value=`${contentItem.time.estimate}`)
+          small#countryHelp.form-text.text-muted The estimated reading time, in minutes.
+        div.col-12.col-sm-4.form-group
+          label(for='password') Password
+          input#password.form-control(type='text', aria-describedby='passwordHelp', name='password')
+          small#password.form-text.text-muted The API password.
+      div.row
+        div.col-12.col-sm-4
+          button.btn.btn-primary(type='submit')
+            i.material-icons update
+            span Update
+
+  else if contentType == 'event'
+    form(action='/api/update/event?_method=put', method='post')
+      div.row
+        div.col-12.form-group
+          label(for='title') Name
+          input#title.form-control(type='text', aria-describedby='titleHelp', name='name', value=`${contentItem.content.name}`)
+          small#titleHelp.form-text.text-muted The name of the event.
+        div.col-12.form-group
+          label(for='slug') Date
+          input#slug.form-control(type='text', aria-describedby='slugHelp', name='date', value=`${contentItem.content.date}`)
+          small#slugHelp.form-text.text-muted The date of the event, in the format Day Month, Year. For example May 19, 1984.
+        div.col-12.form-group
+          label(for='slug') Description
+          input#slug.form-control(type='text', aria-describedby='slugHelp', name='description', value=`${contentItem.content.description}`)
+          small#slugHelp.form-text.text-muted The description of the event.
+        div.col-12.form-group
+          label(for='slug') Slug
+          input#slug.form-control(type='text', aria-describedby='slugHelp', name='slug', value=`${contentItem.content.slug}`)
+          small#slugHelp.form-text.text-muted The URL slug the quote.
+        div.col-12.col-sm-4.form-group
+          label(for='password') Password
+          input#password.form-control(type='text', aria-describedby='passwordHelp', name='password')
+          small#password.form-text.text-muted The API password.
+      div.row
+        div.col-12.col-sm-4
+          button.btn.btn-primary(type='submit')
+            i.material-icons update
+            span Update
+
+  else
+    form(action='/api/update/quote?_method=put', method='post')
+      div.row
+        div.col-12.form-group
+          label(for='title') Quote
+          input#title.form-control(type='text', aria-describedby='titleHelp', name='quote', value=`${contentItem.content.quote}`)
+          small#titleHelp.form-text.text-muted The quote.
+        div.col-12.form-group
+          label(for='slug') Author
+          input#slug.form-control(type='text', aria-describedby='slugHelp', name='author', value=`${contentItem.content.author}`)
+          small#slugHelp.form-text.text-muted The author.
+        div.col-12.form-group
+          label(for='slug') Slug
+          input#slug.form-control(type='text', aria-describedby='slugHelp', name='slug', value=`${contentItem.content.slug}`)
+          small#slugHelp.form-text.text-muted The URL slug the quote.
+        div.col-12.col-sm-4.form-group
+          label(for='password') Password
+          input#password.form-control(type='text', aria-describedby='passwordHelp', name='password')
+          small#password.form-text.text-muted The API password.
+      div.row
+        div.col-12.col-sm-4
+          button.btn.btn-primary(type='submit')
+            i.material-icons update
+            span Update
+
+  script.
+    var countChars = function(orig, dest) {
+      var chars = document.getElementById(orig).value.length;
+      var node = document.getElementById(dest);
+      node.innerHTML = chars;
+    }

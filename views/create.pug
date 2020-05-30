@@ -1,0 +1,112 @@
+extends layout
+
+block content
+  h1.mb-5 Create
+
+  nav.mb-3
+    div.nav.nav-tabs#nav-tab
+      a.nav-item.nav-link.active#post-tab(href="#post", data-toggle="tab") Post
+      a.nav-item.nav-link#event-tab(href="#event", data-toggle="tab") Event
+      a.nav-item.nav-link#quote-tab(href="#quote", data-toggle="tab") Quote
+
+  div.tab-content#nav-tabContent
+    div.tab-pane.fade.show.active#post
+      form(action='/api/create/post', method='post')
+        div.row
+          div.col-12.form-group
+            label(for='title') Title
+            input#title.form-control(type='text', aria-describedby='titleHelp', name='title')
+            small#titleHelp.form-text.text-muted The blog post title.
+          div.col-12.form-group
+            label(for='slug') Slug
+            input#slug.form-control(type='text', aria-describedby='slugHelp', name='slug')
+            small#slugHelp.form-text.text-muted The URL slug for your post.
+          div.col-12.form-group
+            label(for='body') Description
+            textarea#description.form-control(rows='2', aria-describedby='bodyHelp', name='description', onKeyDown="countChars('description', 'descriptionCount')", onKeyUp="countChars('description', 'descriptionCount')")
+            small#descriptionHelp.form-text.text-muted The description, the elevator pitch. It should answer the question of people searching for the keywords. Aim for between 160 and 320 characters. Current characters: #[span#descriptionCount]
+          div.col-12.form-group
+            label(for='index') Index
+            textarea#body.form-control(rows='2', aria-describedby='indexHelp', name='index')
+            small#indexHelp.form-text.text-muted The content index for the post. Use an unordered list.
+          div.col-12.form-group
+            label(for='body') Body
+            textarea#body.form-control(rows='8', aria-describedby='bodyHelp', name='body', onKeyDown="countChars('body', 'bodyCount')", onKeyUp="countChars('body', 'bodyCount')")
+            small#bodyHelp.form-text.text-muted The body. Current characters: #[span#bodyCount]
+          div.col-12.form-group
+            label(for='body') References
+            textarea#body.form-control(rows='2', aria-describedby='bodyHelp', name='references')
+            small#bodyHelp.form-text.text-muted If any, the references used in the post.
+          div.col-12.form-group
+            label(for='city') City
+            input#city.form-control(type='text', aria-describedby='cityHelp', name='city')
+            small#cityHelp.form-text.text-muted The city where you're blogging from.
+          div.col-12.form-group
+            label(for='country') Country
+            input#country.form-control(type='text', aria-describedby='countryHelp', name='country')
+            small#countryHelp.form-text.text-muted The country where you're blogging from.
+          div.col-12.form-group
+            label(for='country') Minute estimate
+            input#country.form-control(type='number', aria-describedby='countryHelp', name='estimate')
+            small#countryHelp.form-text.text-muted The estimated reading time, in minutes.
+          div.col-12.col-sm-4.form-group
+            label(for='password') Password
+            input#password.form-control(type='text', aria-describedby='passwordHelp', name='password')
+            small#password.form-text.text-muted The API password.
+        div.row
+          div.col-12.col-sm-4
+            button.btn.btn-primary(type='submit')
+              i.material-icons publish
+              span Publish
+    div.tab-pane.fade#event
+      form(action='/api/create/event', method='post')
+        div.row
+          div.col-12.form-group
+            label(for='title') Name
+            input#title.form-control(type='text', aria-describedby='titleHelp', name='name')
+            small#titleHelp.form-text.text-muted The name of the event.
+          div.col-12.form-group
+            label(for='slug') Date
+            input#slug.form-control(type='text', aria-describedby='slugHelp', name='date')
+            small#slugHelp.form-text.text-muted The date of the event, in the format Day Month, Year. For example May 19, 1984.
+          div.col-12.form-group
+            label(for='slug') Description
+            input#slug.form-control(type='text', aria-describedby='slugHelp', name='description')
+            small#slugHelp.form-text.text-muted The description of the event.
+          div.col-12.form-group
+            label(for='slug') Slug
+            input#slug.form-control(type='text', aria-describedby='slugHelp', name='slug')
+            small#slugHelp.form-text.text-muted The URL slug the quote.
+          div.col-12.col-sm-4.form-group
+            label(for='password') Password
+            input#password.form-control(type='text', aria-describedby='passwordHelp', name='password')
+            small#password.form-text.text-muted The API password.
+        div.row
+          div.col-12.col-sm-4
+            button.btn.btn-primary(type='submit')
+              i.material-icons publish
+              span Publish
+    div.tab-pane.fade#quote
+      form(action='/api/create/quote', method='post')
+        div.row
+          div.col-12.form-group
+            label(for='title') Quote
+            input#title.form-control(type='text', aria-describedby='titleHelp', name='quote')
+            small#titleHelp.form-text.text-muted The quote.
+          div.col-12.form-group
+            label(for='slug') Author
+            input#slug.form-control(type='text', aria-describedby='slugHelp', name='author')
+            small#slugHelp.form-text.text-muted The author.
+          div.col-12.form-group
+            label(for='slug') Slug
+            input#slug.form-control(type='text', aria-describedby='slugHelp', name='slug')
+            small#slugHelp.form-text.text-muted The URL slug the quote.
+          div.col-12.col-sm-4.form-group
+            label(for='password') Password
+            input#password.form-control(type='text', aria-describedby='passwordHelp', name='password')
+            small#password.form-text.text-muted The API password.
+        div.row
+          div.col-12.col-sm-4
+            button.btn.btn-primary(type='submit')
+              i.material-icons publish
+              span Publish
