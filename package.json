@@ -26,7 +26,8 @@
     "morgan": "~1.9.1",
     "pug": "^2.0.3",
     "request": "2.88.0",
-    "serve-favicon": "~2.5.0"
+    "serve-favicon": "~2.5.0",
+    "@snyk/protect": "latest"
   },
   "devDependencies": {
     "jasmine": "^3.3.1",
@@ -37,8 +38,11 @@
   },
   "scripts": {
     "start": "node app.js",
-    "test": "jasmine"
+    "test": "jasmine",
+    "prepare": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "author": "Jorge Valle",
-  "license": "MIT"
+  "license": "MIT",
+  "snyk": true
 }
